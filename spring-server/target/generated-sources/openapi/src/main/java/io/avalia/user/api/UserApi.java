@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-06T17:12:53.540+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-06T18:51:02.979+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -49,6 +49,41 @@ public interface UserApi {
     }
 
 
+    @ApiOperation(value = "", nickname = "deleteUser", notes = "This can only be done by the logged in user.", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 400, message = "Invalid username supplied"),
+        @ApiResponse(code = 404, message = "User not found") })
+    @RequestMapping(value = "/user/{email}",
+        method = RequestMethod.DELETE)
+    default ResponseEntity<Void> deleteUser(@ApiParam(value = "The name that needs to be deleted",required=true) @PathVariable("email") String email) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = User.class, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = User.class),
+        @ApiResponse(code = 400, message = "Invalid username supplied"),
+        @ApiResponse(code = 404, message = "User not found") })
+    @RequestMapping(value = "/user/{email}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<User> getUserByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"firstname\" : \"firstname\", \"password\" : \"password\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
     @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = User.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success", response = User.class, responseContainer = "List") })
@@ -65,6 +100,18 @@ public interface UserApi {
                 }
             }
         });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "updateUser", notes = "", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 400, message = "Invalid user supplied"),
+        @ApiResponse(code = 404, message = "User not found") })
+    @RequestMapping(value = "/user/{email}",
+        method = RequestMethod.PUT)
+    default ResponseEntity<Void> updateUser(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@ApiParam(value = "Updated user object" ,required=true )  @Valid @RequestBody User body) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

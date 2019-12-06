@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-26T19:36:34.802Z")
 
@@ -35,6 +36,27 @@ public class UserApiController implements UserApi{
 
         return ResponseEntity.created(location).build();
     }
+
+    public ResponseEntity<User> getUserByID(String email) {
+
+        Optional<UserEntity> oue = userRepository.findById(email);
+        UserEntity ue = oue.get();
+        return ResponseEntity.ok(toUser(ue));
+    }
+
+    public ResponseEntity deleteUser(String email) {
+        userRepository.deleteById(email);
+        return ResponseEntity.ok("ok");
+    }
+
+    /*
+    public ResponseEntity<User>  updateUser(String email) {
+
+        Optional<UserEntity> oue = userRepository.save(email);
+        UserEntity ue = oue.get();
+        return ResponseEntity.ok(toUser(ue));
+    }
+     */
 
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = new ArrayList<>();

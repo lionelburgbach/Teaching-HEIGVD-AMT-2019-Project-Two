@@ -14,13 +14,13 @@ import java.io.Serializable;
 @Entity
 public class UserEntity implements Serializable {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String firstname;
     private String lastname;
     private String role;
+    @Id
     private String email;
     private String password;
 }
