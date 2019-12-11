@@ -161,7 +161,7 @@ paths:
           format: int64
       responses:
         400:
-          description: "Invalid Trail supplied"
+          description: "Invalid Trail id supplied"
         404:
           description: "Trail not found"
 
@@ -193,14 +193,15 @@ paths:
           in: path
           description: "The name that needs to be fetched. Use user1 for testing. "
           required: true
-          type: string
+          type: integer
+          format: int64
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Registration"
         400:
-          description: "Invalid registration supplied"
+          description: "Invalid id supplied"
         404:
           description: "Registration not found"
     delete:
@@ -212,12 +213,13 @@ paths:
           in: path
           description: "The name that needs to be deleted"
           required: true
-          type: string
+          type: integer
+          format: int64
       responses:
         400:
-          description: "Invalid username supplied"
+          description: "Invalid id supplied"
         404:
-          description: "User not found"
+          description: "Registration not found"
 
 definitions:
   User:
@@ -245,5 +247,7 @@ definitions:
     properties:
       idTrail:
         type: integer
+        format: int64
       idUser:
         type: integer
+        format: int64
