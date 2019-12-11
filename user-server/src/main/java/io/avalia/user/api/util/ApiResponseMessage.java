@@ -3,9 +3,9 @@ package io.avalia.user.api.util;
 import javax.xml.bind.annotation.XmlTransient;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-26T19:36:34.802Z")
-
 @javax.xml.bind.annotation.XmlRootElement
 public class ApiResponseMessage {
+
     public static final int ERROR = 1;
     public static final int WARNING = 2;
     public static final int INFO = 3;

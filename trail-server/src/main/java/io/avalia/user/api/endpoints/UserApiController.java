@@ -70,7 +70,6 @@ public class UserApiController implements UserApi{
         UserEntity entity = new UserEntity();
         entity.setFirstname(user.getFirstname());
         entity.setLastname(user.getLastname());
-        entity.setRole(user.getRole());
         entity.setEmail(user.getEmail());
         entity.setPassword(user.getPassword());
         return entity;
@@ -80,7 +79,6 @@ public class UserApiController implements UserApi{
         User user = new User();
         user.setFirstname(entity.getFirstname());
         user.setLastname(entity.getLastname());
-        user.setRole(entity.getRole());
         user.setEmail(entity.getEmail());
         user.setPassword(entity.getPassword());
         return user;

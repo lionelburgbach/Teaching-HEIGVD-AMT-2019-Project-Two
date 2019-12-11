@@ -7,9 +7,35 @@ host: 'localhost:8080'
 basePath: /api
 schemes:
   - http
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 paths:
+
+  /authenticate:
+
+    post:
+      description: try to authenticate
+      operationId: createAuthenticationToken
+      consumes:
+        - application/json
+      parameters:
+        - name: userLogin
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserLogin'
+      responses:
+        201:
+          description: created
+          schema:
+            type: object
   /user:
     post:
+      security:
+        - Bearer: []
       description: create a user
       operationId: createUser
       consumes:
@@ -21,25 +47,32 @@ paths:
           schema:
             $ref: '#/definitions/User'
       responses:
-        '201':
+        201:
           description: created
           schema:
             type: object
+        403:
+          description: 'You do not have necessary permissions for the resource'
     get:
+      security:
+        - Bearer: []
       description: get user paramater
       operationId: getUsers
       produces:
         - application/json
       responses:
-        '200':
+        200:
           description: success
           schema:
             type: array
             items:
               $ref: '#/definitions/User'
-
+        403:
+          description: 'You do not have necessary permissions for the resource'
   /user/{email}:
     get:
+      security:
+        - Bearer: []
       description: ""
       operationId: getUserByID
       produces:
@@ -59,7 +92,11 @@ paths:
           description: "Invalid username supplied"
         404:
           description: "User not found"
+        403:
+          description: 'You do not have necessary permissions for the resource'
     put:
+      security:
+        - Bearer: []
       description: ""
       operationId: updateUser
       produces:
@@ -81,7 +118,11 @@ paths:
           description: "Invalid user supplied"
         404:
           description: "User not found"
+        403:
+          description: 'You do not have necessary permissions for the resource'
     delete:
+      security:
+        - Bearer: []
       description: "This can only be done by the logged in user."
       operationId: deleteUser
       produces:
@@ -97,17 +138,25 @@ paths:
           description: "Invalid username supplied"
         404:
           description: "User not found"
+        403:
+          description: 'You do not have necessary permissions for the resource'
 definitions:
-  User:
+  UserLogin:
     type: object
+    discriminator: userType
     properties:
-      firstname:
-        type: string
-      lastname:
-        type: string
-      role:
-        type: string
       email:
         type: string
       password:
         type: string
+  User:
+    allOf:
+      - $ref: '#/definitions/UserLogin'
+      - type: object
+        properties:
+          firstname:
+            type: string
+          lastname:
+            type: string
+          role:
+            type: string

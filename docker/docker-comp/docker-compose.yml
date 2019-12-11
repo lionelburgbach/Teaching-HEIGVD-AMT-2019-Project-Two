@@ -1,19 +1,36 @@
 version: '3'
 services:
-   mysql:
-      build: ../images/mysql
+   mysql1:
+      build: ../images/mysql1
       command: --default-authentication-plugin=mysql_native_password
       environment:
          MYSQL_ROOT_USERNAME: admin
          MYSQL_ROOT_PASSWORD: admin
       ports:
          - "3306:3306"
-   phpmyadmin:
+   mysql2:
+      build: ../images/mysql2
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+         MYSQL_ROOT_USERNAME: admin
+         MYSQL_ROOT_PASSWORD: admin
+      ports:
+         - "3307:3306"
+   phpmyadmin1:
       build: ../images/phpmyadmin
       environment:
-         PMA_HOST: mysql
+         PMA_HOST: mysql1
          MYSQL_ROOT_PASSWORD: admin
       ports:
          - "6060:80"
       links:
-         - mysql:db
+         - mysql1:db
+   phpmyadmin2:
+      build: ../images/phpmyadmin
+      environment:
+         PMA_HOST: mysql2
+         MYSQL_ROOT_PASSWORD: admin
+      ports:
+         - "6061:80"
+      links:
+         - mysql2:db

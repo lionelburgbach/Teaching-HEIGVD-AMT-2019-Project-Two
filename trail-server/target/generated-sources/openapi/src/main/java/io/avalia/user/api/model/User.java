@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-06T18:51:02.979+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-11T02:40:10.341072+01:00[Europe/Zurich]")
 
 public class User   {
   @JsonProperty("firstname")
@@ -20,9 +20,6 @@ public class User   {
 
   @JsonProperty("lastname")
   private String lastname;
-
-  @JsonProperty("role")
-  private String role;
 
   @JsonProperty("email")
   private String email;
@@ -68,26 +65,6 @@ public class User   {
 
   public void setLastname(String lastname) {
     this.lastname = lastname;
-  }
-
-  public User role(String role) {
-    this.role = role;
-    return this;
-  }
-
-  /**
-   * Get role
-   * @return role
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getRole() {
-    return role;
-  }
-
-  public void setRole(String role) {
-    this.role = role;
   }
 
   public User email(String email) {
@@ -142,14 +119,13 @@ public class User   {
     User user = (User) o;
     return Objects.equals(this.firstname, user.firstname) &&
         Objects.equals(this.lastname, user.lastname) &&
-        Objects.equals(this.role, user.role) &&
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.password, user.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, role, email, password);
+    return Objects.hash(firstname, lastname, email, password);
   }
 
   @Override
@@ -159,7 +135,6 @@ public class User   {
     
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
