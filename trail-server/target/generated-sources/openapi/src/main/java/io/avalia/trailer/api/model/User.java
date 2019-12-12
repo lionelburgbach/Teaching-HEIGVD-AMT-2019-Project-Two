@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:59.148+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T20:06:58.378+01:00[Europe/Zurich]")
 
 public class User   {
   @JsonProperty("firstname")
@@ -20,6 +20,9 @@ public class User   {
 
   @JsonProperty("lastname")
   private String lastname;
+
+  @JsonProperty("date")
+  private String date;
 
   @JsonProperty("email")
   private String email;
@@ -65,6 +68,26 @@ public class User   {
 
   public void setLastname(String lastname) {
     this.lastname = lastname;
+  }
+
+  public User date(String date) {
+    this.date = date;
+    return this;
+  }
+
+  /**
+   * Get date
+   * @return date
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
   }
 
   public User email(String email) {
@@ -119,13 +142,14 @@ public class User   {
     User user = (User) o;
     return Objects.equals(this.firstname, user.firstname) &&
         Objects.equals(this.lastname, user.lastname) &&
+        Objects.equals(this.date, user.date) &&
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.password, user.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, email, password);
+    return Objects.hash(firstname, lastname, date, email, password);
   }
 
   @Override
@@ -135,6 +159,7 @@ public class User   {
     
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");

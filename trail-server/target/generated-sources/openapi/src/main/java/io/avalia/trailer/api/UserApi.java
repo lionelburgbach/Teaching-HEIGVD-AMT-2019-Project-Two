@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:59.148+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T20:06:58.378+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -73,7 +73,7 @@ public interface UserApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstname\" : \"firstname\", \"password\" : \"password\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    String exampleString = "{ \"date\" : \"date\", \"firstname\" : \"firstname\", \"password\" : \"password\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

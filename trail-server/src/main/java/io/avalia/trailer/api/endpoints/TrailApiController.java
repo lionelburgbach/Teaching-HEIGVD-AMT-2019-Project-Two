@@ -13,6 +13,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-26T19:36:34.802Z")
@@ -33,6 +35,15 @@ public class TrailApiController implements TrailApi {
                 .buildAndExpand(newTrailEntity.getId()).toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    public ResponseEntity<List<Trail>> allTrails() {
+
+        List<Trail> trails = new ArrayList<>();
+        for (TrailEntity trailEntity : trailRepository.findAll()) {
+            trails.add(toTrail(trailEntity));
+        }
+        return ResponseEntity.ok(trails);
     }
 
     public ResponseEntity<Trail> getTrailByID(Long id) {

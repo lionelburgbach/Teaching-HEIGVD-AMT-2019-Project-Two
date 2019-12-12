@@ -21,4 +21,6 @@ public class TrailEntity implements Serializable {
     private String name;
     private int length;
     private  String description;
+    private int upAndDown;
+    private String date;
 }
