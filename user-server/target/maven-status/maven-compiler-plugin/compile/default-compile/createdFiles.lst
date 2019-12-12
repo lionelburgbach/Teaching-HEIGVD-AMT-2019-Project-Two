@@ -4,6 +4,7 @@ io/avalia/user/api/util/ApiOriginFilter.class
 io/avalia/user/api/ApiUtil.class
 io/avalia/user/Swagger2SpringBoot$ExitException.class
 io/avalia/user/repositories/UserRepository.class
+io/avalia/user/api/AuthenticateApi.class
 io/avalia/user/api/UserApi.class
 io/avalia/user/api/exceptions/ApiException.class
 io/avalia/user/configuration/SwaggerDocumentationConfig.class

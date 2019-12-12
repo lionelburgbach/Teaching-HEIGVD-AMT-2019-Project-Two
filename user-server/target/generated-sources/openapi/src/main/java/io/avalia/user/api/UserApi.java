@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-06T23:55:55.023+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:53.133+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -38,7 +38,8 @@ public interface UserApi {
 
     @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "created", response = Object.class) })
+        @ApiResponse(code = 201, message = "created", response = Object.class),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/user",
         produces = { "*/*" }, 
         consumes = { "application/json" },
@@ -52,6 +53,7 @@ public interface UserApi {
     @ApiOperation(value = "", nickname = "deleteUser", notes = "This can only be done by the logged in user.", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid username supplied"),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/{email}",
         method = RequestMethod.DELETE)
@@ -65,6 +67,7 @@ public interface UserApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = User.class),
         @ApiResponse(code = 400, message = "Invalid username supplied"),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/{email}",
         produces = { "application/json" }, 
@@ -73,7 +76,7 @@ public interface UserApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstname\" : \"firstname\", \"password\" : \"password\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    String exampleString = "{ \"password\" : \"password\", \"firstname\" : \"firstname\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -86,7 +89,8 @@ public interface UserApi {
 
     @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = User.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "success", response = User.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "success", response = User.class, responseContainer = "List"),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/user",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -94,7 +98,7 @@ public interface UserApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstname\" : \"firstname\", \"password\" : \"password\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    String exampleString = "{ \"password\" : \"password\", \"firstname\" : \"firstname\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -108,6 +112,7 @@ public interface UserApi {
     @ApiOperation(value = "", nickname = "updateUser", notes = "", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid user supplied"),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/{email}",
         method = RequestMethod.PUT)

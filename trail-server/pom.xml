@@ -49,10 +49,10 @@
                                 <useBeanValidation>true</useBeanValidation>
                                 <interfaceOnly>true</interfaceOnly>
                                 <delegatePattern>false</delegatePattern>
-                                <apiPackage>io.avalia.user.api</apiPackage>
-                                <configPackage>io.avalia.user.config</configPackage>
-                                <basePackage>io.avalia.user</basePackage>
-                                <modelPackage>io.avalia.user.api.model</modelPackage>
+                                <apiPackage>io.avalia.trailer.api</apiPackage>
+                                <configPackage>io.avalia.trailer.config</configPackage>
+                                <basePackage>io.avalia.trailer</basePackage>
+                                <modelPackage>io.avalia.trailer.api.model</modelPackage>
                             </configOptions>
                         </configuration>
                     </execution>

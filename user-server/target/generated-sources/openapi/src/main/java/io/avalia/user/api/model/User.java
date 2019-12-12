@@ -12,9 +12,15 @@ import javax.validation.constraints.*;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-06T23:55:55.023+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:53.133+01:00[Europe/Zurich]")
 
 public class User   {
+  @JsonProperty("email")
+  private String email;
+
+  @JsonProperty("password")
+  private String password;
+
   @JsonProperty("firstname")
   private String firstname;
 
@@ -24,11 +30,45 @@ public class User   {
   @JsonProperty("role")
   private String role;
 
-  @JsonProperty("email")
-  private String email;
+  public User email(String email) {
+    this.email = email;
+    return this;
+  }
 
-  @JsonProperty("password")
-  private String password;
+  /**
+   * Get email
+   * @return email
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public User password(String password) {
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * Get password
+   * @return password
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public User firstname(String firstname) {
     this.firstname = firstname;
@@ -90,46 +130,6 @@ public class User   {
     this.role = role;
   }
 
-  public User email(String email) {
-    this.email = email;
-    return this;
-  }
-
-  /**
-   * Get email
-   * @return email
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public User password(String password) {
-    this.password = password;
-    return this;
-  }
-
-  /**
-   * Get password
-   * @return password
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -140,16 +140,16 @@ public class User   {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.firstname, user.firstname) &&
+    return Objects.equals(this.email, user.email) &&
+        Objects.equals(this.password, user.password) &&
+        Objects.equals(this.firstname, user.firstname) &&
         Objects.equals(this.lastname, user.lastname) &&
-        Objects.equals(this.role, user.role) &&
-        Objects.equals(this.email, user.email) &&
-        Objects.equals(this.password, user.password);
+        Objects.equals(this.role, user.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, role, email, password);
+    return Objects.hash(email, password, firstname, lastname, role);
   }
 
   @Override
@@ -157,11 +157,11 @@ public class User   {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
     
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
