@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/*
 @Getter
 @Setter
 @Entity
@@ -20,3 +21,4 @@ public class UserLoginEntity implements Serializable {
     private String email;
     private String password;
 }
+*/

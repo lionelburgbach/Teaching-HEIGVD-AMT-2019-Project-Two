@@ -3,8 +3,6 @@ package io.avalia.user.api.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.avalia.user.api.model.UserAllOf;
-import io.avalia.user.api.model.UserLogin;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -14,9 +12,15 @@ import javax.validation.constraints.*;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-10T22:07:54.178+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:53.133+01:00[Europe/Zurich]")
 
-public class User extends UserLogin  {
+public class User   {
+  @JsonProperty("email")
+  private String email;
+
+  @JsonProperty("password")
+  private String password;
+
   @JsonProperty("firstname")
   private String firstname;
 
@@ -25,6 +29,46 @@ public class User extends UserLogin  {
 
   @JsonProperty("role")
   private String role;
+
+  public User email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public User password(String password) {
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * Get password
+   * @return password
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
   public User firstname(String firstname) {
     this.firstname = firstname;
@@ -96,22 +140,25 @@ public class User extends UserLogin  {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.firstname, user.firstname) &&
+    return Objects.equals(this.email, user.email) &&
+        Objects.equals(this.password, user.password) &&
+        Objects.equals(this.firstname, user.firstname) &&
         Objects.equals(this.lastname, user.lastname) &&
-        Objects.equals(this.role, user.role) &&
-        super.equals(o);
+        Objects.equals(this.role, user.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, role, super.hashCode());
+    return Objects.hash(email, password, firstname, lastname, role);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");

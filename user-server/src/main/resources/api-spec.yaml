@@ -26,7 +26,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/UserLogin'
+            $ref: '#/definitions/User'
       responses:
         201:
           description: created
@@ -34,8 +34,6 @@ paths:
             type: object
   /user:
     post:
-      security:
-        - Bearer: []
       description: create a user
       operationId: createUser
       consumes:
@@ -54,8 +52,6 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     get:
-      security:
-        - Bearer: []
       description: get user paramater
       operationId: getUsers
       produces:
@@ -71,8 +67,6 @@ paths:
           description: 'You do not have necessary permissions for the resource'
   /user/{email}:
     get:
-      security:
-        - Bearer: []
       description: ""
       operationId: getUserByID
       produces:
@@ -95,8 +89,6 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     put:
-      security:
-        - Bearer: []
       description: ""
       operationId: updateUser
       produces:
@@ -121,8 +113,6 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     delete:
-      security:
-        - Bearer: []
       description: "This can only be done by the logged in user."
       operationId: deleteUser
       produces:
@@ -141,22 +131,16 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
 definitions:
-  UserLogin:
+  User:
     type: object
-    discriminator: userType
     properties:
       email:
         type: string
       password:
         type: string
-  User:
-    allOf:
-      - $ref: '#/definitions/UserLogin'
-      - type: object
-        properties:
-          firstname:
-            type: string
-          lastname:
-            type: string
-          role:
-            type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      role:
+        type: string
