@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:59.148+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T20:06:58.378+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trail", description = "the trail API")
@@ -35,6 +35,27 @@ public interface TrailApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
+
+    @ApiOperation(value = "", nickname = "allTrails", notes = "all trails", response = Trail.class, responseContainer = "List", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 201, message = "created", response = Trail.class, responseContainer = "List") })
+    @RequestMapping(value = "/trail",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<List<Trail>> allTrails() {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"date\" : \"date\", \"name\" : \"name\", \"length\" : 0, \"upAndDown\" : 6, \"desprition\" : \"desprition\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
 
     @ApiOperation(value = "", nickname = "createTrail", notes = "create a trail", response = Object.class, tags={  })
     @ApiResponses(value = { 
@@ -73,7 +94,7 @@ public interface TrailApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"length\" : 0, \"desprition\" : \"desprition\" }";
+                    String exampleString = "{ \"date\" : \"date\", \"name\" : \"name\", \"length\" : 0, \"upAndDown\" : 6, \"desprition\" : \"desprition\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

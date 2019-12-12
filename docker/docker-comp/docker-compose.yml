@@ -1,6 +1,6 @@
 version: '3'
 services:
-   db:
+   mysql:
       build: ../images/mysql
       command: --default-authentication-plugin=mysql_native_password
       environment:
@@ -14,19 +14,19 @@ services:
          MYSQL_ROOT_PASSWORD: admin
       ports:
          - "6060:80"
-      depends_on:
-         - db
+      links:
+         - mysql:db
    swag1:
       build: ../images/java_server_1
       ports:
         - "8080:8080"
       restart: on-failure
       links: 
-        - db
+        - mysql:db
    swag2:
       build: ../images/java_server_2
       ports:
          - "8081:8081"
       restart: on-failure
       links: 
-         - db
+         - mysql:db

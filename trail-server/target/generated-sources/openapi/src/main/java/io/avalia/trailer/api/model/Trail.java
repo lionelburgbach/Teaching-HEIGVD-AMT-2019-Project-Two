@@ -12,17 +12,23 @@ import javax.validation.constraints.*;
 /**
  * Trail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T15:57:59.148+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T20:06:58.378+01:00[Europe/Zurich]")
 
 public class Trail   {
   @JsonProperty("name")
   private String name;
 
+  @JsonProperty("length")
+  private Integer length;
+
+  @JsonProperty("upAndDown")
+  private Integer upAndDown;
+
   @JsonProperty("desprition")
   private String desprition;
 
-  @JsonProperty("length")
-  private Integer length;
+  @JsonProperty("date")
+  private String date;
 
   public Trail name(String name) {
     this.name = name;
@@ -42,26 +48,6 @@ public class Trail   {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Trail desprition(String desprition) {
-    this.desprition = desprition;
-    return this;
-  }
-
-  /**
-   * Get desprition
-   * @return desprition
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getDesprition() {
-    return desprition;
-  }
-
-  public void setDesprition(String desprition) {
-    this.desprition = desprition;
   }
 
   public Trail length(Integer length) {
@@ -84,6 +70,66 @@ public class Trail   {
     this.length = length;
   }
 
+  public Trail upAndDown(Integer upAndDown) {
+    this.upAndDown = upAndDown;
+    return this;
+  }
+
+  /**
+   * Get upAndDown
+   * @return upAndDown
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Integer getUpAndDown() {
+    return upAndDown;
+  }
+
+  public void setUpAndDown(Integer upAndDown) {
+    this.upAndDown = upAndDown;
+  }
+
+  public Trail desprition(String desprition) {
+    this.desprition = desprition;
+    return this;
+  }
+
+  /**
+   * Get desprition
+   * @return desprition
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getDesprition() {
+    return desprition;
+  }
+
+  public void setDesprition(String desprition) {
+    this.desprition = desprition;
+  }
+
+  public Trail date(String date) {
+    this.date = date;
+    return this;
+  }
+
+  /**
+   * Get date
+   * @return date
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -95,13 +141,15 @@ public class Trail   {
     }
     Trail trail = (Trail) o;
     return Objects.equals(this.name, trail.name) &&
+        Objects.equals(this.length, trail.length) &&
+        Objects.equals(this.upAndDown, trail.upAndDown) &&
         Objects.equals(this.desprition, trail.desprition) &&
-        Objects.equals(this.length, trail.length);
+        Objects.equals(this.date, trail.date);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, desprition, length);
+    return Objects.hash(name, length, upAndDown, desprition, date);
   }
 
   @Override
@@ -110,8 +158,10 @@ public class Trail   {
     sb.append("class Trail {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    desprition: ").append(toIndentedString(desprition)).append("\n");
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
+    sb.append("    upAndDown: ").append(toIndentedString(upAndDown)).append("\n");
+    sb.append("    desprition: ").append(toIndentedString(desprition)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("}");
     return sb.toString();
   }
