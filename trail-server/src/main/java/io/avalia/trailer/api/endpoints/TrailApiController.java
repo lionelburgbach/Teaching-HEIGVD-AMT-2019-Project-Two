@@ -73,6 +73,8 @@ public class TrailApiController implements TrailApi {
         entity.setName(trail.getName());
         entity.setLength(trail.getLength());
         entity.setDescription(trail.getDesprition());
+        entity.setUpAndDown(trail.getUpAndDown());
+        entity.setDate(trail.getDate());
         return entity;
     }
 
@@ -81,6 +83,8 @@ public class TrailApiController implements TrailApi {
         trail.setName(entity.getName());
         trail.setDesprition(entity.getDescription());
         trail.setLength(entity.getLength());
+        trail.setUpAndDown(entity.getUpAndDown());
+        trail.setDate(entity.getDate());
         return trail;
     }
 }
