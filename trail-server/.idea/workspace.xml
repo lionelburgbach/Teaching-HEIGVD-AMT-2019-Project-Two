@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="" />
+    <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../trail-specs/src/test/resources/scenarios/creationAndDelete.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker/images/java_server_1/tmp/java-server-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/java_server_1/tmp/java-server-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker/images/java_server_2/tmp/java-server-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/java_server_2/tmp/java-server-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/UserApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Trail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/executableSpecification.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/executableSpecification.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/fruitsSpecification.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/src/main/resources/api-spec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/test/java/io/avalia/fruits/api/spec/SpecificationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/test/java/io/avalia/fruits/api/spec/helpers/Environment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/test/java/io/avalia/fruits/api/spec/steps/CreationSteps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/test/resources/environment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/src/test/resources/environment.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/src/test/resources/scenarios/creation.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/target/classes/api-spec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/target/test-classes/environment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../trail-specs/target/test-classes/environment.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trail-specs/target/test-classes/scenarios/creation.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UserApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +109,7 @@
       <workItem from="1576163897176" duration="318000" />
       <workItem from="1576166038514" duration="3321000" />
       <workItem from="1576171558641" duration="1108000" />
-      <workItem from="1576174866806" duration="3154000" />
+      <workItem from="1576174866806" duration="4386000" />
     </task>
     <servers />
   </component>
