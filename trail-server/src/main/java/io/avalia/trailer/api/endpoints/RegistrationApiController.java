@@ -3,7 +3,11 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.RegistrationApi;
 import io.avalia.trailer.api.model.Registration;
 import io.avalia.trailer.entities.RegistrationEntity;
+import io.avalia.trailer.entities.TrailEntity;
+import io.avalia.trailer.entities.UserEntity;
 import io.avalia.trailer.repositories.RegistrationRepository;
+import io.avalia.trailer.repositories.TrailRepository;
+import io.avalia.trailer.repositories.UserRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,12 @@ public class RegistrationApiController implements RegistrationApi {
     @Autowired
     RegistrationRepository regRepository;
 
+    @Autowired
+    TrailRepository trailRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
     public ResponseEntity<Object> createRegistration(@ApiParam(value = "", required = true) @Valid @RequestBody Registration reg) {
         RegistrationEntity newRegEntity = toRegistrationEntity(reg);
         regRepository.save(newRegEntity);
@@ -37,8 +47,8 @@ public class RegistrationApiController implements RegistrationApi {
 
     public ResponseEntity<Registration> getRegistrationByID(Long id) {
 
-        Optional<RegistrationEntity> ote = regRepository.findById(id);
-        RegistrationEntity re = ote.get();
+        Optional<RegistrationEntity> ore = regRepository.findById(id);
+        RegistrationEntity re = ore.get();
         return ResponseEntity.ok(toRegistration(re));
     }
 

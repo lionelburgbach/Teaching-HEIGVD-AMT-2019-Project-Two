@@ -27,96 +27,11 @@ import java.io.IOException;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-12-12T16:01:40.241+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-12-14T18:36:17.932+01:00[Europe/Zurich]")
 public class User {
-  public static final String SERIALIZED_NAME_FIRSTNAME = "firstname";
-  @SerializedName(SERIALIZED_NAME_FIRSTNAME)
-  private String firstname;
-
-  public static final String SERIALIZED_NAME_LASTNAME = "lastname";
-  @SerializedName(SERIALIZED_NAME_LASTNAME)
-  private String lastname;
-
-  public static final String SERIALIZED_NAME_ROLE = "role";
-  @SerializedName(SERIALIZED_NAME_ROLE)
-  private String role;
-
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
-
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
-  private String password;
-
-
-  public User firstname(String firstname) {
-    
-    this.firstname = firstname;
-    return this;
-  }
-
-   /**
-   * Get firstname
-   * @return firstname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getFirstname() {
-    return firstname;
-  }
-
-
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
-  }
-
-
-  public User lastname(String lastname) {
-    
-    this.lastname = lastname;
-    return this;
-  }
-
-   /**
-   * Get lastname
-   * @return lastname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLastname() {
-    return lastname;
-  }
-
-
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
-
-
-  public User role(String role) {
-    
-    this.role = role;
-    return this;
-  }
-
-   /**
-   * Get role
-   * @return role
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getRole() {
-    return role;
-  }
-
-
-  public void setRole(String role) {
-    this.role = role;
-  }
 
 
   public User email(String email) {
@@ -142,29 +57,6 @@ public class User {
   }
 
 
-  public User password(String password) {
-    
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Get password
-   * @return password
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getPassword() {
-    return password;
-  }
-
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -174,16 +66,12 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.firstname, user.firstname) &&
-        Objects.equals(this.lastname, user.lastname) &&
-        Objects.equals(this.role, user.role) &&
-        Objects.equals(this.email, user.email) &&
-        Objects.equals(this.password, user.password);
+    return Objects.equals(this.email, user.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, role, email, password);
+    return Objects.hash(email);
   }
 
 
@@ -191,11 +79,7 @@ public class User {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,6 +6,8 @@
 package io.avalia.user.api;
 
 import io.avalia.user.api.model.User;
+import io.avalia.user.api.model.UserInput;
+import io.avalia.user.api.model.UserOutput;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T21:36:00.687+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-14T18:25:11.578+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -44,7 +46,7 @@ public interface UserApi {
         produces = { "*/*" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody User user) {
+    default ResponseEntity<Object> createUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserInput userInput) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -63,20 +65,20 @@ public interface UserApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = User.class, tags={  })
+    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = UserOutput.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = User.class),
+        @ApiResponse(code = 200, message = "successful operation", response = UserOutput.class),
         @ApiResponse(code = 400, message = "Invalid username supplied"),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/user/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<User> getUserByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) {
+    default ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"password\" : \"password\", \"firstname\" : \"firstname\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    String exampleString = "null";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -87,18 +89,18 @@ public interface UserApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = User.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = UserOutput.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "success", response = User.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "success", response = UserOutput.class, responseContainer = "List"),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/user",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<User>> getUsers() {
+    default ResponseEntity<List<UserOutput>> getUsers() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"password\" : \"password\", \"firstname\" : \"firstname\", \"role\" : \"role\", \"email\" : \"email\", \"lastname\" : \"lastname\" }";
+                    String exampleString = "null";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

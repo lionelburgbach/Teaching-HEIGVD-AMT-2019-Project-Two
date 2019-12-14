@@ -2,7 +2,7 @@
 
 User API
 - API version: 0.1.0
-  - Build date: 2019-12-12T16:01:40.241+01:00[Europe/Zurich]
+  - Build date: 2019-12-14T18:36:17.932+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -85,12 +85,12 @@ public class Example {
     defaultClient.setBasePath("http://localhost:8080/api");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    User user = new User(); // User | 
+    UserAuth userLogin = new UserAuth(); // UserAuth | 
     try {
-      Object result = apiInstance.createUser(user);
+      Object result = apiInstance.createAuthenticationToken(userLogin);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#createUser");
+      System.err.println("Exception when calling DefaultApi#createAuthenticationToken");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -107,6 +107,7 @@ All URIs are relative to *http://localhost:8080/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**createAuthenticationToken**](docs/DefaultApi.md#createAuthenticationToken) | **POST** /authenticate | 
 *DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /user | 
 *DefaultApi* | [**deleteUser**](docs/DefaultApi.md#deleteUser) | **DELETE** /user/{email} | 
 *DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /user/{email} | 
@@ -117,12 +118,24 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [User](docs/User.md)
+ - [UserAuth](docs/UserAuth.md)
+ - [UserAuthAllOf](docs/UserAuthAllOf.md)
+ - [UserInput](docs/UserInput.md)
+ - [UserInputAllOf](docs/UserInputAllOf.md)
+ - [UserOutput](docs/UserOutput.md)
+ - [UserOutputAllOf](docs/UserOutputAllOf.md)
+ - [UserUpdate](docs/UserUpdate.md)
 
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
 Authentication schemes defined for the API:
+### Bearer
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 
 ## Recommendation
 

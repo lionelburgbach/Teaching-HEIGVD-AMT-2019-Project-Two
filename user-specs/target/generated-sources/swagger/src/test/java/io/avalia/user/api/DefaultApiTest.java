@@ -15,6 +15,9 @@ package io.avalia.user.api;
 
 import io.avalia.user.ApiException;
 import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserAuth;
+import io.avalia.user.api.dto.UserInput;
+import io.avalia.user.api.dto.UserOutput;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -35,6 +38,22 @@ public class DefaultApiTest {
     /**
      * 
      *
+     * try to authenticate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAuthenticationTokenTest() throws ApiException {
+        UserAuth userLogin = null;
+        Object response = api.createAuthenticationToken(userLogin);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
      * create a user
      *
      * @throws ApiException
@@ -42,7 +61,7 @@ public class DefaultApiTest {
      */
     @Test
     public void createUserTest() throws ApiException {
-        User user = null;
+        UserInput user = null;
         Object response = api.createUser(user);
 
         // TODO: test validations
@@ -75,7 +94,7 @@ public class DefaultApiTest {
     @Test
     public void getUserByIDTest() throws ApiException {
         String email = null;
-        User response = api.getUserByID(email);
+        UserOutput response = api.getUserByID(email);
 
         // TODO: test validations
     }
@@ -90,7 +109,7 @@ public class DefaultApiTest {
      */
     @Test
     public void getUsersTest() throws ApiException {
-        List<User> response = api.getUsers();
+        List<UserOutput> response = api.getUsers();
 
         // TODO: test validations
     }

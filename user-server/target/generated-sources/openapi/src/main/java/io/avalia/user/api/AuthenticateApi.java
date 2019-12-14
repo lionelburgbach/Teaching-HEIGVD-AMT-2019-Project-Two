@@ -5,7 +5,7 @@
  */
 package io.avalia.user.api;
 
-import io.avalia.user.api.model.User;
+import io.avalia.user.api.model.UserAuth;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-12T21:36:00.687+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-14T18:25:11.578+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "authenticate", description = "the authenticate API")
@@ -43,7 +43,7 @@ public interface AuthenticateApi {
         produces = { "*/*" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "" ,required=true )  @Valid @RequestBody User userLogin) {
+    default ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserAuth userLogin) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

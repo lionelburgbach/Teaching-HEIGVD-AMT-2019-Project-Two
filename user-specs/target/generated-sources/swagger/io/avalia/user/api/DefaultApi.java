@@ -28,6 +28,9 @@ import java.io.IOException;
 
 
 import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserAuth;
+import io.avalia.user.api.dto.UserInput;
+import io.avalia.user.api.dto.UserOutput;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -55,8 +58,8 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for createUser
-     * @param user  (required)
+     * Build call for createAuthenticationToken
+     * @param userLogin  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -66,7 +69,118 @@ public class DefaultApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createUserCall(User user, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAuthenticationTokenCall(UserAuth userLogin, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = userLogin;
+
+        // create path and map variables
+        String localVarPath = "/authenticate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "*/*"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAuthenticationTokenValidateBeforeCall(UserAuth userLogin, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'userLogin' is set
+        if (userLogin == null) {
+            throw new ApiException("Missing the required parameter 'userLogin' when calling createAuthenticationToken(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAuthenticationTokenCall(userLogin, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * try to authenticate
+     * @param userLogin  (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object createAuthenticationToken(UserAuth userLogin) throws ApiException {
+        ApiResponse<Object> localVarResp = createAuthenticationTokenWithHttpInfo(userLogin);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * try to authenticate
+     * @param userLogin  (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> createAuthenticationTokenWithHttpInfo(UserAuth userLogin) throws ApiException {
+        okhttp3.Call localVarCall = createAuthenticationTokenValidateBeforeCall(userLogin, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * try to authenticate
+     * @param userLogin  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAuthenticationTokenAsync(UserAuth userLogin, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAuthenticationTokenValidateBeforeCall(userLogin, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createUser
+     * @param user  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createUserCall(UserInput user, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = user;
 
         // create path and map variables
@@ -96,7 +210,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createUserValidateBeforeCall(User user, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createUserValidateBeforeCall(UserInput user, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'user' is set
         if (user == null) {
@@ -119,9 +233,10 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public Object createUser(User user) throws ApiException {
+    public Object createUser(UserInput user) throws ApiException {
         ApiResponse<Object> localVarResp = createUserWithHttpInfo(user);
         return localVarResp.getData();
     }
@@ -136,9 +251,10 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> createUserWithHttpInfo(User user) throws ApiException {
+    public ApiResponse<Object> createUserWithHttpInfo(UserInput user) throws ApiException {
         okhttp3.Call localVarCall = createUserValidateBeforeCall(user, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -155,9 +271,10 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createUserAsync(User user, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call createUserAsync(UserInput user, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createUserValidateBeforeCall(user, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
@@ -174,6 +291,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -230,6 +348,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -247,6 +366,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -266,6 +386,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -286,6 +407,7 @@ public class DefaultApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -337,18 +459,19 @@ public class DefaultApi {
      * 
      * 
      * @param email The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return User
+     * @return UserOutput
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public User getUserByID(String email) throws ApiException {
-        ApiResponse<User> localVarResp = getUserByIDWithHttpInfo(email);
+    public UserOutput getUserByID(String email) throws ApiException {
+        ApiResponse<UserOutput> localVarResp = getUserByIDWithHttpInfo(email);
         return localVarResp.getData();
     }
 
@@ -356,19 +479,20 @@ public class DefaultApi {
      * 
      * 
      * @param email The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return ApiResponse&lt;User&gt;
+     * @return ApiResponse&lt;UserOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<User> getUserByIDWithHttpInfo(String email) throws ApiException {
+    public ApiResponse<UserOutput> getUserByIDWithHttpInfo(String email) throws ApiException {
         okhttp3.Call localVarCall = getUserByIDValidateBeforeCall(email, null);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOutput>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -384,13 +508,14 @@ public class DefaultApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUserByIDAsync(String email, final ApiCallback<User> _callback) throws ApiException {
+    public okhttp3.Call getUserByIDAsync(String email, final ApiCallback<UserOutput> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUserByIDValidateBeforeCall(email, _callback);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOutput>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -403,6 +528,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getUsersCall(final ApiCallback _callback) throws ApiException {
@@ -446,33 +572,35 @@ public class DefaultApi {
     /**
      * 
      * get user paramater
-     * @return List&lt;User&gt;
+     * @return List&lt;UserOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public List<User> getUsers() throws ApiException {
-        ApiResponse<List<User>> localVarResp = getUsersWithHttpInfo();
+    public List<UserOutput> getUsers() throws ApiException {
+        ApiResponse<List<UserOutput>> localVarResp = getUsersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
      * get user paramater
-     * @return ApiResponse&lt;List&lt;User&gt;&gt;
+     * @return ApiResponse&lt;List&lt;UserOutput&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<User>> getUsersWithHttpInfo() throws ApiException {
+    public ApiResponse<List<UserOutput>> getUsersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<User>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<UserOutput>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -486,12 +614,13 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersAsync(final ApiCallback<List<User>> _callback) throws ApiException {
+    public okhttp3.Call getUsersAsync(final ApiCallback<List<UserOutput>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<User>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<UserOutput>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -506,6 +635,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -568,6 +698,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -586,6 +717,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -606,6 +738,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */

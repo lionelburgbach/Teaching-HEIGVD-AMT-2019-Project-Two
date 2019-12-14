@@ -7,6 +7,7 @@ import io.avalia.user.ApiException;
 import io.avalia.user.ApiResponse;
 import io.avalia.user.api.DefaultApi;
 import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserInput;
 import io.avalia.user.api.spec.helpers.Environment;
 
 import static org.junit.Assert.assertNotNull;
@@ -20,7 +21,7 @@ public class CreationSteps {
     private Environment environment;
     private DefaultApi api;
 
-    User user;
+    UserInput user;
 
     private ApiResponse lastApiResponse;
     private ApiException lastApiException;
@@ -39,12 +40,13 @@ public class CreationSteps {
 
     @Given("^I have a user payload$")
     public void i_have_a_user_payload() throws Throwable {
-        //user = new io.avalia.user.api.dto.User();
-        user = new User();
+        //user = new io.avalia.user.api.dto.UserInput();
+
+        user = new UserInput();
         user.setFirstname("Guillaume");
         user.setLastname("Blanco");
         user.setRole("admin");
-        user.setEmail("guillaume.blanco@heig-vd.ch");
+        user.setEmail("guillaume.blanco@h.ch");
         user.setPassword("guillaume");
     }
 

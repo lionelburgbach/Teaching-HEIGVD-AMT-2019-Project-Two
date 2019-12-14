@@ -26,7 +26,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/UserAuth'
       responses:
         201:
           description: created
@@ -39,11 +39,11 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: user
+        - name: userInput
           in: body
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/UserInput'
       responses:
         201:
           description: created
@@ -62,7 +62,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/User'
+              $ref: '#/definitions/UserOutput'
         403:
           description: 'You do not have necessary permissions for the resource'
   /user/{email}:
@@ -81,7 +81,7 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/User"
+            $ref: "#/definitions/UserOutput"
         400:
           description: "Invalid username supplied"
         404:
@@ -136,11 +136,39 @@ definitions:
     properties:
       email:
         type: string
-      password:
-        type: string
-      firstname:
-        type: string
-      lastname:
-        type: string
-      role:
-        type: string
+  UserAuth:
+    allOf:
+      - $ref: "#/definitions/User"
+      - type: object
+      - properties:
+          password:
+            type: string
+  UserOutput:
+    allOf:
+      - $ref: "#/definitions/User"
+      - type: object
+      - properties:
+          firstname:
+            type: string
+          lastname:
+            type: string
+  UserInput:
+    allOf:
+      - $ref: "#/definitions/User"
+      - $ref: "#/definitions/UserAuth"
+      - $ref: "#/definitions/UserOutput"
+      - type: object
+      - properties:
+          role:
+            type: string
+  UserUpdate:
+    allOf:
+      - $ref: "#/definitions/UserAuth"
+      - type: object
+      - properties:
+          firstname:
+            type: string
+          lastname:
+            type: string
+          role:
+            type: string

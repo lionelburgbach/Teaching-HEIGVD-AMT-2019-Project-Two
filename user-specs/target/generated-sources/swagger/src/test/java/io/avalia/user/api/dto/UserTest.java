@@ -41,43 +41,11 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'firstname'
-     */
-    @Test
-    public void firstnameTest() {
-        // TODO: test firstname
-    }
-
-    /**
-     * Test the property 'lastname'
-     */
-    @Test
-    public void lastnameTest() {
-        // TODO: test lastname
-    }
-
-    /**
-     * Test the property 'role'
-     */
-    @Test
-    public void roleTest() {
-        // TODO: test role
-    }
-
-    /**
      * Test the property 'email'
      */
     @Test
     public void emailTest() {
         // TODO: test email
-    }
-
-    /**
-     * Test the property 'password'
-     */
-    @Test
-    public void passwordTest() {
-        // TODO: test password
     }
 
 }
