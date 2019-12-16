@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-14T18:25:11.578+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-16T18:16:56.355+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "authenticate", description = "the authenticate API")
@@ -38,12 +38,13 @@ public interface AuthenticateApi {
 
     @ApiOperation(value = "", nickname = "createAuthenticationToken", notes = "try to authenticate", response = Object.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "created", response = Object.class) })
+        @ApiResponse(code = 200, message = "get your token", response = Object.class),
+        @ApiResponse(code = 401, message = "You sucks") })
     @RequestMapping(value = "/authenticate",
-        produces = { "*/*" }, 
+        produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserAuth userLogin) {
+    default ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserAuth userAuth) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

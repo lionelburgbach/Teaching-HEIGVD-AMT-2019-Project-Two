@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 0.1.0
-  title: User API
+  title: Users API
   description: An API to demonstrate Swagger and Spring Boot
 host: 'localhost:8080'
 basePath: /api
@@ -15,24 +15,29 @@ securityDefinitions:
 paths:
 
   /authenticate:
-
     post:
       description: try to authenticate
       operationId: createAuthenticationToken
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
-        - name: userLogin
+        - name: userAuth
           in: body
           required: true
           schema:
             $ref: '#/definitions/UserAuth'
       responses:
-        201:
-          description: created
+        200:
+          description: get your token
           schema:
             type: object
-  /user:
+            items:
+              $ref: '#/definitions/JwtResponse'
+        401:
+          description: 'You sucks'
+  /users:
     post:
       description: create a user
       operationId: createUser
@@ -65,7 +70,7 @@ paths:
               $ref: '#/definitions/UserOutput'
         403:
           description: 'You do not have necessary permissions for the resource'
-  /user/{email}:
+  /users/{email}:
     get:
       description: ""
       operationId: getUserByID
@@ -172,3 +177,8 @@ definitions:
             type: string
           role:
             type: string
+  JwtResponse:
+    type: object
+    properties:
+      jwttoken:
+        type: string

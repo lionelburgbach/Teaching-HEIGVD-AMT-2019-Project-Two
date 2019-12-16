@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-13T10:36:25.486+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-16T10:29:14.979+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trail", description = "the trail API")
@@ -38,7 +38,7 @@ public interface TrailApi {
 
     @ApiOperation(value = "", nickname = "allTrails", notes = "all trails", response = Trail.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "created", response = Trail.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "created", response = Trail.class, responseContainer = "List") })
     @RequestMapping(value = "/trail",
         produces = { "application/json" }, 
         method = RequestMethod.GET)

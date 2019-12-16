@@ -21,13 +21,13 @@ USE `amt_2` ;
 -- -----------------------------------------------------
 -- Table `amt_2`.`user_entity`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `amt_2`.`user_entity` (
+CREATE TABLE IF NOT EXISTS `amt_2`.`users_entity` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`, `email`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
