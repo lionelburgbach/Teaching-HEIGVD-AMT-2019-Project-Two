@@ -92,7 +92,7 @@ paths:
       produces:
         - application/json
       responses:
-        201:
+        200:
           description: created
           schema:
             type: array

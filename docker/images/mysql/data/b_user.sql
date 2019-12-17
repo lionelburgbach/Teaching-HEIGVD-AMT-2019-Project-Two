@@ -9,5 +9,5 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 USE amt_2;
 
 SET AUTOCOMMIT=0;
-INSERT INTO user_entity VALUES (1,'Lionel','Burgbacher','admin','lionel.burgbacher@heig-vd.ch','lionel');
+INSERT INTO users_entity VALUES (1,'Lionel','Burgbacher','admin','lionel.burgbacher@heig-vd.ch','$2a$10$oC3vF0CQY9l3xl/LBw7hQ.RAUaZkRDBcK1e54hLzbSCUb70tVECqe');
 COMMIT;
