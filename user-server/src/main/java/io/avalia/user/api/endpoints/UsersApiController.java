@@ -10,13 +10,16 @@ import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import javax.validation.ValidationException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +35,13 @@ public class UsersApiController implements UsersApi{
     WebSecurityConfig securityConfig;
 
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
+
         UsersEntity newUserEntity = toUserEntity(user);
         if (userRepository.existsById(user.getEmail())){
 
-            throw new ValidationException("Username already existed");
+            return ResponseEntity.status(401).build();
         }
+
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(newUserEntity);
         Long id = newUserEntity.getId();
@@ -48,26 +53,42 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<UserOutput> getUserByID(String email) {
+    public ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+
+        String owner = currentUserNameToken();
+        if(!email.equals(owner)){
+            return ResponseEntity.status(401).build();
+        }
 
         Optional<UsersEntity> oue = userRepository.findById(email);
         UsersEntity ue = oue.get();
         return ResponseEntity.ok(toUserOutput(ue));
     }
 
-    public ResponseEntity deleteUser(String email) {
+    public ResponseEntity deleteUser(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+
+        String owner = currentUserNameToken();
+        if(!email.equals(owner)){
+            return ResponseEntity.status(401).build();
+        }
+
         userRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
-    /*
-    public ResponseEntity<Object>  updateUser(UserUpdate userUpdate) {
+    public ResponseEntity changePassword(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
 
-        Optional<UserEntity> oue = userRepository.save(userUpdate);
-        UserEntity ue = oue.get();
-        return ResponseEntity.ok(toUser(ue));
+        String owner = currentUserNameToken();
+        if(!email.equals(owner)){
+            return ResponseEntity.status(401).build();
+        }
+
+        Optional<UsersEntity> oue = userRepository.findById(email);
+        UsersEntity ue = oue.get();
+        ue.setPassword(new BCryptPasswordEncoder().encode(password));
+        userRepository.save(ue);
+        return ResponseEntity.ok("ok");
     }
-    */
 
     public ResponseEntity<List<UserOutput>> getUsers() {
         List<UserOutput> users = new ArrayList<>();
@@ -125,5 +146,18 @@ public class UsersApiController implements UsersApi{
         user.setEmail(entity.getEmail());
         user.setPassword(entity.getPassword());
         return user;
+    }
+
+    private String currentUserNameToken(){
+
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        return username;
     }
 }

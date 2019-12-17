@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * UserInputAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-17T01:29:30.897+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-17T20:09:04.781+01:00[Europe/Zurich]")
 
 public class UserInputAllOf   {
   @JsonProperty("role")

@@ -50,13 +50,11 @@ public class JwtToken implements Serializable {
         return expiration.before(new Date());
     }
 
-
     public String generateToken(UserDetails userDetails) {
 
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userDetails.getUsername());
     }
-
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
 

@@ -14,7 +14,6 @@ securityDefinitions:
     in: header
 
 paths:
-
   /authenticate:
     post:
       description: try to authenticate
@@ -37,7 +36,7 @@ paths:
             items:
               $ref: '#/definitions/JwtResponse'
         401:
-          description: 'You sucks'
+          description: 'fail to authenticat'
   /users:
     post:
       security:
@@ -58,6 +57,8 @@ paths:
           schema:
             type: object
         403:
+          description: 'You do not have necessary permissions for the resource'
+        502:
           description: 'You do not have necessary permissions for the resource'
     get:
       security:
@@ -84,11 +85,7 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: email
-          in: path
-          description: "The name that needs to be fetched. Use user1 for testing. "
-          required: true
-          type: string
+        - $ref: '#/parameters/emailParam'
       responses:
         200:
           description: "successful operation"
@@ -104,21 +101,12 @@ paths:
       security:
         - Bearer: []
       description: ""
-      operationId: updateUser
+      operationId: changePassword
       produces:
         - "application/json"
       parameters:
-        - name: email
-          in: path
-          description: "name that need to be updated"
-          required: true
-          type: string
-        - in: body
-          name: "body"
-          description: "Updated user object"
-          required: true
-          schema:
-            $ref: "#/definitions/User"
+        - $ref: '#/parameters/emailParam'
+        - $ref: '#/parameters/passwordParam'
       responses:
         400:
           description: "Invalid user supplied"
@@ -134,11 +122,7 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: email
-          in: path
-          description: "The name that needs to be deleted"
-          required: true
-          type: string
+        - $ref: '#/parameters/emailParam'
       responses:
         400:
           description: "Invalid username supplied"
@@ -193,3 +177,16 @@ definitions:
     properties:
       jwttoken:
         type: string
+parameters:
+  emailParam:
+    name: email
+    in: path
+    description: "name that need to be updated"
+    required: true
+    type: string
+  passwordParam:
+    name: password
+    in: query
+    description: "Updated user object"
+    required: true
+    type: string

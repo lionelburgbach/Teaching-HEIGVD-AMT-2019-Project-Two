@@ -38,13 +38,11 @@ public class AuthenticateApiController implements AuthenticateApi {
             authenticate(user.getEmail(), user.getPassword());
         }
         catch (Exception e){
-            throw new IllegalArgumentException();
+            return ResponseEntity.status(401).build();
         }
 
         final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(user.getEmail());
-
         final String token = jwtToken.generateToken(userDetails);
-
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
