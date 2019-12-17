@@ -5,15 +5,18 @@ import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserOutput;
 import io.avalia.user.entities.UsersEntity;
+import io.avalia.user.jwt.WebSecurityConfig;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +29,15 @@ public class UsersApiController implements UsersApi{
     @Autowired
     UsersRepository userRepository;
 
+    WebSecurityConfig securityConfig;
+
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
         UsersEntity newUserEntity = toUserEntity(user);
+        if (userRepository.existsById(user.getEmail())){
+
+            throw new ValidationException("Username already existed");
+        }
+        newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(newUserEntity);
         Long id = newUserEntity.getId();
 

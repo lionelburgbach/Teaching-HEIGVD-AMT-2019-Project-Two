@@ -12,6 +12,7 @@ securityDefinitions:
     type: apiKey
     name: Authorization
     in: header
+
 paths:
 
   /authenticate:
@@ -39,6 +40,8 @@ paths:
           description: 'You sucks'
   /users:
     post:
+      security:
+        - Bearer: []
       description: create a user
       operationId: createUser
       consumes:
@@ -57,6 +60,8 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     get:
+      security:
+        - Bearer: []
       description: get user paramater
       operationId: getUsers
       produces:
@@ -72,6 +77,8 @@ paths:
           description: 'You do not have necessary permissions for the resource'
   /users/{email}:
     get:
+      security:
+        - Bearer: []
       description: ""
       operationId: getUserByID
       produces:
@@ -94,6 +101,8 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     put:
+      security:
+        - Bearer: []
       description: ""
       operationId: updateUser
       produces:
@@ -118,6 +127,8 @@ paths:
         403:
           description: 'You do not have necessary permissions for the resource'
     delete:
+      security:
+        - Bearer: []
       description: "This can only be done by the logged in user."
       operationId: deleteUser
       produces:

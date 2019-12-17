@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-16T18:16:56.355+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-17T01:29:30.897+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -38,7 +38,9 @@ public interface UsersApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, tags={  })
+    @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
@@ -52,7 +54,9 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteUser", notes = "This can only be done by the logged in user.", tags={  })
+    @ApiOperation(value = "", nickname = "deleteUser", notes = "This can only be done by the logged in user.", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid username supplied"),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
@@ -65,7 +69,9 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = UserOutput.class, tags={  })
+    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = UserOutput.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = UserOutput.class),
         @ApiResponse(code = 400, message = "Invalid username supplied"),
@@ -89,7 +95,9 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = UserOutput.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "", nickname = "getUsers", notes = "get user paramater", response = UserOutput.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success", response = UserOutput.class, responseContainer = "List"),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
@@ -111,7 +119,9 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "updateUser", notes = "", tags={  })
+    @ApiOperation(value = "", nickname = "updateUser", notes = "", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid user supplied"),
         @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),

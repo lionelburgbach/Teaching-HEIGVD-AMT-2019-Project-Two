@@ -32,9 +32,14 @@ public class AuthenticateApiController implements AuthenticateApi {
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
 
-    public ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "", required = true) @Valid @RequestBody UserAuth user) throws Exception {
+    public ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "", required = true) @Valid @RequestBody UserAuth user) {
 
-        authenticate(user.getEmail(), user.getPassword());
+        try {
+            authenticate(user.getEmail(), user.getPassword());
+        }
+        catch (Exception e){
+            throw new IllegalArgumentException();
+        }
 
         final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(user.getEmail());
 

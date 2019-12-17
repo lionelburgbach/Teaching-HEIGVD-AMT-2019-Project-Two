@@ -1,12 +1,14 @@
 io/avalia/user/api/model/UserUpdateAllOf.class
 io/avalia/user/jwt/JwtRequestFilter.class
 io/avalia/user/Swagger2SpringBoot.class
+io/avalia/user/api/endpoints/AuthenticateApiController.class
 io/avalia/user/api/util/ApiOriginFilter.class
 io/avalia/user/api/ApiUtil.class
 io/avalia/user/jwt/JwtToken.class
 io/avalia/user/Swagger2SpringBoot$ExitException.class
 io/avalia/user/repositories/UsersRepository.class
 io/avalia/user/api/exceptions/ApiException.class
+io/avalia/user/configuration/SwaggerDocumentationConfig.class
 io/avalia/user/api/endpoints/UsersApiController.class
 io/avalia/user/jwt/WebSecurityConfig.class
 io/avalia/user/jwt/JwtResponse.class
