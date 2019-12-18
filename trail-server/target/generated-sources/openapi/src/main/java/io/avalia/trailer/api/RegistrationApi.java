@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-16T10:29:14.979+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-18T18:25:58.149575+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "registration", description = "the registration API")
@@ -36,7 +36,9 @@ public interface RegistrationApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createRegistration", notes = "create a registration", response = Object.class, tags={  })
+    @ApiOperation(value = "", nickname = "createRegistration", notes = "create a registration", response = Object.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class) })
     @RequestMapping(value = "/registration",
@@ -49,7 +51,9 @@ public interface RegistrationApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteRegistration", notes = "", tags={  })
+    @ApiOperation(value = "", nickname = "deleteRegistration", notes = "", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid id supplied"),
         @ApiResponse(code = 404, message = "Registration not found") })
@@ -61,7 +65,9 @@ public interface RegistrationApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getRegistrationByID", notes = "", response = Registration.class, tags={  })
+    @ApiOperation(value = "", nickname = "getRegistrationByID", notes = "", response = Registration.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Registration.class),
         @ApiResponse(code = 400, message = "Invalid id supplied"),

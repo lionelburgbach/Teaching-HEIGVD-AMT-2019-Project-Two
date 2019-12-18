@@ -7,9 +7,16 @@ host: 'localhost:8081'
 basePath: /api
 schemes:
   - http
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
 paths:
 
-  /user:
+  /users:
     post:
       description: create a user
       operationId: createUser
@@ -26,8 +33,10 @@ paths:
           description: created
           schema:
             type: object
-  /user/{email}:
+  /users/{email}:
     get:
+      security:
+        - Bearer: []
       description: ""
       operationId: getUserByID
       produces:
@@ -48,6 +57,8 @@ paths:
         404:
           description: "User not found"
     put:
+      security:
+        - Bearer: []
       description: ""
       operationId: updateUser
       produces:
@@ -70,6 +81,8 @@ paths:
         404:
           description: "User not found"
     delete:
+      security:
+        - Bearer: []
       operationId: deleteUser
       produces:
         - "application/json"
@@ -85,7 +98,7 @@ paths:
         404:
           description: "User not found"
 
-  /trail:
+  /trails:
     get:
       description: all trails
       operationId: allTrails
@@ -99,6 +112,8 @@ paths:
             items:
               $ref: '#/definitions/Trail'
     post:
+      security:
+        - Bearer: []
       description: create a trail
       operationId: createTrail
       consumes:
@@ -138,6 +153,8 @@ paths:
         404:
           description: "Trail not found"
     put:
+      security:
+        - Bearer: []
       description: ""
       operationId: updateTrail
       produces:
@@ -161,6 +178,8 @@ paths:
         404:
           description: "Trail not found"
     delete:
+      security:
+        - Bearer: []
       operationId: deleteTrail
       produces:
         - "application/json"
@@ -179,6 +198,8 @@ paths:
 
   /registration:
     post:
+      security:
+        - Bearer: []
       description: create a registration
       operationId: createRegistration
       consumes:
@@ -196,6 +217,8 @@ paths:
             type: object
   /registration/{id}:
     get:
+      security:
+        - Bearer: []
       description: ""
       operationId: getRegistrationByID
       produces:
@@ -217,6 +240,8 @@ paths:
         404:
           description: "Registration not found"
     delete:
+      security:
+        - Bearer: []
       operationId: deleteRegistration
       produces:
         - "application/json"

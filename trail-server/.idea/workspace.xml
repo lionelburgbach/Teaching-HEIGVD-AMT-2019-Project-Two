@@ -2,53 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../docker/images/java_server_1/tmp/java-server-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/java_server_1/tmp/java-server-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker/images/java_server_2/tmp/java-server-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/java_server_2/tmp/java-server-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker/images/mysql/data/a_trailer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/mysql/data/a_trailer.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/repositories/UsersRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/entities/UsersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/repositories/UserRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/api-spec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-spring.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/api-spec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/ApiUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/ApiUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/RegistrationApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/RegistrationApi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/TrailApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/TrailApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/UserApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/UserApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/Registration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/Trail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/Trail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/UserApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/RegistrationApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/RegistrationApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/TrailApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/TrailApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/UserApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/util/ApiResponseMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/util/ApiResponseMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/entities/UserEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/repositories/UserRepository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/UserApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/UserApi.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Registration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Trail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UserApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/swagger-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/swagger-spring.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/ApiUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/AuthenticateApi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/UserApi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/endpoints/UserApiController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/exceptions/ApiException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/exceptions/NotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/model/UserAuthAllOf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/model/UserInputAllOf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/model/UserOutputAllOf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/model/UserUpdate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/model/UserUpdateAllOf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/util/ApiOriginFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/util/ApiResponseMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/jwt/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/jwt/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/jwt/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/jwt/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/jwt/JwtRequestFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/jwt/JwtRequestFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/jwt/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/jwt/WebSecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UserApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" afterDir="false" />
@@ -58,29 +56,8 @@
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserOutputAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserOutputAllOf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdateAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdateAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/cucumber/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/cucumber/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/ApiException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/ApiException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/Pair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserAuthAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserAuthAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserInputAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserInputAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserOutputAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserOutputAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/api/dto/UserUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/auth/ApiKeyAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/auth/ApiKeyAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/auth/HttpBearerAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/generated-sources/swagger/io/avalia/user/auth/HttpBearerAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/surefire-reports/TEST-io.avalia.user.api.spec.SpecificationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/surefire-reports/TEST-io.avalia.user.api.spec.SpecificationTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-specs/target/surefire-reports/io.avalia.user.api.spec.SpecificationTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../user-specs/target/surefire-reports/io.avalia.user.api.spec.SpecificationTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +88,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -163,6 +141,7 @@
       <workItem from="1576442489546" duration="2372000" />
       <workItem from="1576446865832" duration="12000" />
       <workItem from="1576510430158" duration="546000" />
+      <workItem from="1576689004036" duration="1472000" />
     </task>
     <servers />
   </component>
@@ -174,42 +153,46 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="653" y="253" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1576074527238" />
+    <state x="403" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576689510307">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="403" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576689510307" />
     <state x="578" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576186015329">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="578" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576186015329" />
-    <state width="1638" height="297" key="GridCell.Tab.0.bottom" timestamp="1576510999479">
+    <state width="1638" height="297" key="GridCell.Tab.0.bottom" timestamp="1576690484550">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999479" />
-    <state width="1638" height="297" key="GridCell.Tab.0.center" timestamp="1576510999477">
+    <state width="1638" height="297" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484550" />
+    <state width="1638" height="297" key="GridCell.Tab.0.center" timestamp="1576690484549">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999477" />
-    <state width="1638" height="297" key="GridCell.Tab.0.left" timestamp="1576510999477">
+    <state width="1638" height="297" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484549" />
+    <state width="1638" height="297" key="GridCell.Tab.0.left" timestamp="1576690484548">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999477" />
-    <state width="1638" height="297" key="GridCell.Tab.0.right" timestamp="1576510999478">
+    <state width="1638" height="297" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484548" />
+    <state width="1638" height="297" key="GridCell.Tab.0.right" timestamp="1576690484550">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999478" />
-    <state width="1638" height="297" key="GridCell.Tab.1.bottom" timestamp="1576510999500">
+    <state width="1638" height="297" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484550" />
+    <state width="1638" height="297" key="GridCell.Tab.1.bottom" timestamp="1576690484552">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999500" />
-    <state width="1638" height="297" key="GridCell.Tab.1.center" timestamp="1576510999499">
+    <state width="1638" height="297" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484552" />
+    <state width="1638" height="297" key="GridCell.Tab.1.center" timestamp="1576690484551">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999499" />
-    <state width="1638" height="297" key="GridCell.Tab.1.left" timestamp="1576510999498">
+    <state width="1638" height="297" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484551" />
+    <state width="1638" height="297" key="GridCell.Tab.1.left" timestamp="1576690484551">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999498" />
-    <state width="1638" height="297" key="GridCell.Tab.1.right" timestamp="1576510999499">
+    <state width="1638" height="297" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484551" />
+    <state width="1638" height="297" key="GridCell.Tab.1.right" timestamp="1576690484551">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="297" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576510999499" />
+    <state width="1638" height="297" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1576690484551" />
     <state width="1638" height="345" key="GridCell.Tab.2.bottom" timestamp="1576082649017">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
