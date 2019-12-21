@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * Trail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-18T18:25:58.149575+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-21T18:45:21.919+01:00[Europe/Zurich]")
 
 public class Trail   {
   @JsonProperty("name")

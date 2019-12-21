@@ -21,7 +21,7 @@ import java.util.Optional;
 public class AuthenticateApiController implements AuthenticateApi {
 
     @Autowired
-    UsersRepository userRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     JwtToken jwt;
@@ -34,7 +34,7 @@ public class AuthenticateApiController implements AuthenticateApi {
 
         String email = user.getEmail();
 
-        Optional<UsersEntity>  userLoad = userRepository.findById(email);
+        Optional<UsersEntity>  userLoad = usersRepository.findById(email);
         UsersEntity ue = userLoad.get();
 
         if (user.getEmail() == null) {

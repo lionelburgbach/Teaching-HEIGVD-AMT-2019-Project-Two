@@ -18,6 +18,8 @@ paths:
 
   /users:
     post:
+      security:
+        - Bearer: []
       description: create a user
       operationId: createUser
       consumes:
@@ -130,7 +132,7 @@ paths:
           schema:
             type: object
 
-  /trail/{id}:
+  /trails/{id}:
     get:
       description: ""
       operationId: getTrailByID
@@ -196,7 +198,7 @@ paths:
         404:
           description: "Trail not found"
 
-  /registration:
+  /registrations:
     post:
       security:
         - Bearer: []
@@ -215,7 +217,7 @@ paths:
           description: created
           schema:
             type: object
-  /registration/{id}:
+  /registrations/{id}:
     get:
       security:
         - Bearer: []

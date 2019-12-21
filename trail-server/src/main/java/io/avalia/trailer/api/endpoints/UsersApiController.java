@@ -3,6 +3,7 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.UsersApi;
 import io.avalia.trailer.api.model.User;
 import io.avalia.trailer.entities.UsersEntity;
+import io.avalia.trailer.jwt.JwtToken;
 import io.avalia.trailer.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
@@ -25,7 +27,19 @@ public class UsersApiController implements UsersApi{
     @Autowired
     UsersRepository usersRepository;
 
+    @Autowired
+    JwtToken jwt;
+
+    @Autowired
+    HttpServletRequest request;
+
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody User user) {
+
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!usersRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
+
         UsersEntity newUsersEntity = toUserEntity(user);
         usersRepository.save(newUsersEntity);
         Long id = newUsersEntity.getId();
@@ -39,12 +53,21 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity<User> getUserByID(String email) {
 
+        if(!jwt.validateToken(getToken(), email)){
+            return ResponseEntity.status(401).build();
+        }
+
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
         return ResponseEntity.ok(toUser(ue));
     }
 
     public ResponseEntity deleteUser(String email) {
+
+        if(!jwt.validateToken(getToken(), email)){
+            return ResponseEntity.status(401).build();
+        }
+
         usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
@@ -59,6 +82,12 @@ public class UsersApiController implements UsersApi{
      */
 
     public ResponseEntity<List<User>> getUsers() {
+
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!usersRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
+
         List<User> users = new ArrayList<>();
         for (UsersEntity usersEntity : usersRepository.findAll()) {
             users.add(toUser(usersEntity));
@@ -84,5 +113,15 @@ public class UsersApiController implements UsersApi{
         user.setPassword(entity.getPassword());
         user.setDate(entity.getDate());
         return user;
+    }
+
+    private String getToken(){
+
+        String bearer = request.getHeader("Authorization");
+        if(bearer.length() < 7) {
+            throw new IllegalArgumentException("No Token");
+        }
+        String token = bearer.substring(7);
+        return token;
     }
 }
