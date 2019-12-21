@@ -5,13 +5,11 @@ import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserOutput;
 import io.avalia.user.entities.UsersEntity;
-import io.avalia.user.jwt.WebSecurityConfig;
+import io.avalia.user.jwt.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
@@ -32,13 +31,21 @@ public class UsersApiController implements UsersApi{
     @Autowired
     UsersRepository userRepository;
 
-    WebSecurityConfig securityConfig;
+    @Autowired
+    JwtToken jwt;
+
+    @Autowired
+    HttpServletRequest request;
 
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
 
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!userRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
+
         UsersEntity newUserEntity = toUserEntity(user);
         if (userRepository.existsById(user.getEmail())){
-
             return ResponseEntity.status(401).build();
         }
 
@@ -55,8 +62,7 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
@@ -67,8 +73,7 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity deleteUser(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
@@ -78,8 +83,7 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity changePassword(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
@@ -148,16 +152,9 @@ public class UsersApiController implements UsersApi{
         return user;
     }
 
-    private String currentUserNameToken(){
-
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-
-        return username;
+    private String getToken(){
+        String bearer = request.getHeader("Authorization");
+        String token = bearer.substring(8);
+        return token;
     }
 }
