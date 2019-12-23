@@ -1,6 +1,6 @@
 package io.avalia.trailer.api.endpoints;
 
-import io.avalia.trailer.api.TrailApi;
+import io.avalia.trailer.api.TrailsApi;
 import io.avalia.trailer.api.model.Trail;
 import io.avalia.trailer.entities.TrailsEntity;
 import io.avalia.trailer.jwt.JwtToken;
@@ -21,9 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-26T19:36:34.802Z")
-
 @Controller
-public class TrailsApiController implements TrailApi {
+public class TrailsApiController implements TrailsApi {
 
     @Autowired
     TrailsRepository trailsRepository;
@@ -71,22 +70,17 @@ public class TrailsApiController implements TrailApi {
         return ResponseEntity.ok(toTrail(te));
     }
 
-    //Should not exist
+
     public ResponseEntity deleteTrail(Long id) {
+
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!usersRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
 
         trailsRepository.deleteById(id);
         return ResponseEntity.ok("ok");
     }
-
-    /*
-    public ResponseEntity<User>  updateUser(String email) {
-
-        Optional<UserEntity> oue = userRepository.save(email);
-        UserEntity ue = oue.get();
-        return ResponseEntity.ok(toUser(ue));
-    }
-     */
-
 
     private TrailsEntity toTrailEntity(Trail trail) {
         TrailsEntity entity = new TrailsEntity();

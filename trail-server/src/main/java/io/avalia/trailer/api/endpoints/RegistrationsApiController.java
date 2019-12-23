@@ -1,8 +1,12 @@
 package io.avalia.trailer.api.endpoints;
 
-import io.avalia.trailer.api.RegistrationApi;
+import io.avalia.trailer.api.RegistrationsApi;
 import io.avalia.trailer.api.model.Registration;
+import io.avalia.trailer.api.model.Trail;
+import io.avalia.trailer.api.model.User;
 import io.avalia.trailer.entities.RegistrationsEntity;
+import io.avalia.trailer.entities.TrailsEntity;
+import io.avalia.trailer.entities.UsersEntity;
 import io.avalia.trailer.jwt.JwtToken;
 import io.avalia.trailer.repositories.RegistrationsRepository;
 import io.avalia.trailer.repositories.TrailsRepository;
@@ -17,12 +21,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-26T19:36:34.802Z")
 
 @Controller
-public class RegistrationsApiController implements RegistrationApi {
+public class RegistrationsApiController implements RegistrationsApi {
 
     @Autowired
     RegistrationsRepository regRepository;
@@ -57,6 +63,7 @@ public class RegistrationsApiController implements RegistrationApi {
         return ResponseEntity.created(location).build();
     }
 
+    /*
     public ResponseEntity<Registration> getRegistrationByID(Long id) {
 
         Optional<RegistrationsEntity> ore = regRepository.findById(id);
@@ -65,11 +72,34 @@ public class RegistrationsApiController implements RegistrationApi {
 
         return ResponseEntity.ok(toRegistration(re));
     }
+     */
 
-    public ResponseEntity deleteRegistration(Long id) {
-        regRepository.deleteById(id);
+    public ResponseEntity<List<Registration>> getRegistrationByIdUser(String email){
+
+        if(!jwt.validateToken(getToken(), email)){
+            return ResponseEntity.status(401).build();
+        }
+
+        Optional<UsersEntity> oue = usersRepository.findById(email);
+        UsersEntity user = oue.get();
+        Optional<RegistrationsEntity> ore = regRepository.findById(user.getId());
+        RegistrationsEntity re = ore.get();
+
+        List<Registration> regs = new ArrayList<>();
+        for (RegistrationsEntity regEntity : regRepository.findByIdUser(user.getId())) {
+            regs.add(toRegistration(regEntity));
+        }
+
+        return ResponseEntity.ok(regs);
+
+    }
+
+    /*
+    public ResponseEntity deleteRegistration(String email) {
+        regRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
+    */
 
     private RegistrationsEntity toRegistrationEntity(Registration reg) {
         RegistrationsEntity entity = new RegistrationsEntity();
@@ -83,6 +113,26 @@ public class RegistrationsApiController implements RegistrationApi {
         reg.setIdTrail(entity.getIdTrail());
         reg.setIdUser(entity.getIdUser());
         return reg;
+    }
+
+    private UsersEntity toUserEntity(User user) {
+        UsersEntity entity = new UsersEntity();
+        entity.setFirstname(user.getFirstname());
+        entity.setLastname(user.getLastname());
+        entity.setEmail(user.getEmail());
+        entity.setPassword(user.getPassword());
+        entity.setDate(user.getDate());
+        return entity;
+    }
+
+    private User toUser(UsersEntity entity) {
+        User user = new User();
+        user.setFirstname(entity.getFirstname());
+        user.setLastname(entity.getLastname());
+        user.setEmail(entity.getEmail());
+        user.setPassword(entity.getPassword());
+        user.setDate(entity.getDate());
+        return user;
     }
 
     private String getToken(){
