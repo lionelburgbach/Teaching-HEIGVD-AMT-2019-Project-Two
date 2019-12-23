@@ -5,13 +5,11 @@ import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserOutput;
 import io.avalia.user.entities.UsersEntity;
-import io.avalia.user.jwt.WebSecurityConfig;
+import io.avalia.user.jwt.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
@@ -30,20 +29,28 @@ import java.util.Optional;
 public class UsersApiController implements UsersApi{
 
     @Autowired
-    UsersRepository userRepository;
+    UsersRepository usersRepository;
 
-    WebSecurityConfig securityConfig;
+    @Autowired
+    JwtToken jwt;
+
+    @Autowired
+    HttpServletRequest request;
 
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
 
-        UsersEntity newUserEntity = toUserEntity(user);
-        if (userRepository.existsById(user.getEmail())){
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!usersRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
 
+        UsersEntity newUserEntity = toUserEntity(user);
+        if (usersRepository.existsById(user.getEmail())){
             return ResponseEntity.status(401).build();
         }
 
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        userRepository.save(newUserEntity);
+        usersRepository.save(newUserEntity);
         Long id = newUserEntity.getId();
 
         URI location = ServletUriComponentsBuilder
@@ -55,44 +62,47 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
-        Optional<UsersEntity> oue = userRepository.findById(email);
+        Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
         return ResponseEntity.ok(toUserOutput(ue));
     }
 
     public ResponseEntity deleteUser(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
-        userRepository.deleteById(email);
+        usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
     public ResponseEntity changePassword(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
 
-        String owner = currentUserNameToken();
-        if(!email.equals(owner)){
+        if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
         }
 
-        Optional<UsersEntity> oue = userRepository.findById(email);
+        Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
         ue.setPassword(new BCryptPasswordEncoder().encode(password));
-        userRepository.save(ue);
+        usersRepository.save(ue);
         return ResponseEntity.ok("ok");
     }
 
     public ResponseEntity<List<UserOutput>> getUsers() {
+
+        String email = jwt.getUsernameFromToken(getToken());
+        if(!usersRepository.existsById(email)){
+            return ResponseEntity.status(401).build();
+        }
+
         List<UserOutput> users = new ArrayList<>();
-        for (UsersEntity userEntity : userRepository.findAll()) {
+        for (UsersEntity userEntity : usersRepository.findAll()) {
             users.add(toUserOutput(userEntity));
         }
         return ResponseEntity.ok(users);
@@ -148,16 +158,13 @@ public class UsersApiController implements UsersApi{
         return user;
     }
 
-    private String currentUserNameToken(){
+    private String getToken(){
 
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
+        String bearer = request.getHeader("Authorization");
+        if(bearer.length() < 7) {
+            throw new IllegalArgumentException("No Token");
         }
-
-        return username;
+        String token = bearer.substring(7);
+        return token;
     }
 }

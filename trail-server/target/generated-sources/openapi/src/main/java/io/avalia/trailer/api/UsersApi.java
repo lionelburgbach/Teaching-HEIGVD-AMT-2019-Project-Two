@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-18T18:25:58.149575+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-23T07:59:18.836476+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -36,7 +36,9 @@ public interface UsersApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, tags={  })
+    @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class) })
     @RequestMapping(value = "/users",

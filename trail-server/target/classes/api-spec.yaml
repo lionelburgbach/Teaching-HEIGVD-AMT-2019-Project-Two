@@ -18,6 +18,8 @@ paths:
 
   /users:
     post:
+      security:
+        - Bearer: []
       description: create a user
       operationId: createUser
       consumes:
@@ -106,7 +108,7 @@ paths:
         - application/json
       responses:
         200:
-          description: created
+          description: read
           schema:
             type: array
             items:
@@ -130,7 +132,7 @@ paths:
           schema:
             type: object
 
-  /trail/{id}:
+  /trails/{id}:
     get:
       description: ""
       operationId: getTrailByID
@@ -196,7 +198,7 @@ paths:
         404:
           description: "Trail not found"
 
-  /registration:
+  /registrations:
     post:
       security:
         - Bearer: []
@@ -215,26 +217,27 @@ paths:
           description: created
           schema:
             type: object
-  /registration/{id}:
+  /registrations/{email}:
     get:
       security:
         - Bearer: []
       description: ""
-      operationId: getRegistrationByID
+      operationId: getRegistrationByIdUser
       produces:
         - "application/json"
       parameters:
-        - name: id
+        - name: email
           in: path
           description: "The name that needs to be fetched. Use user1 for testing. "
           required: true
-          type: integer
-          format: int64
+          type: string
       responses:
         200:
-          description: "successful operation"
+          description: read
           schema:
-            $ref: "#/definitions/Registration"
+              type: array
+              items:
+                $ref: '#/definitions/Registration'
         400:
           description: "Invalid id supplied"
         404:
@@ -246,18 +249,16 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - name: id
+        - name: email
           in: path
           description: "The name that needs to be deleted"
           required: true
-          type: integer
-          format: int64
+          type: string
       responses:
         400:
           description: "Invalid id supplied"
         404:
           description: "Registration not found"
-
 definitions:
   User:
     type: object

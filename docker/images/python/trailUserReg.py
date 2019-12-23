@@ -15,7 +15,7 @@ count = 0
 #header
 fichier.write("/* -- Query:\n-- Date: 2019-10-17 15:44\n*/\n\nSET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;\nSET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';\n\nUSE amt_21;\n\n")
 
-fichier.write("SET AUTOCOMMIT=0;\nINSERT INTO user_entity VALUES (1,'Lionel','Burgbacher','lionel.burgbacher@heig-vd.ch','lionel','05-03-1989');\nINSERT INTO user_entity VALUES (2,'Guillaume','Blanco','guillaume.blanco@heig-vd.ch','guillaume','25-05-1993');\n")
+fichier.write("SET AUTOCOMMIT=0;\nINSERT INTO users_entity VALUES (1,'Lionel','Burgbacher','lionel.burgbacher@heig-vd.ch','lionel','05-03-1989');\nINSERT INTO users_entity VALUES (2,'Guillaume','Blanco','guillaume.blanco@heig-vd.ch','guillaume','25-05-1993');\n")
 #Generate user
 tablEndMail = ['@heig-vd.ch', '@gamil.com', '@trail.com', '@amtseeyounextyear.com', '@amtsucced.com', '@bestcoursever.ch', '@aaa.ch', '@aab.ch', '@aac.ch', '@aad.ch', '@aaf.ch', '@aag.ch', '@aah.ch', '@aai.ch', '@aaj.ch', '@aak.ch', '@aal.ch', '@aam.ch',]
 tabMois = ['01','02','03','04','05','06','07','08','09','10','11','12']
@@ -24,7 +24,7 @@ tabJours = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14
 
 for i in range(3, nbUser):
     count += 1
-    strVal = "INSERT INTO user_entity VALUES ("
+    strVal = "INSERT INTO users_entity VALUES ("
     firstname = names.get_first_name()
     lastname = names.get_last_name()
     mois = tabMois[randint(0,len(tabMois)-1)]
@@ -44,7 +44,7 @@ for i in range(1,nbTrail):
     mois = tabMois[randint(0,len(tabMois)-1)]
     if mois == '02':
         mois = '01'
-    strVal = "INSERT INTO trail_entity VALUES ("
+    strVal = "INSERT INTO trails_entity VALUES ("
     strVal += str(i) + "," + "'" + fake.city() + "'," + str(randint(1000,4000)) + ",'" + tabDescri[randint(0,len(tabDescri)-1)] + "','" + tabJours[randint(0,len(tabJours)-1)] + "-" + mois + "-" + str(randint(2020,2025)) + "'," + str(randint(20,60)) + ");\n"
     fichier.write(strVal)
 
@@ -62,7 +62,7 @@ for i in range(1,nbTrail):
     
     for j in range(min,max):
         count += 1
-        strVal = "INSERT INTO registration_entity VALUES ("
+        strVal = "INSERT INTO registrations_entity VALUES ("
         strVal += str(index) + ","+ str(j)+","+str(i)+");\n"
         fichier.write(strVal)
         index += 1

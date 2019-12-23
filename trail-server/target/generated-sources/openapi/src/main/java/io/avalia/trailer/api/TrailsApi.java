@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-18T18:25:58.149575+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-23T07:59:18.836476+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trails", description = "the trails API")
@@ -38,7 +38,7 @@ public interface TrailsApi {
 
     @ApiOperation(value = "", nickname = "allTrails", notes = "all trails", response = Trail.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "created", response = Trail.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "read", response = Trail.class, responseContainer = "List") })
     @RequestMapping(value = "/trails",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -67,6 +67,57 @@ public interface TrailsApi {
         consumes = { "application/json" },
         method = RequestMethod.POST)
     default ResponseEntity<Object> createTrail(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Trail trail) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "deleteTrail", notes = "", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 400, message = "Invalid Trail id supplied"),
+        @ApiResponse(code = 404, message = "Trail not found") })
+    @RequestMapping(value = "/trails/{id}",
+        method = RequestMethod.DELETE)
+    default ResponseEntity<Void> deleteTrail(@ApiParam(value = "The name that needs to be deleted",required=true) @PathVariable("id") Long id) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "getTrailByID", notes = "", response = Trail.class, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = Trail.class),
+        @ApiResponse(code = 400, message = "Invalid Trail supplied"),
+        @ApiResponse(code = 404, message = "Trail not found") })
+    @RequestMapping(value = "/trails/{id}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<Trail> getTrailByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("id") Long id) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"date\" : \"date\", \"name\" : \"name\", \"length\" : 0, \"upAndDown\" : 6, \"desprition\" : \"desprition\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "updateTrail", notes = "", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 400, message = "Invalid trail supplied"),
+        @ApiResponse(code = 404, message = "Trail not found") })
+    @RequestMapping(value = "/trails/{id}",
+        method = RequestMethod.PUT)
+    default ResponseEntity<Void> updateTrail(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody Trail body) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
