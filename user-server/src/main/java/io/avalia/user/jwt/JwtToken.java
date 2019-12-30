@@ -1,6 +1,6 @@
 package io.avalia.user.jwt;
 
-import io.avalia.user.api.model.UserAuth;
+import io.avalia.user.api.model.UserInput;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,6 +16,8 @@ import java.util.function.Function;
 @Component
 public class JwtToken implements Serializable {
 
+
+
     private static final long serialVersionUID = -2550185165626007488L;
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
@@ -26,6 +28,11 @@ public class JwtToken implements Serializable {
     public String getUsernameFromToken(String token) {
 
         return getClaimFromToken(token, Claims::getSubject);
+    }
+
+    public String getRoleFromToken(String token) {
+
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("Role",String.class);
     }
 
     public Date getExpirationDateFromToken(String token) {
@@ -50,10 +57,12 @@ public class JwtToken implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(UserAuth userDetails) {
+    public String generateToken(UserInput userDetails) {
 
         Map<String, Object> claims = new HashMap<>();
+        claims.put("Role", userDetails.getRole());
         return doGenerateToken(claims, userDetails.getEmail());
+
     }
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {

@@ -49,6 +49,11 @@ public class UsersApiController implements UsersApi{
             return ResponseEntity.status(401).build();
         }
 
+        String role = jwt.getRoleFromToken(getToken());
+        if(!role.equals("admin")){
+            return ResponseEntity.status(401).build();
+        }
+
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         usersRepository.save(newUserEntity);
         Long id = newUserEntity.getId();
