@@ -136,6 +136,13 @@ definitions:
     properties:
       email:
         type: string
+  UserToken:
+    allOf:
+      - $ref: "#/definitions/User"
+      - type: object
+      - properties:
+          role:
+            type: string
   UserAuth:
     allOf:
       - $ref: "#/definitions/User"
@@ -146,6 +153,7 @@ definitions:
   UserOutput:
     allOf:
       - $ref: "#/definitions/User"
+      - $ref: "#/definitions/UserToken"
       - type: object
       - properties:
           firstname:
@@ -155,12 +163,9 @@ definitions:
   UserInput:
     allOf:
       - $ref: "#/definitions/User"
+      - $ref: "#/definitions/UserToken"
       - $ref: "#/definitions/UserAuth"
       - $ref: "#/definitions/UserOutput"
-      - type: object
-      - properties:
-          role:
-            type: string
   UserUpdate:
     allOf:
       - $ref: "#/definitions/UserAuth"

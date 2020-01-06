@@ -2,7 +2,7 @@ package io.avalia.user.api.endpoints;
 
 import io.avalia.user.api.AuthenticateApi;
 import io.avalia.user.api.model.UserAuth;
-import io.avalia.user.api.model.UserInput;
+import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
 import io.avalia.user.jwt.JwtResponse;
 import io.avalia.user.jwt.JwtToken;
@@ -48,18 +48,15 @@ public class AuthenticateApiController implements AuthenticateApi {
             return ResponseEntity.noContent().build();
         }
 
-        String token = jwt.generateToken(toUserInput(ue));
+        String token = jwt.generateToken(toUserToken(ue));
 
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    private UserInput toUserInput(UsersEntity entity) {
-        UserInput user = new UserInput();
-        user.setFirstname(entity.getFirstname());
-        user.setLastname(entity.getLastname());
+    private UserToken toUserToken(UsersEntity entity) {
+        UserToken user = new UserToken();
         user.setRole(entity.getRole());
         user.setEmail(entity.getEmail());
-        user.setPassword(entity.getPassword());
         return user;
     }
 

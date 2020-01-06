@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserOutputAllOf;
+import io.avalia.user.api.model.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -14,11 +15,14 @@ import javax.validation.constraints.*;
 /**
  * UserOutput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-30T11:56:53.955+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-04T19:13:19.559+01:00[Europe/Zurich]")
 
 public class UserOutput   {
   @JsonProperty("email")
   private String email;
+
+  @JsonProperty("role")
+  private String role;
 
   @JsonProperty("firstname")
   private String firstname;
@@ -44,6 +48,26 @@ public class UserOutput   {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public UserOutput role(String role) {
+    this.role = role;
+    return this;
+  }
+
+  /**
+   * Get role
+   * @return role
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
   public UserOutput firstname(String firstname) {
@@ -97,13 +121,14 @@ public class UserOutput   {
     }
     UserOutput userOutput = (UserOutput) o;
     return Objects.equals(this.email, userOutput.email) &&
+        Objects.equals(this.role, userOutput.role) &&
         Objects.equals(this.firstname, userOutput.firstname) &&
         Objects.equals(this.lastname, userOutput.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, firstname, lastname);
+    return Objects.hash(email, role, firstname, lastname);
   }
 
   @Override
@@ -112,6 +137,7 @@ public class UserOutput   {
     sb.append("class UserOutput {\n");
     
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("}");

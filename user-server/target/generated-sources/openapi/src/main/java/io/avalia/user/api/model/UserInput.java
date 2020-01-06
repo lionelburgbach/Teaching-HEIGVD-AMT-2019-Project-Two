@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserAuth;
-import io.avalia.user.api.model.UserInputAllOf;
 import io.avalia.user.api.model.UserOutput;
+import io.avalia.user.api.model.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -16,11 +16,14 @@ import javax.validation.constraints.*;
 /**
  * UserInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-30T11:56:53.955+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-04T19:13:19.559+01:00[Europe/Zurich]")
 
 public class UserInput   {
   @JsonProperty("email")
   private String email;
+
+  @JsonProperty("role")
+  private String role;
 
   @JsonProperty("password")
   private String password;
@@ -30,9 +33,6 @@ public class UserInput   {
 
   @JsonProperty("lastname")
   private String lastname;
-
-  @JsonProperty("role")
-  private String role;
 
   public UserInput email(String email) {
     this.email = email;
@@ -52,6 +52,26 @@ public class UserInput   {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public UserInput role(String role) {
+    this.role = role;
+    return this;
+  }
+
+  /**
+   * Get role
+   * @return role
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
   public UserInput password(String password) {
@@ -114,26 +134,6 @@ public class UserInput   {
     this.lastname = lastname;
   }
 
-  public UserInput role(String role) {
-    this.role = role;
-    return this;
-  }
-
-  /**
-   * Get role
-   * @return role
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getRole() {
-    return role;
-  }
-
-  public void setRole(String role) {
-    this.role = role;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -145,15 +145,15 @@ public class UserInput   {
     }
     UserInput userInput = (UserInput) o;
     return Objects.equals(this.email, userInput.email) &&
+        Objects.equals(this.role, userInput.role) &&
         Objects.equals(this.password, userInput.password) &&
         Objects.equals(this.firstname, userInput.firstname) &&
-        Objects.equals(this.lastname, userInput.lastname) &&
-        Objects.equals(this.role, userInput.role);
+        Objects.equals(this.lastname, userInput.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, password, firstname, lastname, role);
+    return Objects.hash(email, role, password, firstname, lastname);
   }
 
   @Override
@@ -162,10 +162,10 @@ public class UserInput   {
     sb.append("class UserInput {\n");
     
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();
   }

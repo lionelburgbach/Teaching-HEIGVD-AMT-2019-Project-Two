@@ -118,6 +118,7 @@ public class UsersApiController implements UsersApi{
         entity.setFirstname(user.getFirstname());
         entity.setLastname(user.getLastname());
         entity.setEmail(user.getEmail());
+        entity.setRole(user.getRole());
         return entity;
     }
 
@@ -126,6 +127,7 @@ public class UsersApiController implements UsersApi{
         user.setFirstname(entity.getFirstname());
         user.setLastname(entity.getLastname());
         user.setEmail(entity.getEmail());
+        user.setRole(entity.getRole());
         return user;
     }
 
@@ -165,7 +167,14 @@ public class UsersApiController implements UsersApi{
 
     private String getToken(){
 
-        String bearer = request.getHeader("Authorization");
+        String bearer = null;
+        if(request.getHeader("Authorization") == null){
+            throw new IllegalArgumentException("No autho header!");
+        }
+        else{
+            bearer = request.getHeader("Authorization");
+        }
+
         if(bearer.length() < 7) {
             throw new IllegalArgumentException("No Token");
         }
