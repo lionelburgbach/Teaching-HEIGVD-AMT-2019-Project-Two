@@ -10,12 +10,13 @@ io/avalia/user/api/exceptions/ApiException.class
 io/avalia/user/configuration/SwaggerDocumentationConfig.class
 io/avalia/user/api/endpoints/UsersApiController.class
 io/avalia/user/jwt/JwtResponse.class
+io/avalia/user/api/model/UserToken.class
 io/avalia/user/configuration/HomeController.class
 io/avalia/user/api/model/UserInput.class
 io/avalia/user/api/util/ApiResponseMessage.class
 io/avalia/user/api/model/UserAuthAllOf.class
+io/avalia/user/api/model/UserTokenAllOf.class
 io/avalia/user/RFC3339DateFormat.class
-io/avalia/user/api/model/UserInputAllOf.class
 io/avalia/user/api/model/UserUpdate.class
 io/avalia/user/api/AuthenticateApi.class
 io/avalia/user/api/UsersApi.class
