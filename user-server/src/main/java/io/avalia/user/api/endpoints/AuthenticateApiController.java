@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -25,30 +27,34 @@ public class AuthenticateApiController implements AuthenticateApi {
     UsersRepository usersRepository;
 
     @Autowired
+    HttpServletResponse resp;
+
+    @Autowired
     JwtToken jwt;
 
-    public ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "", required = true) @Valid @RequestBody UserAuth user) {
+    public ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "", required = true) @Valid @RequestBody UserAuth user) throws Exception {
 
         if (user.getEmail() == null || user.getPassword() == null) {
-            return ResponseEntity.status(401).build();
+            throw new IllegalArgumentException("Email and Password cannot be null");
         }
 
         String email = user.getEmail();
 
-        Optional<UsersEntity>  userLoad = usersRepository.findById(email);
-        UsersEntity ue = userLoad.get();
-
-        if (user.getEmail() == null) {
-            return ResponseEntity.noContent().build();
+        Optional<UsersEntity> userLoad = usersRepository.findById(email);
+        if(!userLoad.isPresent()){
+            throw new EntityNotFoundException("This email doesn't exist");
         }
 
+        UsersEntity ue = userLoad.get();
         String pwd = ue.getPassword();
         BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
         if (!bc.matches(user.getPassword(),pwd)) {
-            return ResponseEntity.noContent().build();
+            throw new IllegalArgumentException("Wrong Password");
         }
 
         String token = jwt.generateToken(toUserToken(ue));
+
+        resp.addHeader("Authorization", "Bearer "+token);
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

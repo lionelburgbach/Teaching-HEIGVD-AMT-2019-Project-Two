@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.avalia.user.api.dto.UserAuth;
-import io.avalia.user.api.dto.UserInputAllOf;
+import io.avalia.user.api.dto.UserUpdateAllOf;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;

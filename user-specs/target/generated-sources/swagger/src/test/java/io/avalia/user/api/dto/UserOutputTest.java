@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.avalia.user.api.dto.User;
 import io.avalia.user.api.dto.UserOutputAllOf;
+import io.avalia.user.api.dto.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,6 +49,14 @@ public class UserOutputTest {
     @Test
     public void emailTest() {
         // TODO: test email
+    }
+
+    /**
+     * Test the property 'role'
+     */
+    @Test
+    public void roleTest() {
+        // TODO: test role
     }
 
     /**

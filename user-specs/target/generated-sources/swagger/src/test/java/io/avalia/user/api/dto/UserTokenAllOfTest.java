@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -27,33 +27,17 @@ import org.junit.Test;
 
 
 /**
- * Model tests for UserInputAllOf
+ * Model tests for UserTokenAllOf
  */
-public class UserInputAllOfTest {
-    private final UserInputAllOf model = new UserInputAllOf();
+public class UserTokenAllOfTest {
+    private final UserTokenAllOf model = new UserTokenAllOf();
 
     /**
-     * Model tests for UserInputAllOf
+     * Model tests for UserTokenAllOf
      */
     @Test
-    public void testUserInputAllOf() {
-        // TODO: test UserInputAllOf
-    }
-
-    /**
-     * Test the property 'firstname'
-     */
-    @Test
-    public void firstnameTest() {
-        // TODO: test firstname
-    }
-
-    /**
-     * Test the property 'lastname'
-     */
-    @Test
-    public void lastnameTest() {
-        // TODO: test lastname
+    public void testUserTokenAllOf() {
+        // TODO: test UserTokenAllOf
     }
 
     /**

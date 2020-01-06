@@ -1,6 +1,6 @@
 
 
-# UserInputAllOf
+# UserUpdateAllOf
 
 ## Properties
 

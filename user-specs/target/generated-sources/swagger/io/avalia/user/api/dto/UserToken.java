@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -20,75 +20,50 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserTokenAllOf;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * UserInputAllOf
+ * UserToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-12-15T23:07:17.215+01:00[Europe/Zurich]")
-public class UserInputAllOf {
-  public static final String SERIALIZED_NAME_FIRSTNAME = "firstname";
-  @SerializedName(SERIALIZED_NAME_FIRSTNAME)
-  private String firstname;
-
-  public static final String SERIALIZED_NAME_LASTNAME = "lastname";
-  @SerializedName(SERIALIZED_NAME_LASTNAME)
-  private String lastname;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-06T15:47:11.352+01:00[Europe/Zurich]")
+public class UserToken {
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
 
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)
   private String role;
 
 
-  public UserInputAllOf firstname(String firstname) {
+  public UserToken email(String email) {
     
-    this.firstname = firstname;
+    this.email = email;
     return this;
   }
 
    /**
-   * Get firstname
-   * @return firstname
+   * Get email
+   * @return email
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getFirstname() {
-    return firstname;
+  public String getEmail() {
+    return email;
   }
 
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
 
-  public UserInputAllOf lastname(String lastname) {
-    
-    this.lastname = lastname;
-    return this;
-  }
-
-   /**
-   * Get lastname
-   * @return lastname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLastname() {
-    return lastname;
-  }
-
-
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
-
-
-  public UserInputAllOf role(String role) {
+  public UserToken role(String role) {
     
     this.role = role;
     return this;
@@ -119,24 +94,22 @@ public class UserInputAllOf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserInputAllOf userInputAllOf = (UserInputAllOf) o;
-    return Objects.equals(this.firstname, userInputAllOf.firstname) &&
-        Objects.equals(this.lastname, userInputAllOf.lastname) &&
-        Objects.equals(this.role, userInputAllOf.role);
+    UserToken userToken = (UserToken) o;
+    return Objects.equals(this.email, userToken.email) &&
+        Objects.equals(this.role, userToken.role);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, role);
+    return Objects.hash(email, role);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserInputAllOf {\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
+    sb.append("class UserToken {\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("}");
     return sb.toString();

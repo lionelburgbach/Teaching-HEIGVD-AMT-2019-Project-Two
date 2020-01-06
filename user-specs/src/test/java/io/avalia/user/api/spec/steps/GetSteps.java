@@ -6,6 +6,7 @@ import cucumber.api.java.en.When;
 import io.avalia.user.ApiException;
 import io.avalia.user.ApiResponse;
 import io.avalia.user.api.DefaultApi;
+import io.avalia.user.api.dto.UserAuth;
 import io.avalia.user.api.spec.helpers.Environment;
 
 import static org.junit.Assert.assertNotNull;
@@ -34,8 +35,15 @@ public class GetSteps {
         assertNotNull(api);
     }
 
-    @When("^I GET it to the /user endpoint$")
-    public void i_GET_it_to_the_user_endpoint() throws Throwable {
+    @When("^I POST a correct user /authenticate endpoint$")
+    public void i_POST_it_to_the_users_endpoint() throws Throwable {
+        UserAuth userAuth = new UserAuth();
+        userAuth.setEmail("lionel.burgbacher@heig-vd.ch");
+        userAuth.setPassword("lionel");
+        lastApiResponse = (ApiResponse)api.createAuthenticationToken(userAuth);
+        lastStatusCode = lastApiResponse.getStatusCode();
+
+        /*
         try {
             lastApiResponse = api.getUsersWithHttpInfo();
             lastApiCallThrewException = false;
@@ -47,7 +55,7 @@ public class GetSteps {
             lastApiException = e;
             lastStatusCode = lastApiException.getCode();
         }
-
+        */
     }
 
     @Then("^I receive an (\\d+) status code$")

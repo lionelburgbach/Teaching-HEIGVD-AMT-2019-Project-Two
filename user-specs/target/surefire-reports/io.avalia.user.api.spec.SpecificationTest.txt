@@ -1,4 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: io.avalia.user.api.spec.SpecificationTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.867 sec
+Tests run: 9, Failures: 2, Errors: 2, Skipped: 1, Time elapsed: 1.105 sec <<< FAILURE!
+Then I receive a 201 status code(Scenario: create a user)  Time elapsed: 0.002 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<201> but was:<500>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:71)
+	at ✽.Then I receive a 201 status code(creation.feature:9)
+
+Scenario: create a user  Time elapsed: 0.003 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<201> but was:<500>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:71)
+	at ✽.Then I receive a 201 status code(creation.feature:9)
+
+When I POST a correct user /authenticate endpoint(Scenario: get a token with credentials)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to io.avalia.user.ApiResponse
+	at io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:43)
+	at ✽.When I POST a correct user /authenticate endpoint(get.feature:7)
+
+Scenario: get a token with credentials  Time elapsed: 0 sec  <<< ERROR!
+java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to io.avalia.user.ApiResponse
+	at io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:43)
+	at ✽.When I POST a correct user /authenticate endpoint(get.feature:7)
+

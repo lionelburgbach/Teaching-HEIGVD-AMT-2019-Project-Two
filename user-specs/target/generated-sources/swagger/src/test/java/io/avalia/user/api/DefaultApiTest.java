@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -14,7 +14,6 @@
 package io.avalia.user.api;
 
 import io.avalia.user.ApiException;
-import io.avalia.user.api.dto.User;
 import io.avalia.user.api.dto.UserAuth;
 import io.avalia.user.api.dto.UserInput;
 import io.avalia.user.api.dto.UserOutput;
@@ -38,6 +37,23 @@ public class DefaultApiTest {
     /**
      * 
      *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void changePasswordTest() throws ApiException {
+        String email = null;
+        String password = null;
+        api.changePassword(email, password);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
      * try to authenticate
      *
      * @throws ApiException
@@ -45,8 +61,8 @@ public class DefaultApiTest {
      */
     @Test
     public void createAuthenticationTokenTest() throws ApiException {
-        UserAuth userLogin = null;
-        Object response = api.createAuthenticationToken(userLogin);
+        UserAuth userAuth = null;
+        Object response = api.createAuthenticationToken(userAuth);
 
         // TODO: test validations
     }
@@ -61,8 +77,8 @@ public class DefaultApiTest {
      */
     @Test
     public void createUserTest() throws ApiException {
-        UserInput user = null;
-        Object response = api.createUser(user);
+        UserInput userInput = null;
+        Object response = api.createUser(userInput);
 
         // TODO: test validations
     }
@@ -110,23 +126,6 @@ public class DefaultApiTest {
     @Test
     public void getUsersTest() throws ApiException {
         List<UserOutput> response = api.getUsers();
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void updateUserTest() throws ApiException {
-        String email = null;
-        User body = null;
-        api.updateUser(email, body);
 
         // TODO: test validations
     }

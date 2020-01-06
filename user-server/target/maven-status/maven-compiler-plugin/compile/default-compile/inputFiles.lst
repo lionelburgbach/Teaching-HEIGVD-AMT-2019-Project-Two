@@ -1,5 +1,7 @@
 /Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/jwt/JwtResponse.java
+/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/exceptions/ApiError.java
 /Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java
+/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/exceptions/RestExceptionHandler.java
 /Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java
 /Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java
 /Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserOutput.java

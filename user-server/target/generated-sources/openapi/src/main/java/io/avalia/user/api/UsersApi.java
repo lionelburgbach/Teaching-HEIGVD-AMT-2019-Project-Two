@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-04T19:13:19.559+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-06T21:23:43.946+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -46,7 +46,7 @@ public interface UsersApi {
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> changePassword(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "Updated user object", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
+    default ResponseEntity<Void> changePassword(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "Updated user object", required = true) @Valid @RequestParam(value = "password", required = true) String password) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -63,7 +63,7 @@ public interface UsersApi {
         produces = { "*/*" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserInput userInput) {
+    default ResponseEntity<Object> createUser(@ApiParam(value = "" ,required=true )  @Valid @RequestBody UserInput userInput) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -78,7 +78,7 @@ public interface UsersApi {
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteUser(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) {
+    default ResponseEntity<Void> deleteUser(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -95,7 +95,7 @@ public interface UsersApi {
     @RequestMapping(value = "/users/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) {
+    default ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -119,7 +119,7 @@ public interface UsersApi {
     @RequestMapping(value = "/users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<UserOutput>> getUsers() {
+    default ResponseEntity<List<UserOutput>> getUsers() throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

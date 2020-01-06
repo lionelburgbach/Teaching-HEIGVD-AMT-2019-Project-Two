@@ -1,5 +1,5 @@
 /*
- * User API
+ * Users API
  * An API to demonstrate Swagger and Spring Boot
  *
  * The version of the OpenAPI document: 0.1.0
@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.avalia.user.api.dto.User;
 import io.avalia.user.api.dto.UserOutputAllOf;
+import io.avalia.user.api.dto.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,11 +30,15 @@ import java.io.IOException;
 /**
  * UserOutput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-12-15T23:07:17.215+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-06T15:47:11.352+01:00[Europe/Zurich]")
 public class UserOutput {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
+
+  public static final String SERIALIZED_NAME_ROLE = "role";
+  @SerializedName(SERIALIZED_NAME_ROLE)
+  private String role;
 
   public static final String SERIALIZED_NAME_FIRSTNAME = "firstname";
   @SerializedName(SERIALIZED_NAME_FIRSTNAME)
@@ -64,6 +69,29 @@ public class UserOutput {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+
+  public UserOutput role(String role) {
+    
+    this.role = role;
+    return this;
+  }
+
+   /**
+   * Get role
+   * @return role
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getRole() {
+    return role;
+  }
+
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
 
@@ -123,13 +151,14 @@ public class UserOutput {
     }
     UserOutput userOutput = (UserOutput) o;
     return Objects.equals(this.email, userOutput.email) &&
+        Objects.equals(this.role, userOutput.role) &&
         Objects.equals(this.firstname, userOutput.firstname) &&
         Objects.equals(this.lastname, userOutput.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, firstname, lastname);
+    return Objects.hash(email, role, firstname, lastname);
   }
 
 
@@ -138,6 +167,7 @@ public class UserOutput {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserOutput {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("}");

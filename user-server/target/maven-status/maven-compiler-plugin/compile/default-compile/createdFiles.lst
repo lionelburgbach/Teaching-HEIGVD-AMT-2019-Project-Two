@@ -5,6 +5,7 @@ io/avalia/user/api/util/ApiOriginFilter.class
 io/avalia/user/api/ApiUtil.class
 io/avalia/user/jwt/JwtToken.class
 io/avalia/user/Swagger2SpringBoot$ExitException.class
+io/avalia/user/api/exceptions/ApiError.class
 io/avalia/user/repositories/UsersRepository.class
 io/avalia/user/api/exceptions/ApiException.class
 io/avalia/user/configuration/SwaggerDocumentationConfig.class
@@ -17,6 +18,7 @@ io/avalia/user/api/util/ApiResponseMessage.class
 io/avalia/user/api/model/UserAuthAllOf.class
 io/avalia/user/api/model/UserTokenAllOf.class
 io/avalia/user/RFC3339DateFormat.class
+io/avalia/user/api/exceptions/RestExceptionHandler.class
 io/avalia/user/api/model/UserUpdate.class
 io/avalia/user/api/AuthenticateApi.class
 io/avalia/user/api/UsersApi.class

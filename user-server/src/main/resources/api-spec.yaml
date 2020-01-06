@@ -37,6 +37,8 @@ paths:
               $ref: '#/definitions/JwtResponse'
         401:
           description: 'fail to authenticat'
+          schema:
+            type: string
   /users:
     post:
       security:

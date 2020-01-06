@@ -47,6 +47,7 @@
                             <configOptions>
                                 <dateLibrary>joda</dateLibrary>
                                 <useBeanValidation>true</useBeanValidation>
+                                <unhandledException>true</unhandledException>
                                 <interfaceOnly>true</interfaceOnly>
                                 <delegatePattern>false</delegatePattern>
                                 <apiPackage>io.avalia.user.api</apiPackage>
@@ -79,12 +80,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        -->
         <!--SpringFox dependencies -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -142,5 +137,9 @@
             <version>0.9.1</version>
         </dependency>
         <!--END JWT Token-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
     </dependencies>
 </project>
