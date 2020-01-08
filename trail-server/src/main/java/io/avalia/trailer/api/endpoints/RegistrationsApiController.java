@@ -3,7 +3,6 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.RegistrationsApi;
 import io.avalia.trailer.api.model.Registration;
 import io.avalia.trailer.api.model.RegistrationOutput;
-import io.avalia.trailer.api.model.User;
 import io.avalia.trailer.entities.RegistrationsEntity;
 import io.avalia.trailer.entities.TrailsEntity;
 import io.avalia.trailer.entities.UsersEntity;
@@ -73,8 +72,6 @@ public class RegistrationsApiController implements RegistrationsApi {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity user = oue.get();
-        Optional<RegistrationsEntity> ore = regRepository.findById(user.getId());
-        RegistrationsEntity re = ore.get();
 
         List<RegistrationOutput> regs = new ArrayList<>();
         for (RegistrationsEntity regEntity : regRepository.findByIdUser(user.getId())) {
@@ -116,26 +113,6 @@ public class RegistrationsApiController implements RegistrationsApi {
         reg.setIdTrail(entity.getIdTrail());
         reg.setIdUser(entity.getIdUser());
         return reg;
-    }
-
-    private UsersEntity toUserEntity(User user) {
-        UsersEntity entity = new UsersEntity();
-        entity.setFirstname(user.getFirstname());
-        entity.setLastname(user.getLastname());
-        entity.setEmail(user.getEmail());
-        entity.setPassword(user.getPassword());
-        entity.setDate(user.getDate());
-        return entity;
-    }
-
-    private User toUser(UsersEntity entity) {
-        User user = new User();
-        user.setFirstname(entity.getFirstname());
-        user.setLastname(entity.getLastname());
-        user.setEmail(entity.getEmail());
-        user.setPassword(entity.getPassword());
-        user.setDate(entity.getDate());
-        return user;
     }
 
     private String getToken(){
