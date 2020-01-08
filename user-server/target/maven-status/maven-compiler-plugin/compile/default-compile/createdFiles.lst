@@ -1,4 +1,3 @@
-io/avalia/user/api/util/AuthorizationFilter.class
 io/avalia/user/Swagger2SpringBoot.class
 io/avalia/user/api/endpoints/AuthenticateApiController.class
 io/avalia/user/api/util/ApiOriginFilter.class
