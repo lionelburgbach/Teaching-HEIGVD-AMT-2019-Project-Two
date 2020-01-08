@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.avalia.users.api.dto.User;
 import io.avalia.users.api.dto.UserAuth;
-import io.avalia.users.api.dto.UserOutput;
 import io.avalia.users.api.dto.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -31,7 +30,7 @@ import java.io.IOException;
 /**
  * UserInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-06T23:12:17.863+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-08T22:59:20.953+01:00[Europe/Zurich]")
 public class UserInput {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -44,14 +43,6 @@ public class UserInput {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
   private String password;
-
-  public static final String SERIALIZED_NAME_FIRSTNAME = "firstname";
-  @SerializedName(SERIALIZED_NAME_FIRSTNAME)
-  private String firstname;
-
-  public static final String SERIALIZED_NAME_LASTNAME = "lastname";
-  @SerializedName(SERIALIZED_NAME_LASTNAME)
-  private String lastname;
 
 
   public UserInput email(String email) {
@@ -123,52 +114,6 @@ public class UserInput {
   }
 
 
-  public UserInput firstname(String firstname) {
-    
-    this.firstname = firstname;
-    return this;
-  }
-
-   /**
-   * Get firstname
-   * @return firstname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getFirstname() {
-    return firstname;
-  }
-
-
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
-  }
-
-
-  public UserInput lastname(String lastname) {
-    
-    this.lastname = lastname;
-    return this;
-  }
-
-   /**
-   * Get lastname
-   * @return lastname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getLastname() {
-    return lastname;
-  }
-
-
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -180,14 +125,12 @@ public class UserInput {
     UserInput userInput = (UserInput) o;
     return Objects.equals(this.email, userInput.email) &&
         Objects.equals(this.role, userInput.role) &&
-        Objects.equals(this.password, userInput.password) &&
-        Objects.equals(this.firstname, userInput.firstname) &&
-        Objects.equals(this.lastname, userInput.lastname);
+        Objects.equals(this.password, userInput.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, role, password, firstname, lastname);
+    return Objects.hash(email, role, password);
   }
 
 
@@ -198,8 +141,6 @@ public class UserInput {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("}");
     return sb.toString();
   }

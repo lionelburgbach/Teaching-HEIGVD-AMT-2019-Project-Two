@@ -20,7 +20,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.avalia.users.api.dto.User;
 import io.avalia.users.api.dto.UserAuth;
-import io.avalia.users.api.dto.UserOutput;
 import io.avalia.users.api.dto.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -66,22 +65,6 @@ public class UserInputTest {
     @Test
     public void passwordTest() {
         // TODO: test password
-    }
-
-    /**
-     * Test the property 'firstname'
-     */
-    @Test
-    public void firstnameTest() {
-        // TODO: test firstname
-    }
-
-    /**
-     * Test the property 'lastname'
-     */
-    @Test
-    public void lastnameTest() {
-        // TODO: test lastname
     }
 
 }

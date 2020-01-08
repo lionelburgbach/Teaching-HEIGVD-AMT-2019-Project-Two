@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.avalia.users.api.dto.UserAuth;
 import io.avalia.users.api.dto.UserInput;
-import io.avalia.users.api.dto.UserOutput;
+import io.avalia.users.api.dto.UserToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -56,134 +56,6 @@ public class DefaultApi {
         this.localVarApiClient = apiClient;
     }
 
-    /**
-     * Build call for changePassword
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call changePasswordCall(String email, String password, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/users/{email}"
-            .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (password != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("password", password));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "Bearer" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call changePasswordValidateBeforeCall(String email, String password, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'email' is set
-        if (email == null) {
-            throw new ApiException("Missing the required parameter 'email' when calling changePassword(Async)");
-        }
-        
-        // verify the required parameter 'password' is set
-        if (password == null) {
-            throw new ApiException("Missing the required parameter 'password' when calling changePassword(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = changePasswordCall(email, password, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public void changePassword(String email, String password) throws ApiException {
-        changePasswordWithHttpInfo(email, password);
-    }
-
-    /**
-     * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> changePasswordWithHttpInfo(String email, String password) throws ApiException {
-        okhttp3.Call localVarCall = changePasswordValidateBeforeCall(email, password, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call changePasswordAsync(String email, String password, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = changePasswordValidateBeforeCall(email, password, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for createAuthenticationToken
      * @param userAuth  (required)
@@ -417,7 +289,7 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteUser
+     * Build call for deleteUserByID
      * @param email name that need to be updated (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -430,7 +302,7 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserCall(String email, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteUserByIDCall(String email, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -461,15 +333,15 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteUserValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteUserByIDValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'email' is set
         if (email == null) {
-            throw new ApiException("Missing the required parameter 'email' when calling deleteUser(Async)");
+            throw new ApiException("Missing the required parameter 'email' when calling deleteUserByID(Async)");
         }
         
 
-        okhttp3.Call localVarCall = deleteUserCall(email, _callback);
+        okhttp3.Call localVarCall = deleteUserByIDCall(email, _callback);
         return localVarCall;
 
     }
@@ -487,8 +359,8 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteUser(String email) throws ApiException {
-        deleteUserWithHttpInfo(email);
+    public void deleteUserByID(String email) throws ApiException {
+        deleteUserByIDWithHttpInfo(email);
     }
 
     /**
@@ -505,8 +377,8 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteUserWithHttpInfo(String email) throws ApiException {
-        okhttp3.Call localVarCall = deleteUserValidateBeforeCall(email, null);
+    public ApiResponse<Void> deleteUserByIDWithHttpInfo(String email) throws ApiException {
+        okhttp3.Call localVarCall = deleteUserByIDValidateBeforeCall(email, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -525,9 +397,9 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserAsync(String email, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteUserByIDAsync(String email, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteUserValidateBeforeCall(email, _callback);
+        okhttp3.Call localVarCall = deleteUserByIDValidateBeforeCall(email, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -594,7 +466,7 @@ public class DefaultApi {
      * 
      * 
      * @param email name that need to be updated (required)
-     * @return UserOutput
+     * @return UserToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -605,8 +477,8 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public UserOutput getUserByID(String email) throws ApiException {
-        ApiResponse<UserOutput> localVarResp = getUserByIDWithHttpInfo(email);
+    public UserToken getUserByID(String email) throws ApiException {
+        ApiResponse<UserToken> localVarResp = getUserByIDWithHttpInfo(email);
         return localVarResp.getData();
     }
 
@@ -614,7 +486,7 @@ public class DefaultApi {
      * 
      * 
      * @param email name that need to be updated (required)
-     * @return ApiResponse&lt;UserOutput&gt;
+     * @return ApiResponse&lt;UserToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -625,9 +497,9 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserOutput> getUserByIDWithHttpInfo(String email) throws ApiException {
+    public ApiResponse<UserToken> getUserByIDWithHttpInfo(String email) throws ApiException {
         okhttp3.Call localVarCall = getUserByIDValidateBeforeCall(email, null);
-        Type localVarReturnType = new TypeToken<UserOutput>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -647,10 +519,10 @@ public class DefaultApi {
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUserByIDAsync(String email, final ApiCallback<UserOutput> _callback) throws ApiException {
+    public okhttp3.Call getUserByIDAsync(String email, final ApiCallback<UserToken> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUserByIDValidateBeforeCall(email, _callback);
-        Type localVarReturnType = new TypeToken<UserOutput>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -707,7 +579,7 @@ public class DefaultApi {
     /**
      * 
      * get user paramater
-     * @return List&lt;UserOutput&gt;
+     * @return List&lt;UserToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -716,15 +588,15 @@ public class DefaultApi {
         <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public List<UserOutput> getUsers() throws ApiException {
-        ApiResponse<List<UserOutput>> localVarResp = getUsersWithHttpInfo();
+    public List<UserToken> getUsers() throws ApiException {
+        ApiResponse<List<UserToken>> localVarResp = getUsersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
      * get user paramater
-     * @return ApiResponse&lt;List&lt;UserOutput&gt;&gt;
+     * @return ApiResponse&lt;List&lt;UserToken&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -733,9 +605,9 @@ public class DefaultApi {
         <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<UserOutput>> getUsersWithHttpInfo() throws ApiException {
+    public ApiResponse<List<UserToken>> getUsersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<UserOutput>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<UserToken>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -752,11 +624,139 @@ public class DefaultApi {
         <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersAsync(final ApiCallback<List<UserOutput>> _callback) throws ApiException {
+    public okhttp3.Call getUsersAsync(final ApiCallback<List<UserToken>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<UserOutput>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<UserToken>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updatePasswordByID
+     * @param email name that need to be updated (required)
+     * @param password Updated user object (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePasswordByIDCall(String email, String password, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/{email}"
+            .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (password != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("password", password));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updatePasswordByIDValidateBeforeCall(String email, String password, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'email' is set
+        if (email == null) {
+            throw new ApiException("Missing the required parameter 'email' when calling updatePasswordByID(Async)");
+        }
+        
+        // verify the required parameter 'password' is set
+        if (password == null) {
+            throw new ApiException("Missing the required parameter 'password' when calling updatePasswordByID(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updatePasswordByIDCall(email, password, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * 
+     * @param email name that need to be updated (required)
+     * @param password Updated user object (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updatePasswordByID(String email, String password) throws ApiException {
+        updatePasswordByIDWithHttpInfo(email, password);
+    }
+
+    /**
+     * 
+     * 
+     * @param email name that need to be updated (required)
+     * @param password Updated user object (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updatePasswordByIDWithHttpInfo(String email, String password) throws ApiException {
+        okhttp3.Call localVarCall = updatePasswordByIDValidateBeforeCall(email, password, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param email name that need to be updated (required)
+     * @param password Updated user object (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePasswordByIDAsync(String email, String password, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePasswordByIDValidateBeforeCall(email, password, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

@@ -2,7 +2,7 @@
 
 Users API
 - API version: 0.1.0
-  - Build date: 2020-01-06T23:12:17.863+01:00[Europe/Zurich]
+  - Build date: 2020-01-08T22:59:20.953+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -76,7 +76,6 @@ Please follow the [installation](#installation) instruction and execute the foll
 import io.avalia.users.ApiClient;
 import io.avalia.users.ApiException;
 import io.avalia.users.Configuration;
-import io.avalia.users.auth.*;
 import io.avalia.users.models.*;
 import io.avalia.users.api.DefaultApi;
 
@@ -84,20 +83,14 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
-    
-    // Configure API key authorization: Bearer
-    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
-    Bearer.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | name that need to be updated
-    String password = "password_example"; // String | Updated user object
+    UserAuth userAuth = new UserAuth(); // UserAuth | 
     try {
-      apiInstance.changePassword(email, password);
+      Object result = apiInstance.createAuthenticationToken(userAuth);
+      System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#changePassword");
+      System.err.println("Exception when calling DefaultApi#createAuthenticationToken");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -114,12 +107,12 @@ All URIs are relative to *http://localhost:8080/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**changePassword**](docs/DefaultApi.md#changePassword) | **PUT** /users/{email} | 
 *DefaultApi* | [**createAuthenticationToken**](docs/DefaultApi.md#createAuthenticationToken) | **POST** /authenticate | 
 *DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /users | 
-*DefaultApi* | [**deleteUser**](docs/DefaultApi.md#deleteUser) | **DELETE** /users/{email} | 
+*DefaultApi* | [**deleteUserByID**](docs/DefaultApi.md#deleteUserByID) | **DELETE** /users/{email} | 
 *DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /users/{email} | 
 *DefaultApi* | [**getUsers**](docs/DefaultApi.md#getUsers) | **GET** /users | 
+*DefaultApi* | [**updatePasswordByID**](docs/DefaultApi.md#updatePasswordByID) | **PUT** /users/{email} | 
 
 
 ## Documentation for Models
@@ -129,12 +122,8 @@ Class | Method | HTTP request | Description
  - [UserAuth](docs/UserAuth.md)
  - [UserAuthAllOf](docs/UserAuthAllOf.md)
  - [UserInput](docs/UserInput.md)
- - [UserOutput](docs/UserOutput.md)
- - [UserOutputAllOf](docs/UserOutputAllOf.md)
  - [UserToken](docs/UserToken.md)
  - [UserTokenAllOf](docs/UserTokenAllOf.md)
- - [UserUpdate](docs/UserUpdate.md)
- - [UserUpdateAllOf](docs/UserUpdateAllOf.md)
 
 
 ## Documentation for Authorization

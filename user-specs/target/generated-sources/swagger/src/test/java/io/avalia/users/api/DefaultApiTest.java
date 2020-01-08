@@ -16,7 +16,7 @@ package io.avalia.users.api;
 import io.avalia.users.ApiException;
 import io.avalia.users.api.dto.UserAuth;
 import io.avalia.users.api.dto.UserInput;
-import io.avalia.users.api.dto.UserOutput;
+import io.avalia.users.api.dto.UserToken;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -33,23 +33,6 @@ public class DefaultApiTest {
 
     private final DefaultApi api = new DefaultApi();
 
-    
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void changePasswordTest() throws ApiException {
-        String email = null;
-        String password = null;
-        api.changePassword(email, password);
-
-        // TODO: test validations
-    }
     
     /**
      * 
@@ -92,9 +75,9 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void deleteUserTest() throws ApiException {
+    public void deleteUserByIDTest() throws ApiException {
         String email = null;
-        api.deleteUser(email);
+        api.deleteUserByID(email);
 
         // TODO: test validations
     }
@@ -110,7 +93,7 @@ public class DefaultApiTest {
     @Test
     public void getUserByIDTest() throws ApiException {
         String email = null;
-        UserOutput response = api.getUserByID(email);
+        UserToken response = api.getUserByID(email);
 
         // TODO: test validations
     }
@@ -125,7 +108,24 @@ public class DefaultApiTest {
      */
     @Test
     public void getUsersTest() throws ApiException {
-        List<UserOutput> response = api.getUsers();
+        List<UserToken> response = api.getUsers();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updatePasswordByIDTest() throws ApiException {
+        String email = null;
+        String password = null;
+        api.updatePasswordByID(email, password);
 
         // TODO: test validations
     }

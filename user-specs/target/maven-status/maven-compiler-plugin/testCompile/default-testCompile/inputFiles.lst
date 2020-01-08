@@ -1,4 +1,5 @@
-/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/steps/GetSteps.java
-/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/helpers/Environment.java
-/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/steps/CreationSteps.java
-/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/SpecificationTest.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/SpecificationTest.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/steps/DeleteSteps.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/steps/CreationSteps.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/helpers/Environment.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs/src/test/java/io/avalia/user/api/spec/steps/GetSteps.java

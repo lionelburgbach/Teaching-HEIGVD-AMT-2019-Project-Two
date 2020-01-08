@@ -24,23 +24,29 @@ public class GetSteps {
     private ApiException lastApiException;
     private boolean lastApiCallThrewException;
     private int lastStatusCode;
+    UserAuth userAuth;
 
     public GetSteps(Environment environment) {
         this.environment = environment;
         this.api = environment.getApi();
     }
 
+
     @Given("^there is a server$")
     public void there_is_a_server() throws Throwable {
         assertNotNull(api);
     }
 
-    @When("^I POST a correct users /authenticate endpoint$")
-    public void i_POST_it_to_the_users_endpoint() throws Throwable {
-
-        UserAuth userAuth = new UserAuth();
+    @Given("^A user with correct credentials$")
+    public void aUserWithCorrectCredentials() {
+        userAuth = new UserAuth();
         userAuth.setEmail("lionel.burgbacher@heig-vd.ch");
         userAuth.setPassword("lionel");
+    }
+
+
+    @When("^I POST a correct users /authenticate endpoint$")
+    public void i_POST_it_to_the_users_endpoint() throws Throwable {
 
         try {
             lastApiResponse = api.createAuthenticationTokenWithHttpInfo(userAuth);
@@ -53,6 +59,7 @@ public class GetSteps {
             lastApiException = e;
             lastStatusCode = lastApiException.getCode();
         }
+
     }
 
     @Then("^I receive an (\\d+) status code$")
