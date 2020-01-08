@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="io.avalia.user.api.spec.SpecificationTest" time="0.001" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="io.avalia.user.api.spec.SpecificationTest" time="0.005" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.144-b01"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/lionelburgbacher/Documents/AMT_LABO/Project_Two/user-specs"/>
+    <property name="user.dir" value="/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-specs"/>
     <property name="java.runtime.version" value="1.8.0_144-b01"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.15.1"/>
+    <property name="os.version" value="10.15.2"/>
     <property name="library.jansi.path" value="/usr/local/Cellar/maven/3.6.2/libexec/lib/jansi-native"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="user.home" value="/Users/lionelburgbacher"/>
@@ -64,13 +64,20 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Scenario: create a user" name="Given there is a user server" time="0.001"/>
-  <testcase classname="Scenario: create a user" name="Given I have a user payload" time="0"/>
-  <testcase classname="Scenario: create a user" name="When I POST it to the /user endpoint" time="0"/>
-  <testcase classname="Scenario: create a user" name="Then I receive a 201 status code" time="0"/>
-  <testcase classname="Scenario: create a user" name="Scenario: create a user" time="0"/>
-  <testcase classname="Scenario: read user" name="Given there is a server" time="0"/>
-  <testcase classname="Scenario: read user" name="When I GET it to the /user endpoint" time="0"/>
-  <testcase classname="Scenario: read user" name="Then I receive an 200 status code" time="0"/>
-  <testcase classname="Scenario: read user" name="Scenario: read user" time="0"/>
+  <testcase classname="Scenario: create a users" name="Given there is a users server" time="0.002"/>
+  <testcase classname="Scenario: create a users" name="Given I have an authenticate users" time="0"/>
+  <testcase classname="Scenario: create a users" name="Given I have a user payload" time="0"/>
+  <testcase classname="Scenario: create a users" name="When I POST it to the /users endpoint" time="0"/>
+  <testcase classname="Scenario: create a users" name="Then I receive a 201 status code" time="0"/>
+  <testcase classname="Scenario: create a users" name="Scenario: create a users" time="0.001"/>
+  <testcase classname="Scenario: delete a user" name="Given there is a user servers" time="0"/>
+  <testcase classname="Scenario: delete a user" name="Given I have an authenticate users with admin rights" time="0.001"/>
+  <testcase classname="Scenario: delete a user" name="When I DELETE it to the /users endpoint" time="0"/>
+  <testcase classname="Scenario: delete a user" name="Then I receive again a 200 status code" time="0"/>
+  <testcase classname="Scenario: delete a user" name="Scenario: delete a user" time="0"/>
+  <testcase classname="Scenario: get a token with credentials" name="Given there is a server" time="0"/>
+  <testcase classname="Scenario: get a token with credentials" name="Given A user with correct credentials" time="0"/>
+  <testcase classname="Scenario: get a token with credentials" name="When I POST a correct users /authenticate endpoint" time="0"/>
+  <testcase classname="Scenario: get a token with credentials" name="Then I receive an 200 status code" time="0"/>
+  <testcase classname="Scenario: get a token with credentials" name="Scenario: get a token with credentials" time="0.001"/>
 </testsuite>

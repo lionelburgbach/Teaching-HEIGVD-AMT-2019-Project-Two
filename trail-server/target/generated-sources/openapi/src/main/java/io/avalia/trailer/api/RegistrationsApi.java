@@ -6,6 +6,7 @@
 package io.avalia.trailer.api;
 
 import io.avalia.trailer.api.model.Registration;
+import io.avalia.trailer.api.model.RegistrationOutput;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-12-23T07:59:18.836476+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T21:03:18.208+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "registrations", description = "the registrations API")
@@ -51,7 +52,7 @@ public interface RegistrationsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteRegistration", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteRegistrationByID", notes = "", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -59,27 +60,27 @@ public interface RegistrationsApi {
         @ApiResponse(code = 404, message = "Registration not found") })
     @RequestMapping(value = "/registrations/{email}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteRegistration(@ApiParam(value = "The name that needs to be deleted",required=true) @PathVariable("email") String email) {
+    default ResponseEntity<Void> deleteRegistrationByID(@ApiParam(value = "The registration id that needs to be deleted",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "The registration id that needs to be deleted", required = true) @Valid @RequestParam(value = "id", required = true) Long id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
-    @ApiOperation(value = "", nickname = "getRegistrationByIdUser", notes = "", response = Registration.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "", nickname = "getRegistrationByIdUser", notes = "", response = RegistrationOutput.class, responseContainer = "List", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "read", response = Registration.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "read", response = RegistrationOutput.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid id supplied"),
         @ApiResponse(code = 404, message = "Registration not found") })
     @RequestMapping(value = "/registrations/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<Registration>> getRegistrationByIdUser(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) {
+    default ResponseEntity<List<RegistrationOutput>> getRegistrationByIdUser(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"idUser\" : 6, \"idTrail\" : 0 }";
+                    String exampleString = "{ \"trailName\" : \"trailName\", \"email\" : \"email\", \"idReg\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

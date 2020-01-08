@@ -1,8 +1,8 @@
 # openapi-java-client
 
-User API
+Users API
 - API version: 0.1.0
-  - Build date: 2019-12-15T23:07:17.215+01:00[Europe/Zurich]
+  - Build date: 2020-01-08T22:59:20.953+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -73,11 +73,11 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -85,9 +85,9 @@ public class Example {
     defaultClient.setBasePath("http://localhost:8080/api");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    UserAuth userLogin = new UserAuth(); // UserAuth | 
+    UserAuth userAuth = new UserAuth(); // UserAuth | 
     try {
-      Object result = apiInstance.createAuthenticationToken(userLogin);
+      Object result = apiInstance.createAuthenticationToken(userAuth);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#createAuthenticationToken");
@@ -108,23 +108,22 @@ All URIs are relative to *http://localhost:8080/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**createAuthenticationToken**](docs/DefaultApi.md#createAuthenticationToken) | **POST** /authenticate | 
-*DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /user | 
-*DefaultApi* | [**deleteUser**](docs/DefaultApi.md#deleteUser) | **DELETE** /user/{email} | 
-*DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /user/{email} | 
-*DefaultApi* | [**getUsers**](docs/DefaultApi.md#getUsers) | **GET** /user | 
-*DefaultApi* | [**updateUser**](docs/DefaultApi.md#updateUser) | **PUT** /user/{email} | 
+*DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /users | 
+*DefaultApi* | [**deleteUserByID**](docs/DefaultApi.md#deleteUserByID) | **DELETE** /users/{email} | 
+*DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /users/{email} | 
+*DefaultApi* | [**getUsers**](docs/DefaultApi.md#getUsers) | **GET** /users | 
+*DefaultApi* | [**updatePasswordByID**](docs/DefaultApi.md#updatePasswordByID) | **PUT** /users/{email} | 
 
 
 ## Documentation for Models
 
+ - [JwtResponse](docs/JwtResponse.md)
  - [User](docs/User.md)
  - [UserAuth](docs/UserAuth.md)
  - [UserAuthAllOf](docs/UserAuthAllOf.md)
  - [UserInput](docs/UserInput.md)
- - [UserInputAllOf](docs/UserInputAllOf.md)
- - [UserOutput](docs/UserOutput.md)
- - [UserOutputAllOf](docs/UserOutputAllOf.md)
- - [UserUpdate](docs/UserUpdate.md)
+ - [UserToken](docs/UserToken.md)
+ - [UserTokenAllOf](docs/UserTokenAllOf.md)
 
 
 ## Documentation for Authorization

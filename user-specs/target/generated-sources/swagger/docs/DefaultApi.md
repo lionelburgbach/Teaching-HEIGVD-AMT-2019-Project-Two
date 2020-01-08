@@ -5,16 +5,16 @@ All URIs are relative to *http://localhost:8080/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAuthenticationToken**](DefaultApi.md#createAuthenticationToken) | **POST** /authenticate | 
-[**createUser**](DefaultApi.md#createUser) | **POST** /user | 
-[**deleteUser**](DefaultApi.md#deleteUser) | **DELETE** /user/{email} | 
-[**getUserByID**](DefaultApi.md#getUserByID) | **GET** /user/{email} | 
-[**getUsers**](DefaultApi.md#getUsers) | **GET** /user | 
-[**updateUser**](DefaultApi.md#updateUser) | **PUT** /user/{email} | 
+[**createUser**](DefaultApi.md#createUser) | **POST** /users | 
+[**deleteUserByID**](DefaultApi.md#deleteUserByID) | **DELETE** /users/{email} | 
+[**getUserByID**](DefaultApi.md#getUserByID) | **GET** /users/{email} | 
+[**getUsers**](DefaultApi.md#getUsers) | **GET** /users | 
+[**updatePasswordByID**](DefaultApi.md#updatePasswordByID) | **PUT** /users/{email} | 
 
 
 <a name="createAuthenticationToken"></a>
 # **createAuthenticationToken**
-> Object createAuthenticationToken(userLogin)
+> Object createAuthenticationToken(userAuth)
 
 
 
@@ -23,11 +23,11 @@ try to authenticate
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -35,9 +35,9 @@ public class Example {
     defaultClient.setBasePath("http://localhost:8080/api");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    UserAuth userLogin = new UserAuth(); // UserAuth | 
+    UserAuth userAuth = new UserAuth(); // UserAuth | 
     try {
-      Object result = apiInstance.createAuthenticationToken(userLogin);
+      Object result = apiInstance.createAuthenticationToken(userAuth);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#createAuthenticationToken");
@@ -54,7 +54,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userLogin** | [**UserAuth**](UserAuth.md)|  |
+ **userAuth** | [**UserAuth**](UserAuth.md)|  |
 
 ### Return type
 
@@ -67,16 +67,17 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | created |  -  |
+**200** | get your token |  -  |
+**401** | fail to authenticat |  -  |
 
 <a name="createUser"></a>
 # **createUser**
-> Object createUser(user)
+> Object createUser(userInput)
 
 
 
@@ -85,21 +86,28 @@ create a user
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    UserInput user = new UserInput(); // UserInput | 
+    UserInput userInput = new UserInput(); // UserInput | 
     try {
-      Object result = apiInstance.createUser(user);
+      Object result = apiInstance.createUser(userInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#createUser");
@@ -116,7 +124,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**UserInput**](UserInput.md)|  |
+ **userInput** | [**UserInput**](UserInput.md)|  |
 
 ### Return type
 
@@ -124,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -136,10 +144,11 @@ No authorization required
 |-------------|-------------|------------------|
 **201** | created |  -  |
 **403** | You do not have necessary permissions for the resource |  -  |
+**502** | You do not have necessary permissions for the resource |  -  |
 
-<a name="deleteUser"></a>
-# **deleteUser**
-> deleteUser(email)
+<a name="deleteUserByID"></a>
+# **deleteUserByID**
+> deleteUserByID(email)
 
 
 
@@ -148,23 +157,30 @@ This can only be done by the logged in user.
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | The name that needs to be deleted
+    String email = "email_example"; // String | name that need to be updated
     try {
-      apiInstance.deleteUser(email);
+      apiInstance.deleteUserByID(email);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#deleteUser");
+      System.err.println("Exception when calling DefaultApi#deleteUserByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -178,7 +194,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| The name that needs to be deleted |
+ **email** | **String**| name that need to be updated |
 
 ### Return type
 
@@ -186,7 +202,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -202,28 +218,35 @@ No authorization required
 
 <a name="getUserByID"></a>
 # **getUserByID**
-> UserOutput getUserByID(email)
+> UserToken getUserByID(email)
 
 
 
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | The name that needs to be fetched. Use user1 for testing. 
+    String email = "email_example"; // String | name that need to be updated
     try {
-      UserOutput result = apiInstance.getUserByID(email);
+      UserToken result = apiInstance.getUserByID(email);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#getUserByID");
@@ -240,15 +263,15 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| The name that needs to be fetched. Use user1 for testing.  |
+ **email** | **String**| name that need to be updated |
 
 ### Return type
 
-[**UserOutput**](UserOutput.md)
+[**UserToken**](UserToken.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -265,7 +288,7 @@ No authorization required
 
 <a name="getUsers"></a>
 # **getUsers**
-> List&lt;UserOutput&gt; getUsers()
+> List&lt;UserToken&gt; getUsers()
 
 
 
@@ -274,20 +297,27 @@ get user paramater
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     try {
-      List<UserOutput> result = apiInstance.getUsers();
+      List<UserToken> result = apiInstance.getUsers();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#getUsers");
@@ -305,11 +335,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;UserOutput&gt;**](UserOutput.md)
+[**List&lt;UserToken&gt;**](UserToken.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -322,33 +352,40 @@ No authorization required
 **200** | success |  -  |
 **403** | You do not have necessary permissions for the resource |  -  |
 
-<a name="updateUser"></a>
-# **updateUser**
-> updateUser(email, body)
+<a name="updatePasswordByID"></a>
+# **updatePasswordByID**
+> updatePasswordByID(email, password)
 
 
 
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost:8080/api");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     String email = "email_example"; // String | name that need to be updated
-    User body = new User(); // User | Updated user object
+    String password = "password_example"; // String | Updated user object
     try {
-      apiInstance.updateUser(email, body);
+      apiInstance.updatePasswordByID(email, password);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#updateUser");
+      System.err.println("Exception when calling DefaultApi#updatePasswordByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -363,7 +400,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **email** | **String**| name that need to be updated |
- **body** | [**User**](User.md)| Updated user object |
+ **password** | **String**| Updated user object |
 
 ### Return type
 
@@ -371,7 +408,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserAuth;
-import io.avalia.user.api.model.UserOutput;
 import io.avalia.user.api.model.UserToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * UserInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-04T19:13:19.559+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T21:03:06.051+01:00[Europe/Zurich]")
 
 public class UserInput   {
   @JsonProperty("email")
@@ -27,12 +26,6 @@ public class UserInput   {
 
   @JsonProperty("password")
   private String password;
-
-  @JsonProperty("firstname")
-  private String firstname;
-
-  @JsonProperty("lastname")
-  private String lastname;
 
   public UserInput email(String email) {
     this.email = email;
@@ -94,46 +87,6 @@ public class UserInput   {
     this.password = password;
   }
 
-  public UserInput firstname(String firstname) {
-    this.firstname = firstname;
-    return this;
-  }
-
-  /**
-   * Get firstname
-   * @return firstname
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getFirstname() {
-    return firstname;
-  }
-
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
-  }
-
-  public UserInput lastname(String lastname) {
-    this.lastname = lastname;
-    return this;
-  }
-
-  /**
-   * Get lastname
-   * @return lastname
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getLastname() {
-    return lastname;
-  }
-
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -146,14 +99,12 @@ public class UserInput   {
     UserInput userInput = (UserInput) o;
     return Objects.equals(this.email, userInput.email) &&
         Objects.equals(this.role, userInput.role) &&
-        Objects.equals(this.password, userInput.password) &&
-        Objects.equals(this.firstname, userInput.firstname) &&
-        Objects.equals(this.lastname, userInput.lastname);
+        Objects.equals(this.password, userInput.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, role, password, firstname, lastname);
+    return Objects.hash(email, role, password);
   }
 
   @Override
@@ -164,8 +115,6 @@ public class UserInput   {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("}");
     return sb.toString();
   }
