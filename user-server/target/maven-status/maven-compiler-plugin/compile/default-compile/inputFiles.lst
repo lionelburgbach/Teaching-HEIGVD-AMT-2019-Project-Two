@@ -1,8 +1,7 @@
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/jwt/JwtToken.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/util/AuthorizationFilter.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserOutput.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/ApiUtil.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdate.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/exceptions/NotFoundException.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/repositories/UsersRepository.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java
@@ -19,9 +18,7 @@
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/RFC3339DateFormat.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/util/ApiResponseMessage.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserUpdateAllOf.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/jwt/JwtResponse.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserOutputAllOf.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/exceptions/RestExceptionHandler.java

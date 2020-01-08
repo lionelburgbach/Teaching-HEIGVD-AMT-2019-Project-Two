@@ -1,9 +1,8 @@
 package io.avalia.user.api.endpoints;
 
 import io.avalia.user.api.UsersApi;
-import io.avalia.user.api.model.User;
 import io.avalia.user.api.model.UserInput;
-import io.avalia.user.api.model.UserOutput;
+import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
 import io.avalia.user.jwt.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
@@ -59,7 +58,7 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<UserOutput> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+    public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
         if(!jwt.validateToken(getToken(), email)){
             throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
@@ -67,7 +66,7 @@ public class UsersApiController implements UsersApi{
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
-        return ResponseEntity.ok(toUserOutput(ue));
+        return ResponseEntity.ok(toUserToken(ue));
     }
 
     public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
@@ -93,32 +92,28 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity<List<UserOutput>> getUsers() {
+    public ResponseEntity<List<UserToken>> getUsers() {
 
         if(!jwt.getRoleFromToken(getToken()).equals("admin")){
             throw new IllegalArgumentException("You don't have rights to add a new user!");
         }
 
-        List<UserOutput> users = new ArrayList<>();
+        List<UserToken> users = new ArrayList<>();
         for (UsersEntity userEntity : usersRepository.findAll()) {
-            users.add(toUserOutput(userEntity));
+            users.add(toUserToken(userEntity));
         }
         return ResponseEntity.ok(users);
     }
 
-    private UsersEntity toUserOutptEntity(UserOutput user) {
+    private UsersEntity toUserEntity(UserToken user) {
         UsersEntity entity = new UsersEntity();
-        entity.setFirstname(user.getFirstname());
-        entity.setLastname(user.getLastname());
         entity.setEmail(user.getEmail());
         entity.setRole(user.getRole());
         return entity;
     }
 
-    private UserOutput toUserOutput(UsersEntity entity) {
-        UserOutput user = new UserOutput();
-        user.setFirstname(entity.getFirstname());
-        user.setLastname(entity.getLastname());
+    private UserToken toUserToken(UsersEntity entity) {
+        UserToken user = new UserToken();
         user.setEmail(entity.getEmail());
         user.setRole(entity.getRole());
         return user;
@@ -126,8 +121,6 @@ public class UsersApiController implements UsersApi{
 
     private UsersEntity toUserEntity(UserInput user) {
         UsersEntity entity = new UsersEntity();
-        entity.setFirstname(user.getFirstname());
-        entity.setLastname(user.getLastname());
         entity.setPassword(user.getPassword());
         entity.setRole(user.getRole());
         entity.setEmail(user.getEmail());
@@ -136,23 +129,7 @@ public class UsersApiController implements UsersApi{
 
     private UserInput toUserInput(UsersEntity entity) {
         UserInput user = new UserInput();
-        user.setFirstname(entity.getFirstname());
-        user.setLastname(entity.getLastname());
         user.setRole(entity.getRole());
-        user.setEmail(entity.getEmail());
-        user.setPassword(entity.getPassword());
-        return user;
-    }
-
-    private UsersEntity toUserEntity(User user) {
-        UsersEntity entity = new UsersEntity();
-        entity.setPassword(entity.getPassword());
-        entity.setEmail(user.getEmail());
-        return entity;
-    }
-
-    private UserInput toUser(UsersEntity entity) {
-        UserInput user = new UserInput();
         user.setEmail(entity.getEmail());
         user.setPassword(entity.getPassword());
         return user;

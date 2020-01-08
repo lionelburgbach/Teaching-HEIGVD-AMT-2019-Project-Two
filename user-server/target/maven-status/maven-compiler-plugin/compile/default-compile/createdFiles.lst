@@ -1,4 +1,4 @@
-io/avalia/user/api/model/UserUpdateAllOf.class
+io/avalia/user/api/util/AuthorizationFilter.class
 io/avalia/user/Swagger2SpringBoot.class
 io/avalia/user/api/endpoints/AuthenticateApiController.class
 io/avalia/user/api/util/ApiOriginFilter.class
@@ -19,13 +19,10 @@ io/avalia/user/api/model/UserAuthAllOf.class
 io/avalia/user/api/model/UserTokenAllOf.class
 io/avalia/user/RFC3339DateFormat.class
 io/avalia/user/api/exceptions/RestExceptionHandler.class
-io/avalia/user/api/model/UserUpdate.class
 io/avalia/user/api/AuthenticateApi.class
 io/avalia/user/api/UsersApi.class
-io/avalia/user/api/model/UserOutput.class
 io/avalia/user/api/model/User.class
 io/avalia/user/api/model/JwtResponse.class
-io/avalia/user/api/model/UserOutputAllOf.class
 io/avalia/user/api/exceptions/NotFoundException.class
 io/avalia/user/api/model/UserAuth.class
 io/avalia/user/entities/UsersEntity.class
