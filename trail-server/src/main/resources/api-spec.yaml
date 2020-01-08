@@ -235,9 +235,9 @@ paths:
         200:
           description: read
           schema:
-              type: array
-              items:
-                $ref: '#/definitions/Registration'
+            type: array
+            items:
+              $ref: '#/definitions/RegistrationOutput'
         400:
           description: "Invalid id supplied"
         404:
@@ -245,15 +245,21 @@ paths:
     delete:
       security:
         - Bearer: []
-      operationId: deleteRegistration
+      operationId: deleteRegistrationByID
       produces:
         - "application/json"
       parameters:
         - name: email
           in: path
-          description: "The name that needs to be deleted"
+          description: "The registration id that needs to be deleted"
           required: true
           type: string
+        - name: id
+          in: query
+          description: "The registration id that needs to be deleted"
+          required: true
+          type: integer
+          format: int64
       responses:
         400:
           description: "Invalid id supplied"
@@ -292,6 +298,16 @@ definitions:
       idTrail:
         type: integer
         format: int64
-      idUser:
+      email:
+        type: integer
+        format: int64
+  RegistrationOutput:
+    type: object
+    properties:
+      trailName:
+        type: string
+      email:
+        type: string
+      idReg:
         type: integer
         format: int64

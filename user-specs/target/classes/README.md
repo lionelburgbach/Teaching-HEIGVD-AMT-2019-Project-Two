@@ -2,7 +2,7 @@
 
 Users API
 - API version: 0.1.0
-  - Build date: 2020-01-06T15:47:11.352+01:00[Europe/Zurich]
+  - Build date: 2020-01-06T23:12:17.863+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -73,12 +73,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {

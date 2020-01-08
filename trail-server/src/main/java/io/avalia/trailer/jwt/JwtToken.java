@@ -22,6 +22,11 @@ public class JwtToken implements Serializable {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
+    public String getRoleFromToken(String token) {
+
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("Role",String.class);
+    }
+
     public Date getExpirationDateFromToken(String token) {
 
         return getClaimFromToken(token, Claims::getExpiration);

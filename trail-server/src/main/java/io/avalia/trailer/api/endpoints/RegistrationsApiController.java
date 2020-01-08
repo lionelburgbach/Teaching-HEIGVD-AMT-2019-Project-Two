@@ -2,7 +2,7 @@ package io.avalia.trailer.api.endpoints;
 
 import io.avalia.trailer.api.RegistrationsApi;
 import io.avalia.trailer.api.model.Registration;
-import io.avalia.trailer.api.model.Trail;
+import io.avalia.trailer.api.model.RegistrationOutput;
 import io.avalia.trailer.api.model.User;
 import io.avalia.trailer.entities.RegistrationsEntity;
 import io.avalia.trailer.entities.TrailsEntity;
@@ -15,7 +15,9 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,18 +65,7 @@ public class RegistrationsApiController implements RegistrationsApi {
         return ResponseEntity.created(location).build();
     }
 
-    /*
-    public ResponseEntity<Registration> getRegistrationByID(Long id) {
-
-        Optional<RegistrationsEntity> ore = regRepository.findById(id);
-        RegistrationsEntity re = ore.get();
-
-
-        return ResponseEntity.ok(toRegistration(re));
-    }
-     */
-
-    public ResponseEntity<List<Registration>> getRegistrationByIdUser(String email){
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationByIdUser(String email){
 
         if(!jwt.validateToken(getToken(), email)){
             return ResponseEntity.status(401).build();
@@ -85,21 +76,33 @@ public class RegistrationsApiController implements RegistrationsApi {
         Optional<RegistrationsEntity> ore = regRepository.findById(user.getId());
         RegistrationsEntity re = ore.get();
 
-        List<Registration> regs = new ArrayList<>();
+        List<RegistrationOutput> regs = new ArrayList<>();
         for (RegistrationsEntity regEntity : regRepository.findByIdUser(user.getId())) {
-            regs.add(toRegistration(regEntity));
+
+            Optional<TrailsEntity> ote = trailsRepository.findById(regEntity.getIdTrail());
+            TrailsEntity te = ote.get();
+            te.getName();
+            RegistrationOutput ro = new RegistrationOutput();
+            ro.setEmail(email);
+            ro.setTrailName(te.getName());
+            ro.setIdReg(regEntity.getId());
+
+            regs.add(ro);
         }
 
         return ResponseEntity.ok(regs);
-
     }
 
-    /*
-    public ResponseEntity deleteRegistration(String email) {
-        regRepository.deleteById(email);
+    public ResponseEntity deleteRegistrationByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("id")  Long id) {
+
+        if(!jwt.validateToken(getToken(), email)){
+            return ResponseEntity.status(401).build();
+        }
+
+        regRepository.deleteById(id);
         return ResponseEntity.ok("ok");
     }
-    */
+
 
     private RegistrationsEntity toRegistrationEntity(Registration reg) {
         RegistrationsEntity entity = new RegistrationsEntity();
@@ -137,11 +140,13 @@ public class RegistrationsApiController implements RegistrationsApi {
 
     private String getToken(){
 
-        String bearer = request.getHeader("Authorization");
-        if(bearer.length() < 7) {
-            throw new IllegalArgumentException("No Token");
+        String bearer = null;
+        if(request.getHeader("Authorization") == null){
+            throw new IllegalArgumentException("No Authorization header!");
         }
-        String token = bearer.substring(7);
-        return token;
+        else{
+            bearer = request.getHeader("Authorization");
+        }
+        return bearer;
     }
 }

@@ -70,17 +70,17 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok(toUserOutput(ue));
     }
 
-    public ResponseEntity deleteUser(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
         if(!(jwt.getRoleFromToken(getToken()).equals("admin") || jwt.validateToken(getToken(), email))){
-            throw new IllegalArgumentException("Unauthorized");
+            throw new IllegalArgumentException("You don't have rights to delete this user!");
         }
 
         usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity changePassword(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
+    public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
 
         if(!jwt.validateToken(getToken(), email)){
             throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
@@ -167,7 +167,6 @@ public class UsersApiController implements UsersApi{
         else{
             bearer = request.getHeader("Authorization");
         }
-
         return bearer;
     }
 }

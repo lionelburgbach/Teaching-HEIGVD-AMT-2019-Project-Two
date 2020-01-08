@@ -1,4 +1,5 @@
 io/avalia/trailer/api/util/ApiResponseMessage.class
+io/avalia/trailer/api/model/RegistrationOutput.class
 io/avalia/trailer/api/endpoints/TrailsApiController.class
 io/avalia/trailer/api/TrailsApi.class
 io/avalia/trailer/api/endpoints/RegistrationsApiController.class

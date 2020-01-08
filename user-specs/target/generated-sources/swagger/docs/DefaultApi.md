@@ -21,12 +21,12 @@ Method | HTTP request | Description
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -93,11 +93,11 @@ try to authenticate
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -156,12 +156,12 @@ create a user
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -227,12 +227,12 @@ This can only be done by the logged in user.
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -295,12 +295,12 @@ null (empty response body)
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -367,12 +367,12 @@ get user paramater
 ### Example
 ```java
 // Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.auth.*;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.ApiClient;
+import io.avalia.users.ApiException;
+import io.avalia.users.Configuration;
+import io.avalia.users.auth.*;
+import io.avalia.users.models.*;
+import io.avalia.users.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {

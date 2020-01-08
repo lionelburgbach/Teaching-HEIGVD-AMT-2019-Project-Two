@@ -103,7 +103,7 @@ paths:
       security:
         - Bearer: []
       description: ""
-      operationId: changePassword
+      operationId: updatePasswordByID
       produces:
         - "application/json"
       parameters:
@@ -120,7 +120,7 @@ paths:
       security:
         - Bearer: []
       description: "This can only be done by the logged in user."
-      operationId: deleteUser
+      operationId: deleteUserByID
       produces:
         - "application/json"
       parameters:

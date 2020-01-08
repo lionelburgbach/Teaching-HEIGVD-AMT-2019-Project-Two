@@ -104,11 +104,13 @@ public class TrailsApiController implements TrailsApi {
 
     private String getToken(){
 
-        String bearer = request.getHeader("Authorization");
-        if(bearer.length() < 7) {
-            throw new IllegalArgumentException("No Token");
+        String bearer = null;
+        if(request.getHeader("Authorization") == null){
+            throw new IllegalArgumentException("No Authorization header!");
         }
-        String token = bearer.substring(7);
-        return token;
+        else{
+            bearer = request.getHeader("Authorization");
+        }
+        return bearer;
     }
 }

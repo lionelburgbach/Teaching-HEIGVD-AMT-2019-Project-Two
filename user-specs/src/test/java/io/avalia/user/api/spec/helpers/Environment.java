@@ -1,6 +1,6 @@
 package io.avalia.user.api.spec.helpers;
 
-import io.avalia.user.api.DefaultApi;
+import io.avalia.users.api.DefaultApi;
 
 import java.io.IOException;
 import java.util.Properties;

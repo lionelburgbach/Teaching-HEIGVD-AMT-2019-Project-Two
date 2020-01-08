@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-06T21:23:43.946+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T18:17:01.087+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -36,21 +36,6 @@ public interface UsersApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
-
-    @ApiOperation(value = "", nickname = "changePassword", notes = "", authorizations = {
-        @Authorization(value = "Bearer")
-    }, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 400, message = "Invalid user supplied"),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
-        @ApiResponse(code = 404, message = "User not found") })
-    @RequestMapping(value = "/users/{email}",
-        method = RequestMethod.PUT)
-    default ResponseEntity<Void> changePassword(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "Updated user object", required = true) @Valid @RequestParam(value = "password", required = true) String password) throws Exception {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
 
     @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, authorizations = {
         @Authorization(value = "Bearer")
@@ -69,7 +54,7 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteUser", notes = "This can only be done by the logged in user.", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteUserByID", notes = "This can only be done by the logged in user.", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -78,7 +63,7 @@ public interface UsersApi {
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteUser(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
+    default ResponseEntity<Void> deleteUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -129,6 +114,21 @@ public interface UsersApi {
                 }
             }
         });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "updatePasswordByID", notes = "", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 400, message = "Invalid user supplied"),
+        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
+        @ApiResponse(code = 404, message = "User not found") })
+    @RequestMapping(value = "/users/{email}",
+        method = RequestMethod.PUT)
+    default ResponseEntity<Void> updatePasswordByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "Updated user object", required = true) @Valid @RequestParam(value = "password", required = true) String password) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

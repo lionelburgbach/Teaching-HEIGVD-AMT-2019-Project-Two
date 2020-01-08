@@ -15,52 +15,74 @@ formatter.background({
 });
 formatter.step({
   "line": 4,
-  "name": "there is a user server",
+  "name": "there is a users server",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "CreationSteps.there_is_a_user_server()"
+  "location": "CreationSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 422155250,
+  "duration": 385952973,
   "status": "passed"
 });
 formatter.scenario({
   "line": 6,
-  "name": "create a user",
+  "name": "create a users",
   "description": "",
-  "id": "user;create-a-user",
+  "id": "user;create-a-users",
   "type": "scenario",
   "keyword": "Scenario"
 });
 formatter.step({
   "line": 7,
-  "name": "I have a user payload",
+  "name": "I have an authenticate users",
   "keyword": "Given "
 });
 formatter.step({
   "line": 8,
-  "name": "I POST it to the /user endpoint",
-  "keyword": "When "
+  "name": "I receive an 200 status code",
+  "keyword": "Then "
 });
 formatter.step({
   "line": 9,
+  "name": "I have a user payload",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 10,
+  "name": "I POST it to the /users endpoint",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 11,
   "name": "I receive a 201 status code",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "CreationSteps.i_have_a_user_payload()"
-});
+formatter.match({});
 formatter.result({
-  "duration": 225300,
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.match({
-  "location": "CreationSteps.i_POST_it_to_the_user_endpoint()"
+  "arguments": [
+    {
+      "val": "200",
+      "offset": 13
+    }
+  ],
+  "location": "GetSteps.i_receive_a_GET_status_code(int)"
 });
 formatter.result({
-  "duration": 85937963,
-  "status": "passed"
+  "status": "skipped"
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
+formatter.match({
+  "location": "CreationSteps.i_POST_it_to_the_users_endpoint()"
+});
+formatter.result({
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -72,9 +94,7 @@ formatter.match({
   "location": "CreationSteps.i_receive_a_status_code(int)"
 });
 formatter.result({
-  "duration": 1898355,
-  "error_message": "java.lang.AssertionError: expected:\u003c201\u003e but was:\u003c500\u003e\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\n\tat org.junit.Assert.assertEquals(Assert.java:645)\n\tat org.junit.Assert.assertEquals(Assert.java:631)\n\tat io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:71)\n\tat ✽.Then I receive a 201 status code(creation.feature:9)\n",
-  "status": "failed"
+  "status": "skipped"
 });
 formatter.uri("get.feature");
 formatter.feature({
@@ -100,7 +120,7 @@ formatter.match({
   "location": "GetSteps.there_is_a_server()"
 });
 formatter.result({
-  "duration": 395990,
+  "duration": 322713,
   "status": "passed"
 });
 formatter.scenario({
@@ -113,7 +133,7 @@ formatter.scenario({
 });
 formatter.step({
   "line": 7,
-  "name": "I POST a correct user /authenticate endpoint",
+  "name": "I POST a correct users /authenticate endpoint",
   "keyword": "When "
 });
 formatter.step({
@@ -125,8 +145,8 @@ formatter.match({
   "location": "GetSteps.i_POST_it_to_the_users_endpoint()"
 });
 formatter.result({
-  "duration": 131573856,
-  "error_message": "java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to io.avalia.user.ApiResponse\n\tat io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:43)\n\tat ✽.When I POST a correct user /authenticate endpoint(get.feature:7)\n",
+  "duration": 18239625,
+  "error_message": "java.lang.IllegalArgumentException: Expected URL scheme \u0027http\u0027 or \u0027https\u0027 but no colon was found\n\tat okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)\n\tat okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)\n\tat okhttp3.Request$Builder.url(Request.kt:184)\n\tat io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)\n\tat io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:226)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:238)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:275)\n\tat io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:46)\n\tat ✽.When I POST a correct users /authenticate endpoint(get.feature:7)\n",
   "status": "failed"
 });
 formatter.match({
