@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * Registration
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T23:22:03.510983+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-13T17:24:24.590+01:00[Europe/Zurich]")
 
 public class Registration   {
   @JsonProperty("idTrail")

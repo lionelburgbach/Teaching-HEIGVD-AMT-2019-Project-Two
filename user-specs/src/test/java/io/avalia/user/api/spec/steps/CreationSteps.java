@@ -75,8 +75,7 @@ public class CreationSteps {
 
         ApiClient apiClient = new ApiClient();
         ArrayList<String> token = (ArrayList<String>)lastApiResponse.getHeaders().get("Authorization");
-        String tok =  token.get(0).substring(7);
-        apiClient.addDefaultHeader("Authorization", tok);
+        apiClient.addDefaultHeader("Authorization", token.get(0));
         api.setApiClient(apiClient);
 
         try {
