@@ -19,9 +19,8 @@ public class TokenInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String header = request.getHeader("Authorization");
-
         if(header == null){
-            throw new ApiException(401, "No Authorization header!");
+            throw new ApiException(400, "No Authorization header!");
         }
 
         String token;
@@ -37,7 +36,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             name = jwt.getUsernameFromToken(token);
         }
         catch(Exception e) {
-            throw new ApiException(401, "Invalid Token");
+            throw new ApiException(400, "Invalid SyntaxToken");
         }
 
         if(!jwt.validateToken(token, name)){
