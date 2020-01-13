@@ -3,24 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/AuthenticateApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/AuthenticateApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/UsersApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/UsersApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/exceptions/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/exceptions/RestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/endpoints/UsersApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/endpoints/UsersApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/exceptions/RestExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/exceptions/RestExceptionHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +105,7 @@
       <workItem from="1578504694700" duration="4470000" />
       <workItem from="1578521215745" duration="1611000" />
       <workItem from="1578586132432" duration="806000" />
+      <workItem from="1578922624673" duration="598000" />
     </task>
     <servers />
   </component>

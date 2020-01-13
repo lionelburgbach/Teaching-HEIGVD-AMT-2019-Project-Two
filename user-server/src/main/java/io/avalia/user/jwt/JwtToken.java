@@ -30,7 +30,7 @@ public class JwtToken implements Serializable {
 
     public String getRoleFromToken(String token) {
 
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("Role",String.class);
+        return getAllClaimsFromToken(token).get("Role",String.class);
     }
 
     public Date getExpirationDateFromToken(String token) {

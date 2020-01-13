@@ -1,6 +1,7 @@
 package io.avalia.user.api.endpoints;
 
 import io.avalia.user.api.UsersApi;
+import io.avalia.user.api.exceptions.ApiException;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
@@ -36,15 +37,15 @@ public class UsersApiController implements UsersApi{
     @Autowired
     HttpServletRequest request;
 
-    public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
+    public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) throws Exception {
 
         if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new IllegalArgumentException("You don't have rights to add a new user!");
+            throw new ApiException(401,"You don't have rights to add a new user!");
         }
 
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
-            throw new IllegalArgumentException("This email already exist!");
+            throw new ApiException(409, "This email already exist!");
         }
 
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
@@ -58,10 +59,10 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+    public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) throws Exception {
 
         if(!jwt.validateToken(getToken(), email)){
-            throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
+            throw new ApiException(403 ,"You don't have rights to read properties from this email: " + email);
         }
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
@@ -69,20 +70,20 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok(toUserToken(ue));
     }
 
-    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
+    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) throws Exception {
 
         if(!(jwt.getRoleFromToken(getToken()).equals("admin") || jwt.validateToken(getToken(), email))){
-            throw new IllegalArgumentException("You don't have rights to delete this user!");
+            throw new ApiException(403, "You don't have rights to delete this user!");
         }
 
         usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
+    public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) throws Exception {
 
         if(!jwt.validateToken(getToken(), email)){
-            throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
+            throw new ApiException(403,"You don't have rights to read properties from this email: " + email);
         }
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
@@ -92,10 +93,10 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity<List<UserToken>> getUsers() {
+    public ResponseEntity<List<UserToken>> getUsers() throws Exception {
 
         if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new IllegalArgumentException("You don't have rights to add a new user!");
+            throw new ApiException(403, "You don't have rights to add a new user!");
         }
 
         List<UserToken> users = new ArrayList<>();
@@ -135,15 +136,7 @@ public class UsersApiController implements UsersApi{
         return user;
     }
 
-    private String getToken(){
-
-        String bearer = null;
-        if(request.getHeader("Authorization") == null){
-            throw new IllegalArgumentException("No Authorization header!");
-        }
-        else{
-            bearer = request.getHeader("Authorization");
-        }
-        return bearer;
+    private String getToken() throws Exception{
+        return request.getHeader("Authorization").split(" ")[1];
     }
 }
