@@ -5,10 +5,10 @@ import io.avalia.user.api.exceptions.ApiException;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
-import io.avalia.user.jwt.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -32,20 +32,13 @@ public class UsersApiController implements UsersApi{
     UsersRepository usersRepository;
 
     @Autowired
-    JwtToken jwt;
-
-    @Autowired
     HttpServletRequest request;
 
     public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) throws Exception {
 
-        if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new ApiException(401,"You don't have rights to add a new user!");
-        }
-
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
-            throw new ApiException(409, "This email already exist!");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This email already exist!");
         }
 
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
@@ -59,32 +52,20 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) throws Exception {
-
-        if(!jwt.validateToken(getToken(), email)){
-            throw new ApiException(403 ,"You don't have rights to read properties from this email: " + email);
-        }
+    public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
         return ResponseEntity.ok(toUserToken(ue));
     }
 
-    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) throws Exception {
-
-        if(!(jwt.getRoleFromToken(getToken()).equals("admin") || jwt.validateToken(getToken(), email))){
-            throw new ApiException(403, "You don't have rights to delete this user!");
-        }
+    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
         usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) throws Exception {
-
-        if(!jwt.validateToken(getToken(), email)){
-            throw new ApiException(403,"You don't have rights to read properties from this email: " + email);
-        }
+    public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
@@ -93,16 +74,13 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity<List<UserToken>> getUsers() throws Exception {
-
-        if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new ApiException(403, "You don't have rights to add a new user!");
-        }
+    public ResponseEntity<List<UserToken>> getUsers() {
 
         List<UserToken> users = new ArrayList<>();
         for (UsersEntity userEntity : usersRepository.findAll()) {
             users.add(toUserToken(userEntity));
         }
+
         return ResponseEntity.ok(users);
     }
 
@@ -134,9 +112,5 @@ public class UsersApiController implements UsersApi{
         user.setEmail(entity.getEmail());
         user.setPassword(entity.getPassword());
         return user;
-    }
-
-    private String getToken() throws Exception{
-        return request.getHeader("Authorization").split(" ")[1];
     }
 }

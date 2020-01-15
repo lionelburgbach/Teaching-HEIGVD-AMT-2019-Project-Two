@@ -5,11 +5,12 @@ import io.avalia.user.api.exceptions.ApiException;
 import io.avalia.user.api.model.UserAuth;
 import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
-import io.avalia.user.jwt.JwtResponse;
-import io.avalia.user.jwt.JwtToken;
+import io.avalia.user.entities.JwtResponse;
+import io.avalia.user.entities.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -35,26 +36,26 @@ public class AuthenticateApiController implements AuthenticateApi {
     public ResponseEntity<Object> createAuthenticationToken(@ApiParam(value = "", required = true) @Valid @RequestBody UserAuth user) throws Exception {
 
         if (user.getEmail() == null || user.getPassword() == null) {
-            throw new ApiException(400,"Email and Password cannot be null");
+            throw new ApiException(HttpStatus.BAD_REQUEST,"Email and Password cannot be null");
         }
 
         String email = user.getEmail();
 
         Optional<UsersEntity> userLoad = usersRepository.findById(email);
         if(!userLoad.isPresent()){
-            throw new ApiException(401, "Bad Credentials");
+            throw new ApiException(HttpStatus.UNAUTHORIZED, "Bad Credentials");
         }
 
         UsersEntity ue = userLoad.get();
         String pwd = ue.getPassword();
         BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
         if (!bc.matches(user.getPassword(),pwd)) {
-            throw new ApiException(401, "Bad Credentials");
+            throw new ApiException(HttpStatus.UNAUTHORIZED, "Bad Credentials");
         }
 
         String token = jwt.generateToken(toUserToken(ue));
 
-        resp.addHeader("Authorization", "Berer "+token);
+        resp.addHeader("Authorization", "Bearer "+token);
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

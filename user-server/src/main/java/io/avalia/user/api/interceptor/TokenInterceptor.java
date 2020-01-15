@@ -1,8 +1,9 @@
 package io.avalia.user.api.interceptor;
 
 import io.avalia.user.api.exceptions.ApiException;
-import io.avalia.user.jwt.JwtToken;
+import io.avalia.user.entities.JwtToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -20,7 +21,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
         String header = request.getHeader("Authorization");
         if(header == null){
-            throw new ApiException(400, "No Authorization header!");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "No Authorization header!");
         }
 
         String token;
@@ -28,7 +29,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             token = request.getHeader("Authorization").split(" ")[1];
         }
         catch (Exception e){
-            throw new ApiException(400, "Bad token");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Bad token");
         }
 
         String name;
@@ -36,11 +37,11 @@ public class TokenInterceptor implements HandlerInterceptor {
             name = jwt.getUsernameFromToken(token);
         }
         catch(Exception e) {
-            throw new ApiException(400, "Invalid SyntaxToken");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Invalid SyntaxToken");
         }
 
         if(!jwt.validateToken(token, name)){
-            throw new ApiException(401, "Invalid Token");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Invalid Token");
         }
 
         return true;

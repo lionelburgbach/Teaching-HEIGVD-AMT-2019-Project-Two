@@ -2,7 +2,6 @@ package io.avalia.user.api.exceptions;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,7 +17,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ApiException.class)
     protected ResponseEntity<Object> handleIllegalArgument(ApiException ex) {
-        ApiError apiError = new ApiError(HttpStatus.valueOf(ex.getCode()));
+        ApiError apiError = new ApiError(ex.getCode());
         apiError.setMessage(ex.getMessage());
         return buildResponseEntity(apiError);
     }
