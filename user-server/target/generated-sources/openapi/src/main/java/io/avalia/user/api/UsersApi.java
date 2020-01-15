@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T21:03:06.051+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-15T22:13:36.979+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -42,8 +42,7 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
-        @ApiResponse(code = 502, message = "You do not have necessary permissions for the resource") })
+        @ApiResponse(code = 400, message = "You do not have necessary permissions to creat a user") })
     @RequestMapping(value = "/users",
         produces = { "*/*" }, 
         consumes = { "application/json" },
@@ -58,9 +57,8 @@ public interface UsersApi {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 400, message = "Invalid username supplied"),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
-        @ApiResponse(code = 404, message = "User not found") })
+        @ApiResponse(code = 200, message = "successful operation"),
+        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.DELETE)
     default ResponseEntity<Void> deleteUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
@@ -74,9 +72,7 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = UserToken.class),
-        @ApiResponse(code = 400, message = "Invalid username supplied"),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
-        @ApiResponse(code = 404, message = "User not found") })
+        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/users/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -99,8 +95,8 @@ public interface UsersApi {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "success", response = UserToken.class, responseContainer = "List"),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource") })
+        @ApiResponse(code = 200, message = "success to get users", response = UserToken.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -123,9 +119,7 @@ public interface UsersApi {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 400, message = "Invalid user supplied"),
-        @ApiResponse(code = 403, message = "You do not have necessary permissions for the resource"),
-        @ApiResponse(code = 404, message = "User not found") })
+        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.PUT)
     default ResponseEntity<Void> updatePasswordByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "Updated user object", required = true) @Valid @RequestParam(value = "password", required = true) String password) throws Exception {

@@ -298,7 +298,7 @@ definitions:
       idTrail:
         type: integer
         format: int64
-      email:
+      idUser:
         type: integer
         format: int64
   RegistrationOutput:

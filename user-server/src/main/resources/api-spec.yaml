@@ -30,13 +30,13 @@ paths:
             $ref: '#/definitions/UserAuth'
       responses:
         200:
-          description: get your token
+          description: 'authentication success'
           schema:
             type: object
             items:
               $ref: '#/definitions/JwtResponse'
-        401:
-          description: 'fail to authenticat'
+        400:
+          description: 'fail to authenticate'
           schema:
             type: string
   /users:
@@ -58,10 +58,8 @@ paths:
           description: created
           schema:
             type: object
-        403:
-          description: 'You do not have necessary permissions for the resource'
-        502:
-          description: 'You do not have necessary permissions for the resource'
+        400:
+          description: 'You do not have necessary permissions to creat a user'
     get:
       security:
         - Bearer: []
@@ -71,12 +69,12 @@ paths:
         - application/json
       responses:
         200:
-          description: success
+          description: 'success to get users'
           schema:
             type: array
             items:
               $ref: '#/definitions/UserToken'
-        403:
+        400:
           description: 'You do not have necessary permissions for the resource'
   /users/{email}:
     get:
@@ -94,11 +92,7 @@ paths:
           schema:
             $ref: "#/definitions/UserToken"
         400:
-          description: "Invalid username supplied"
-        404:
-          description: "User not found"
-        403:
-          description: 'You do not have necessary permissions for the resource'
+          description: "You do not have necessary permissions for the resource"
     put:
       security:
         - Bearer: []
@@ -111,11 +105,7 @@ paths:
         - $ref: '#/parameters/passwordParam'
       responses:
         400:
-          description: "Invalid user supplied"
-        404:
-          description: "User not found"
-        403:
-          description: 'You do not have necessary permissions for the resource'
+          description: "You do not have necessary permissions for the resource"
     delete:
       security:
         - Bearer: []
@@ -126,11 +116,9 @@ paths:
       parameters:
         - $ref: '#/parameters/emailParam'
       responses:
+        200:
+          description: "successful operation"
         400:
-          description: "Invalid username supplied"
-        404:
-          description: "User not found"
-        403:
           description: 'You do not have necessary permissions for the resource'
 definitions:
   User:

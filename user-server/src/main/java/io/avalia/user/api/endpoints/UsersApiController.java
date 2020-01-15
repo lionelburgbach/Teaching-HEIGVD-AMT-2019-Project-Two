@@ -1,13 +1,14 @@
 package io.avalia.user.api.endpoints;
 
 import io.avalia.user.api.UsersApi;
+import io.avalia.user.api.exceptions.ApiException;
 import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
-import io.avalia.user.jwt.JwtToken;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,20 +32,13 @@ public class UsersApiController implements UsersApi{
     UsersRepository usersRepository;
 
     @Autowired
-    JwtToken jwt;
-
-    @Autowired
     HttpServletRequest request;
 
-    public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) {
-
-        if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new IllegalArgumentException("You don't have rights to add a new user!");
-        }
+    public ResponseEntity<Object> createUser(@ApiParam(value = "", required = true) @Valid @RequestBody UserInput user) throws Exception {
 
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
-            throw new IllegalArgumentException("This email already exist!");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This email already exist!");
         }
 
         newUserEntity.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
@@ -60,10 +54,6 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity<UserToken> getUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        if(!jwt.validateToken(getToken(), email)){
-            throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
-        }
-
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
         return ResponseEntity.ok(toUserToken(ue));
@@ -71,19 +61,11 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email) {
 
-        if(!(jwt.getRoleFromToken(getToken()).equals("admin") || jwt.validateToken(getToken(), email))){
-            throw new IllegalArgumentException("You don't have rights to delete this user!");
-        }
-
         usersRepository.deleteById(email);
         return ResponseEntity.ok("ok");
     }
 
     public ResponseEntity updatePasswordByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("password")  String password) {
-
-        if(!jwt.validateToken(getToken(), email)){
-            throw new IllegalArgumentException("You don't have rights to read properties from this email: " + email);
-        }
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
@@ -94,14 +76,11 @@ public class UsersApiController implements UsersApi{
 
     public ResponseEntity<List<UserToken>> getUsers() {
 
-        if(!jwt.getRoleFromToken(getToken()).equals("admin")){
-            throw new IllegalArgumentException("You don't have rights to add a new user!");
-        }
-
         List<UserToken> users = new ArrayList<>();
         for (UsersEntity userEntity : usersRepository.findAll()) {
             users.add(toUserToken(userEntity));
         }
+
         return ResponseEntity.ok(users);
     }
 
@@ -133,17 +112,5 @@ public class UsersApiController implements UsersApi{
         user.setEmail(entity.getEmail());
         user.setPassword(entity.getPassword());
         return user;
-    }
-
-    private String getToken(){
-
-        String bearer = null;
-        if(request.getHeader("Authorization") == null){
-            throw new IllegalArgumentException("No Authorization header!");
-        }
-        else{
-            bearer = request.getHeader("Authorization");
-        }
-        return bearer;
     }
 }

@@ -2,7 +2,7 @@
 
 Users API
 - API version: 0.1.0
-  - Build date: 2020-01-08T22:59:20.953+01:00[Europe/Zurich]
+  - Build date: 2020-01-13T17:30:51.640+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 

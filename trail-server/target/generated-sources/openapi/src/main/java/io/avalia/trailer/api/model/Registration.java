@@ -12,14 +12,14 @@ import javax.validation.constraints.*;
 /**
  * Registration
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-08T21:03:18.208+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-15T22:11:40.717+01:00[Europe/Zurich]")
 
 public class Registration   {
   @JsonProperty("idTrail")
   private Long idTrail;
 
-  @JsonProperty("email")
-  private Long email;
+  @JsonProperty("idUser")
+  private Long idUser;
 
   public Registration idTrail(Long idTrail) {
     this.idTrail = idTrail;
@@ -41,24 +41,24 @@ public class Registration   {
     this.idTrail = idTrail;
   }
 
-  public Registration email(Long email) {
-    this.email = email;
+  public Registration idUser(Long idUser) {
+    this.idUser = idUser;
     return this;
   }
 
   /**
-   * Get email
-   * @return email
+   * Get idUser
+   * @return idUser
   */
   @ApiModelProperty(value = "")
 
 
-  public Long getEmail() {
-    return email;
+  public Long getIdUser() {
+    return idUser;
   }
 
-  public void setEmail(Long email) {
-    this.email = email;
+  public void setIdUser(Long idUser) {
+    this.idUser = idUser;
   }
 
 
@@ -72,12 +72,12 @@ public class Registration   {
     }
     Registration registration = (Registration) o;
     return Objects.equals(this.idTrail, registration.idTrail) &&
-        Objects.equals(this.email, registration.email);
+        Objects.equals(this.idUser, registration.idUser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idTrail, email);
+    return Objects.hash(idTrail, idUser);
   }
 
   @Override
@@ -86,7 +86,7 @@ public class Registration   {
     sb.append("class Registration {\n");
     
     sb.append("    idTrail: ").append(toIndentedString(idTrail)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    idUser: ").append(toIndentedString(idUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }

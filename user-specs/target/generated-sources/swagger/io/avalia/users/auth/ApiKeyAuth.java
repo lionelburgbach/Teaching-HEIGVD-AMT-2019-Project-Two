@@ -18,7 +18,7 @@ import io.avalia.users.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-08T22:59:20.953+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-13T17:30:51.640+01:00[Europe/Zurich]")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;
