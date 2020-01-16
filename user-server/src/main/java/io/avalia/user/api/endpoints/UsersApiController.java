@@ -8,6 +8,8 @@ import io.avalia.user.entities.UsersEntity;
 import io.avalia.user.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -74,13 +76,13 @@ public class UsersApiController implements UsersApi{
         return ResponseEntity.ok("ok");
     }
 
-    public ResponseEntity<List<UserToken>> getUsers() {
+    public ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "1") @Valid @RequestParam(value = "startingIndex", required = false, defaultValue="1") Integer startingIndex,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsers", required = false, defaultValue="30") Integer numberOfUsers) {
 
+        Pageable page = PageRequest.of(startingIndex,numberOfUsers);
         List<UserToken> users = new ArrayList<>();
-        for (UsersEntity userEntity : usersRepository.findAll()) {
+        for (UsersEntity userEntity : usersRepository.findAll(page)) {
             users.add(toUserToken(userEntity));
         }
-
         return ResponseEntity.ok(users);
     }
 

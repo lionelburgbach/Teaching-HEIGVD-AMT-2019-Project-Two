@@ -22,7 +22,7 @@ formatter.match({
   "location": "CreationSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 415356469,
+  "duration": 392693249,
   "status": "passed"
 });
 formatter.scenario({
@@ -57,21 +57,21 @@ formatter.match({
   "location": "CreationSteps.iHaveAnAuthenticateUsers()"
 });
 formatter.result({
-  "duration": 184689627,
+  "duration": 158633361,
   "status": "passed"
 });
 formatter.match({
   "location": "CreationSteps.i_have_a_users_payload()"
 });
 formatter.result({
-  "duration": 120856,
+  "duration": 115468,
   "status": "passed"
 });
 formatter.match({
   "location": "CreationSteps.i_POST_it_to_the_users_endpoint()"
 });
 formatter.result({
-  "duration": 110745999,
+  "duration": 120874045,
   "status": "passed"
 });
 formatter.match({
@@ -84,7 +84,7 @@ formatter.match({
   "location": "CreationSteps.i_receive_a_status_code(int)"
 });
 formatter.result({
-  "duration": 1526576,
+  "duration": 1354234,
   "status": "passed"
 });
 formatter.uri("delete.feature");
@@ -111,7 +111,7 @@ formatter.match({
   "location": "DeleteSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 358707,
+  "duration": 346239,
   "status": "passed"
 });
 formatter.scenario({
@@ -141,14 +141,14 @@ formatter.match({
   "location": "DeleteSteps.iHaveAnAuthenticateUsersWithAdminRights()"
 });
 formatter.result({
-  "duration": 103800584,
+  "duration": 96954051,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteSteps.iDELETEItToTheUsersEndpoint()"
 });
 formatter.result({
-  "duration": 22895789,
+  "duration": 24611201,
   "status": "passed"
 });
 formatter.match({
@@ -161,7 +161,7 @@ formatter.match({
   "location": "DeleteSteps.iReceiveAgainAStatusCode(int)"
 });
 formatter.result({
-  "duration": 84617,
+  "duration": 79325,
   "status": "passed"
 });
 formatter.uri("get.feature");
@@ -188,7 +188,7 @@ formatter.match({
   "location": "GetSteps.there_is_a_server()"
 });
 formatter.result({
-  "duration": 331916,
+  "duration": 324157,
   "status": "passed"
 });
 formatter.scenario({
@@ -218,14 +218,14 @@ formatter.match({
   "location": "GetSteps.aUserWithCorrectCredentials()"
 });
 formatter.result({
-  "duration": 42165,
+  "duration": 38966,
   "status": "passed"
 });
 formatter.match({
   "location": "GetSteps.i_POST_it_to_the_users_endpoint()"
 });
 formatter.result({
-  "duration": 103130174,
+  "duration": 93938524,
   "status": "passed"
 });
 formatter.match({
@@ -238,7 +238,7 @@ formatter.match({
   "location": "GetSteps.i_receive_a_GET_status_code(int)"
 });
 formatter.result({
-  "duration": 80036,
+  "duration": 76286,
   "status": "passed"
 });
 });

@@ -69,7 +69,7 @@
   <testcase classname="Scenario: create a users" name="Given I have a user payload" time="0"/>
   <testcase classname="Scenario: create a users" name="When I POST it to the /users endpoint" time="0"/>
   <testcase classname="Scenario: create a users" name="Then I receive a 201 status code" time="0"/>
-  <testcase classname="Scenario: create a users" name="Scenario: create a users" time="0"/>
+  <testcase classname="Scenario: create a users" name="Scenario: create a users" time="0.001"/>
   <testcase classname="Scenario: delete a user" name="Given there is a user servers" time="0"/>
   <testcase classname="Scenario: delete a user" name="Given I have an authenticate users with admin rights" time="0"/>
   <testcase classname="Scenario: delete a user" name="When I DELETE it to the /users endpoint" time="0"/>
@@ -79,5 +79,5 @@
   <testcase classname="Scenario: get a token with credentials" name="Given A user with correct credentials" time="0"/>
   <testcase classname="Scenario: get a token with credentials" name="When I POST a correct users /authenticate endpoint" time="0"/>
   <testcase classname="Scenario: get a token with credentials" name="Then I receive an 200 status code" time="0"/>
-  <testcase classname="Scenario: get a token with credentials" name="Scenario: get a token with credentials" time="0.001"/>
+  <testcase classname="Scenario: get a token with credentials" name="Scenario: get a token with credentials" time="0"/>
 </testsuite>

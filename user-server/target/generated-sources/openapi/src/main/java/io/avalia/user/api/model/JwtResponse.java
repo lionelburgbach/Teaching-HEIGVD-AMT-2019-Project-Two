@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * JwtResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-15T22:13:36.979+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T02:08:38.644+01:00[Europe/Zurich]")
 
 public class JwtResponse   {
   @JsonProperty("jwttoken")
