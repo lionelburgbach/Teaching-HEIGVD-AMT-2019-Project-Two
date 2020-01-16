@@ -25,7 +25,7 @@ public class UsersService {
     @Autowired
     UsersRepository usersRepository;
 
-    public ResponseEntity<Object> createUser(UserInput user) throws Exception{
+    public ResponseEntity<Object> createUser(UserInput user) throws Exception {
 
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
@@ -43,7 +43,7 @@ public class UsersService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<UserToken> getUserByID(String email) throws Exception{
+    public ResponseEntity<UserToken> getUserByID(String email) {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();

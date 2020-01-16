@@ -20,7 +20,7 @@ public class UsersService {
     @Autowired
     UsersRepository usersRepository;
 
-    public ResponseEntity<Object> createUser(User user) throws Exception{
+    public ResponseEntity<Object> createUser(User user) throws Exception {
 
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
@@ -37,7 +37,7 @@ public class UsersService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<User> getUserByID(String email){
+    public ResponseEntity<User> getUserByID(String email) {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity ue = oue.get();
