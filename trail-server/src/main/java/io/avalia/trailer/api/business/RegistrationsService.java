@@ -1,6 +1,7 @@
 package io.avalia.trailer.api.business;
 
-import io.avalia.trailer.api.model.Registration;
+import io.avalia.trailer.api.exceptions.ApiException;
+import io.avalia.trailer.api.model.RegistrationInput;
 import io.avalia.trailer.api.model.RegistrationOutput;
 import io.avalia.trailer.entities.RegistrationsEntity;
 import io.avalia.trailer.entities.TrailsEntity;
@@ -11,6 +12,7 @@ import io.avalia.trailer.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -32,9 +34,17 @@ public class RegistrationsService {
     @Autowired
     UsersRepository usersRepository;
 
-    public ResponseEntity<Object> createRegistration(Registration reg) {
+    public ResponseEntity<Object> createRegistration(String email, RegistrationInput reg) throws Exception {
 
-        RegistrationsEntity newRegEntity = toRegistrationEntity(reg);
+        Optional<UsersEntity> oue = usersRepository.findById(email);
+        UsersEntity user = oue.get();
+
+        Optional<RegistrationsEntity> oReg  = regRepository.findByIdUserAndIdTrail(user.getId(), reg.getIdTrail());
+        if(!oReg.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This registration already exist!");
+        }
+
+        RegistrationsEntity newRegEntity = toRegistrationEntity(user.getId(),reg);
         regRepository.save(newRegEntity);
         Long id = newRegEntity.getId();
 
@@ -73,10 +83,10 @@ public class RegistrationsService {
         return ResponseEntity.ok("It has been delete!");
     }
 
-    private RegistrationsEntity toRegistrationEntity(Registration reg) {
+    private RegistrationsEntity toRegistrationEntity(long idUser, RegistrationInput reg) {
         RegistrationsEntity entity = new RegistrationsEntity();
         entity.setIdTrail(reg.getIdTrail());
-        entity.setIdUser(reg.getIdUser());
+        entity.setIdUser(idUser);
         return entity;
     }
 }

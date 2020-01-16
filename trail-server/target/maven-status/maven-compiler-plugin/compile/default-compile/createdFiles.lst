@@ -11,7 +11,6 @@ io/avalia/trailer/api/ApiUtil.class
 io/avalia/trailer/api/RegistrationsApi.class
 io/avalia/trailer/api/endpoints/UsersApiController.class
 io/avalia/trailer/configuration/InterceptorAppConfig.class
-io/avalia/trailer/api/interceptor/RegistrationsInterceptor.class
 io/avalia/trailer/api/model/TrailOutputAllOf.class
 io/avalia/trailer/api/interceptor/AdminInterceptor.class
 io/avalia/trailer/Swagger2SpringBoot$ExitException.class
@@ -19,6 +18,7 @@ io/avalia/trailer/configuration/HomeController.class
 io/avalia/trailer/api/model/User.class
 io/avalia/trailer/api/model/UserAllOf.class
 io/avalia/trailer/api/exceptions/ApiException.class
+io/avalia/trailer/api/model/RegistrationInput.class
 io/avalia/trailer/api/exceptions/ApiError.class
 io/avalia/trailer/entities/TrailsEntity.class
 io/avalia/trailer/api/business/RegistrationsService.class
@@ -28,6 +28,7 @@ io/avalia/trailer/api/model/Trail.class
 io/avalia/trailer/api/model/TrailOutput.class
 io/avalia/trailer/entities/JwtToken.class
 io/avalia/trailer/repositories/UsersRepository.class
+io/avalia/trailer/api/interceptor/GeneralInterceptor.class
 io/avalia/trailer/api/exceptions/RestExceptionHandler.class
 io/avalia/trailer/configuration/SwaggerDocumentationConfig.class
 io/avalia/trailer/api/model/UserUpdate.class
@@ -37,5 +38,4 @@ io/avalia/trailer/entities/RegistrationsEntity.class
 io/avalia/trailer/api/util/ApiOriginFilter.class
 io/avalia/trailer/api/model/TrailUpdate.class
 io/avalia/trailer/RFC3339DateFormat.class
-io/avalia/trailer/api/interceptor/UsersInterceptor.class
 io/avalia/trailer/entities/UsersEntity.class

@@ -5,7 +5,7 @@
  */
 package io.avalia.trailer.api;
 
-import io.avalia.trailer.api.model.Registration;
+import io.avalia.trailer.api.model.RegistrationInput;
 import io.avalia.trailer.api.model.RegistrationOutput;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T19:54:46.822054+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T21:09:26.682316+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "registrations", description = "the registrations API")
@@ -42,11 +42,11 @@ public interface RegistrationsApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class) })
-    @RequestMapping(value = "/registrations",
+    @RequestMapping(value = "/registrations/{email}",
         produces = { "*/*" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createRegistration(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Registration user) throws Exception {
+    default ResponseEntity<Object> createRegistration(@ApiParam(value = "email from the user",required=true) @PathVariable("email") String email,@ApiParam(value = "" ,required=true )  @Valid @RequestBody RegistrationInput registration) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
