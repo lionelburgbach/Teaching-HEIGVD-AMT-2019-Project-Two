@@ -1,5 +1,8 @@
-package io.avalia.user.api.interceptor;
+package io.avalia.user.configuration;
 
+import io.avalia.user.api.interceptor.AdminInterceptor;
+import io.avalia.user.api.interceptor.TokenInterceptor;
+import io.avalia.user.api.interceptor.UsersInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

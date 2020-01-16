@@ -72,7 +72,7 @@ public class UsersApiController implements UsersApi{
             responseEntity = usersService.getUsers(pageNumber, numberOfUsers);
         }
         catch(Exception e){
-            throw new ApiException(HttpStatus.BAD_REQUEST, "Fail to update this user");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Not Found");
         }
         return responseEntity;
     }

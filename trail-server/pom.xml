@@ -47,6 +47,7 @@
                             <configOptions>
                                 <dateLibrary>joda</dateLibrary>
                                 <useBeanValidation>true</useBeanValidation>
+                                <unhandledException>true</unhandledException>
                                 <interfaceOnly>true</interfaceOnly>
                                 <delegatePattern>false</delegatePattern>
                                 <apiPackage>io.avalia.trailer.api</apiPackage>

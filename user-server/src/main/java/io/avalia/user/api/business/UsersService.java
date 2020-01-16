@@ -5,7 +5,6 @@ import io.avalia.user.api.model.UserInput;
 import io.avalia.user.api.model.UserToken;
 import io.avalia.user.entities.UsersEntity;
 import io.avalia.user.repositories.UsersRepository;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -27,7 +25,7 @@ public class UsersService {
     @Autowired
     UsersRepository usersRepository;
 
-    public ResponseEntity<Object> createUser( UserInput user) throws Exception{
+    public ResponseEntity<Object> createUser(UserInput user) throws Exception{
 
         UsersEntity newUserEntity = toUserEntity(user);
         if (usersRepository.existsById(user.getEmail())){
@@ -52,10 +50,10 @@ public class UsersService {
         return ResponseEntity.ok(toUserToken(ue));
     }
 
-    public ResponseEntity deleteUserByID(@ApiParam(value = "", required = true) @PathVariable("email") String email){
+    public ResponseEntity deleteUserByID(String email){
 
         usersRepository.deleteById(email);
-        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok("It has been delete!");
     }
 
     public ResponseEntity updatePasswordByID(String email, String password) {
@@ -64,7 +62,7 @@ public class UsersService {
         UsersEntity ue = oue.get();
         ue.setPassword(new BCryptPasswordEncoder().encode(password));
         usersRepository.save(ue);
-        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok("It has been update!");
     }
 
     public ResponseEntity<List<UserToken>> getUsers(Integer pageNumber, Integer numberOfUsers) {

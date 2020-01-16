@@ -20,7 +20,7 @@
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/RFC3339DateFormat.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/util/ApiResponseMessage.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/api/interceptor/InterceptorAppConfig.java
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/configuration/InterceptorAppConfig.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/entities/JwtResponse.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/user-server/src/main/java/io/avalia/user/entities/JwtToken.java
