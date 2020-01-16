@@ -352,6 +352,9 @@ definitions:
   RegistrationOutput:
     type: object
     properties:
+      idTrail:
+        type: integer
+        format: int64
       trailName:
         type: string
       email:

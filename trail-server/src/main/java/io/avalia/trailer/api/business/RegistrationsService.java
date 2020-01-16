@@ -37,7 +37,15 @@ public class RegistrationsService {
     public ResponseEntity<Object> createRegistration(String email, RegistrationInput reg) throws Exception {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
+        if(!oue.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This user doesn't exist!");
+        }
         UsersEntity user = oue.get();
+
+        Optional<TrailsEntity> ote = trailsRepository.findById(reg.getIdTrail());
+        if(!ote.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This trail doesn't exists!");
+        }
 
         Optional<RegistrationsEntity> oReg  = regRepository.findByIdUserAndIdTrail(user.getId(), reg.getIdTrail());
         if(!oReg.isPresent()){
@@ -55,10 +63,15 @@ public class RegistrationsService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) {
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) throws Exception {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
+        if(!oue.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This user doesn't exist!");
+        }
+
         UsersEntity user = oue.get();
+
 
         Pageable page = PageRequest.of(pageNumber,numberOfReg);
         List<RegistrationOutput> regs = new ArrayList<>();
@@ -68,6 +81,7 @@ public class RegistrationsService {
             TrailsEntity te = ote.get();
             te.getName();
             RegistrationOutput ro = new RegistrationOutput();
+            ro.setIdTrail(te.getId());
             ro.setEmail(email);
             ro.setTrailName(te.getName());
             ro.setIdReg(regEntity.getId());

@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T21:09:26.682316+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T23:52:42.789071+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "registrations", description = "the registrations API")
@@ -80,7 +80,7 @@ public interface RegistrationsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"trailName\" : \"trailName\", \"email\" : \"email\", \"idReg\" : 0 }";
+                    String exampleString = "{ \"trailName\" : \"trailName\", \"idTrail\" : 0, \"email\" : \"email\", \"idReg\" : 6 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
