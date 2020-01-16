@@ -6,7 +6,7 @@ import io.avalia.trailer.api.model.RegistrationOutput;
 import io.avalia.trailer.entities.RegistrationsEntity;
 import io.avalia.trailer.entities.TrailsEntity;
 import io.avalia.trailer.entities.UsersEntity;
-import io.avalia.trailer.jwt.JwtToken;
+import io.avalia.trailer.entities.JwtToken;
 import io.avalia.trailer.repositories.RegistrationsRepository;
 import io.avalia.trailer.repositories.TrailsRepository;
 import io.avalia.trailer.repositories.UsersRepository;

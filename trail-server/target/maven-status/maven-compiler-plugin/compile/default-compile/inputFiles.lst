@@ -1,3 +1,4 @@
+/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/entities/JwtToken.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/ApiUtil.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/entities/UsersEntity.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationsApi.java
@@ -12,7 +13,6 @@
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/RFC3339DateFormat.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/RegistrationOutput.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/repositories/UsersRepository.java
-/Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/jwt/JwtToken.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/api/endpoints/UsersApiController.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/Registration.java
 /Users/lionelburgbacher/Documents/AMT/AMT_LABO/Project_Two/docker/docker-comp/../../trail-server/src/main/java/io/avalia/trailer/api/exceptions/NotFoundException.java

@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T02:08:38.644+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T16:58:18.481+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -42,7 +42,7 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "created", response = Object.class),
-        @ApiResponse(code = 400, message = "You do not have necessary permissions to creat a user") })
+        @ApiResponse(code = 401, message = "You do not have necessary permissions to creat a user") })
     @RequestMapping(value = "/users",
         produces = { "*/*" }, 
         consumes = { "application/json" },
@@ -58,7 +58,9 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation"),
-        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
+        @ApiResponse(code = 400, message = "Bad request"),
+        @ApiResponse(code = 401, message = "You do not have necessary permissions for the resource"),
+        @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.DELETE)
     default ResponseEntity<Void> deleteUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email) throws Exception {
@@ -72,7 +74,9 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = UserToken.class),
-        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
+        @ApiResponse(code = 400, message = "Bad request"),
+        @ApiResponse(code = 401, message = "You do not have necessary permissions for the resource"),
+        @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -96,11 +100,11 @@ public interface UsersApi {
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "success to get users", response = UserToken.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "You do not have necessary permissions for the resource") })
+        @ApiResponse(code = 401, message = "You do not have necessary permissions for the resource") })
     @RequestMapping(value = "/users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "1") @Valid @RequestParam(value = "startingIndex", required = false, defaultValue="1") Integer startingIndex,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsers", required = false, defaultValue="30") Integer numberOfUsers) throws Exception {
+    default ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsers", required = false, defaultValue="30") Integer numberOfUsers) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

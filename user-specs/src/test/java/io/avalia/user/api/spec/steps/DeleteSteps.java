@@ -10,7 +10,6 @@ import io.avalia.users.ApiException;
 import io.avalia.users.ApiResponse;
 import io.avalia.users.api.DefaultApi;
 import io.avalia.users.api.dto.UserAuth;
-import io.avalia.users.api.dto.UserInput;
 
 import java.util.ArrayList;
 

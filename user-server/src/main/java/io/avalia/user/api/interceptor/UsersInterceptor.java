@@ -23,7 +23,7 @@ public class UsersInterceptor implements HandlerInterceptor {
         String token = request.getHeader("Authorization").split(" ")[1];
 
         if(!(jwt.getRoleFromToken(token).equals("admin") || jwt.validateToken(token, owner))){
-            throw new ApiException(HttpStatus.FORBIDDEN ,"You don't have rights to read/update/delete properties from this email: " + owner);
+            throw new ApiException(HttpStatus.UNAUTHORIZED ,"You don't have rights to read/update/delete properties from this email: " + owner);
         }
 
         return true;

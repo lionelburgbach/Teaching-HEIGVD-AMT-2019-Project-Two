@@ -13,7 +13,7 @@
 
 package io.avalia.users;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-16T02:09:56.353+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-16T11:38:47.924+01:00[Europe/Zurich]")
 public class Pair {
     private String name = "";
     private String value = "";

@@ -27,6 +27,6 @@ services:
       build: ../images/java_server_2
       ports:
          - "8081:8081"
-           # restart: on-failure
+      restart: on-failure
       links: 
          - mysql:db

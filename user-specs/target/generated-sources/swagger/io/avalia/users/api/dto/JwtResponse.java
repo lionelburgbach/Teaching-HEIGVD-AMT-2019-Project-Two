@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * JwtResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-16T02:09:56.353+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-16T11:38:47.924+01:00[Europe/Zurich]")
 public class JwtResponse {
   public static final String SERIALIZED_NAME_JWTTOKEN = "jwttoken";
   @SerializedName(SERIALIZED_NAME_JWTTOKEN)
