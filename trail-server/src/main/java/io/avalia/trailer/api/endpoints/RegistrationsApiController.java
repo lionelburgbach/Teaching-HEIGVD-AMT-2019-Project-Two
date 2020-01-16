@@ -30,7 +30,7 @@ public class RegistrationsApiController implements RegistrationsApi {
         return registrationsService.createRegistration(email, registration);
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistration", required = false, defaultValue="30") Integer numberOfRegistration) {
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistration", required = false, defaultValue="30") Integer numberOfRegistration) throws Exception {
 
         return registrationsService.getRegistrationsByIdUser(email, pageNumber, numberOfRegistration);
     }

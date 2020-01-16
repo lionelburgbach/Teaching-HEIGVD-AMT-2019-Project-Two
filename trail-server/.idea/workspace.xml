@@ -4,10 +4,7 @@
     <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/RegistrationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/RegistrationsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/UsersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/UsersService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,8 @@
       <workItem from="1579181157798" duration="180000" />
       <workItem from="1579185235872" duration="11729000" />
       <workItem from="1579202676215" duration="4018000" />
-      <workItem from="1579207615258" duration="187000" />
+      <workItem from="1579207615258" duration="242000" />
+      <workItem from="1579209023547" duration="390000" />
     </task>
     <servers />
   </component>

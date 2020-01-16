@@ -37,6 +37,9 @@ public class RegistrationsService {
     public ResponseEntity<Object> createRegistration(String email, RegistrationInput reg) throws Exception {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
+        if(!oue.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This user doesn't exist!");
+        }
         UsersEntity user = oue.get();
 
         Optional<RegistrationsEntity> oReg  = regRepository.findByIdUserAndIdTrail(user.getId(), reg.getIdTrail());
@@ -55,10 +58,15 @@ public class RegistrationsService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) {
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) throws Exception {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
+        if(!oue.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This user doesn't exist!");
+        }
+
         UsersEntity user = oue.get();
+
 
         Pageable page = PageRequest.of(pageNumber,numberOfReg);
         List<RegistrationOutput> regs = new ArrayList<>();
