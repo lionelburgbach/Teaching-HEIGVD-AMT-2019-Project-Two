@@ -36,9 +36,9 @@ paths:
             items:
               $ref: '#/definitions/JwtResponse'
         400:
-          description: 'fail to authenticate'
-          schema:
-            type: string
+          description: 'Email and Password cannot be null'
+        401:
+          description: 'Bad Credentials'
   /users:
     post:
       security:
@@ -58,7 +58,7 @@ paths:
           description: created
           schema:
             type: object
-        400:
+        401:
           description: 'You do not have necessary permissions to creat a user'
     get:
       security:
@@ -68,9 +68,9 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: startingIndex
+        - name: PageNumber
           in: query
-          default: 1
+          default: 0
           required: false
           type: integer
         - name: numberOfUsers
@@ -85,7 +85,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/UserToken'
-        400:
+        401:
           description: 'You do not have necessary permissions for the resource'
   /users/{email}:
     get:
@@ -103,7 +103,11 @@ paths:
           schema:
             $ref: "#/definitions/UserToken"
         400:
+          description: "Bad request"
+        401:
           description: "You do not have necessary permissions for the resource"
+        404:
+          description: "User not found"
     put:
       security:
         - Bearer: []
@@ -130,7 +134,11 @@ paths:
         200:
           description: "successful operation"
         400:
-          description: 'You do not have necessary permissions for the resource'
+          description: "Bad request"
+        401:
+          description: "You do not have necessary permissions for the resource"
+        404:
+          description: "User not found"
 definitions:
   User:
     type: object

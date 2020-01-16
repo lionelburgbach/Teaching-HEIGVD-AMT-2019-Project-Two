@@ -3,7 +3,7 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.TrailsApi;
 import io.avalia.trailer.api.model.Trail;
 import io.avalia.trailer.entities.TrailsEntity;
-import io.avalia.trailer.jwt.JwtToken;
+import io.avalia.trailer.entities.JwtToken;
 import io.avalia.trailer.repositories.TrailsRepository;
 import io.avalia.trailer.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;

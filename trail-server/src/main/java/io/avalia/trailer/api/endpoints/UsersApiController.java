@@ -3,7 +3,7 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.UsersApi;
 import io.avalia.trailer.api.model.User;
 import io.avalia.trailer.entities.UsersEntity;
-import io.avalia.trailer.jwt.JwtToken;
+import io.avalia.trailer.entities.JwtToken;
 import io.avalia.trailer.repositories.UsersRepository;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;

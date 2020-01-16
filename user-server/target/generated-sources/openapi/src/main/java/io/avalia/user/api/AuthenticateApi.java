@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T02:08:38.644+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T16:58:18.481+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "authenticate", description = "the authenticate API")
@@ -39,7 +39,8 @@ public interface AuthenticateApi {
     @ApiOperation(value = "", nickname = "createAuthenticationToken", notes = "try to authenticate", response = Object.class, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "authentication success", response = Object.class),
-        @ApiResponse(code = 400, message = "fail to authenticate", response = String.class) })
+        @ApiResponse(code = 400, message = "Email and Password cannot be null"),
+        @ApiResponse(code = 401, message = "Bad Credentials") })
     @RequestMapping(value = "/authenticate",
         produces = { "application/json" }, 
         consumes = { "application/json" },
