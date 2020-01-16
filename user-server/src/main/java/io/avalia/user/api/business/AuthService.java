@@ -23,7 +23,7 @@ public class AuthService {
     JwtToken jwt;
 
 
-    public String createAuthenticationToken(UserAuth user) throws Exception{
+    public String createAuthenticationToken(UserAuth user) throws Exception {
 
         if (user.getEmail() == null || user.getPassword() == null) {
             throw new ApiException(HttpStatus.BAD_REQUEST,"Email and Password cannot be null");

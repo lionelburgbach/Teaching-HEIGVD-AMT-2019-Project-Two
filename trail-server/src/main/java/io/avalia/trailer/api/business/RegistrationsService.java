@@ -55,7 +55,7 @@ public class RegistrationsService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg){
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         UsersEntity user = oue.get();
