@@ -13,7 +13,7 @@
 
 package io.avalia.users;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-13T17:30:51.640+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-16T02:09:56.353+01:00[Europe/Zurich]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

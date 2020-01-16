@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-15T22:13:36.979+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T02:08:38.644+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -100,7 +100,7 @@ public interface UsersApi {
     @RequestMapping(value = "/users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<UserToken>> getUsers() throws Exception {
+    default ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "1") @Valid @RequestParam(value = "startingIndex", required = false, defaultValue="1") Integer startingIndex,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsers", required = false, defaultValue="30") Integer numberOfUsers) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

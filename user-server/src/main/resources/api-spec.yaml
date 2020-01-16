@@ -67,6 +67,17 @@ paths:
       operationId: getUsers
       produces:
         - application/json
+      parameters:
+        - name: startingIndex
+          in: query
+          default: 1
+          required: false
+          type: integer
+        - name: numberOfUsers
+          in: query
+          default: 30
+          required: false
+          type: integer
       responses:
         200:
           description: 'success to get users'
