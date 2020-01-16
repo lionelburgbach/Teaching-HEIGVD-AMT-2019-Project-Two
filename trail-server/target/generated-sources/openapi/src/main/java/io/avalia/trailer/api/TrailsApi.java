@@ -6,6 +6,8 @@
 package io.avalia.trailer.api;
 
 import io.avalia.trailer.api.model.Trail;
+import io.avalia.trailer.api.model.TrailOutput;
+import io.avalia.trailer.api.model.TrailUpdate;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T15:35:41.925+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T19:54:46.822054+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trails", description = "the trails API")
@@ -35,27 +37,6 @@ public interface TrailsApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
-
-    @ApiOperation(value = "", nickname = "allTrails", notes = "all trails", response = Trail.class, responseContainer = "List", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "read", response = Trail.class, responseContainer = "List") })
-    @RequestMapping(value = "/trails",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    default ResponseEntity<List<Trail>> allTrails() {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"date\" : \"date\", \"name\" : \"name\", \"length\" : 0, \"upAndDown\" : 6, \"desprition\" : \"desprition\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
 
     @ApiOperation(value = "", nickname = "createTrail", notes = "create a trail", response = Object.class, authorizations = {
         @Authorization(value = "Bearer")
@@ -66,13 +47,13 @@ public interface TrailsApi {
         produces = { "*/*" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Object> createTrail(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Trail trail) {
+    default ResponseEntity<Object> createTrail(@ApiParam(value = "" ,required=true )  @Valid @RequestBody Trail trail) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteTrail", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteTrailByID", notes = "", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -80,25 +61,27 @@ public interface TrailsApi {
         @ApiResponse(code = 404, message = "Trail not found") })
     @RequestMapping(value = "/trails/{id}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteTrail(@ApiParam(value = "The name that needs to be deleted",required=true) @PathVariable("id") Long id) {
+    default ResponseEntity<Void> deleteTrailByID(@ApiParam(value = "trail that needs to be deleted",required=true) @PathVariable("id") Long id) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
-    @ApiOperation(value = "", nickname = "getTrailByID", notes = "", response = Trail.class, tags={  })
+    @ApiOperation(value = "", nickname = "getTrailByID", notes = "", response = TrailOutput.class, authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = Trail.class),
+        @ApiResponse(code = 200, message = "successful operation", response = TrailOutput.class),
         @ApiResponse(code = 400, message = "Invalid Trail supplied"),
         @ApiResponse(code = 404, message = "Trail not found") })
     @RequestMapping(value = "/trails/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<Trail> getTrailByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("id") Long id) {
+    default ResponseEntity<TrailOutput> getTrailByID(@ApiParam(value = "The id of the trail",required=true) @PathVariable("id") Long id) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"date\" : \"date\", \"name\" : \"name\", \"length\" : 0, \"upAndDown\" : 6, \"desprition\" : \"desprition\" }";
+                    String exampleString = "null";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -109,7 +92,30 @@ public interface TrailsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "updateTrail", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "getTrails", notes = "all trails", response = TrailOutput.class, responseContainer = "List", authorizations = {
+        @Authorization(value = "Bearer")
+    }, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "read", response = TrailOutput.class, responseContainer = "List") })
+    @RequestMapping(value = "/trails",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<List<TrailOutput>> getTrails(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfTrails", required = false, defaultValue="30") Integer numberOfTrails) throws Exception {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "null";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "", nickname = "updateTrailByID", notes = "", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -117,7 +123,7 @@ public interface TrailsApi {
         @ApiResponse(code = 404, message = "Trail not found") })
     @RequestMapping(value = "/trails/{id}",
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateTrail(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody Trail body) {
+    default ResponseEntity<Void> updateTrailByID(@ApiParam(value = "trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody TrailUpdate trail) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -1,11 +1,12 @@
 package io.avalia.trailer.repositories;
 
 import io.avalia.trailer.entities.RegistrationsEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
 
-public interface RegistrationsRepository extends CrudRepository<RegistrationsEntity, Long> {
+public interface RegistrationsRepository extends PagingAndSortingRepository<RegistrationsEntity, Long> {
 
-    List<RegistrationsEntity> findByIdUser(Long idUser);
+    Page<RegistrationsEntity> findAllByIdUser(Long idUser, Pageable page);
 }
