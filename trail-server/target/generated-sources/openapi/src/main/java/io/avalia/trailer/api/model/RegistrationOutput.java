@@ -12,9 +12,12 @@ import javax.validation.constraints.*;
 /**
  * RegistrationOutput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T21:09:26.682316+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T23:52:42.789071+01:00[Europe/Zurich]")
 
 public class RegistrationOutput   {
+  @JsonProperty("idTrail")
+  private Long idTrail;
+
   @JsonProperty("trailName")
   private String trailName;
 
@@ -23,6 +26,26 @@ public class RegistrationOutput   {
 
   @JsonProperty("idReg")
   private Long idReg;
+
+  public RegistrationOutput idTrail(Long idTrail) {
+    this.idTrail = idTrail;
+    return this;
+  }
+
+  /**
+   * Get idTrail
+   * @return idTrail
+  */
+  @ApiModelProperty(value = "")
+
+
+  public Long getIdTrail() {
+    return idTrail;
+  }
+
+  public void setIdTrail(Long idTrail) {
+    this.idTrail = idTrail;
+  }
 
   public RegistrationOutput trailName(String trailName) {
     this.trailName = trailName;
@@ -94,14 +117,15 @@ public class RegistrationOutput   {
       return false;
     }
     RegistrationOutput registrationOutput = (RegistrationOutput) o;
-    return Objects.equals(this.trailName, registrationOutput.trailName) &&
+    return Objects.equals(this.idTrail, registrationOutput.idTrail) &&
+        Objects.equals(this.trailName, registrationOutput.trailName) &&
         Objects.equals(this.email, registrationOutput.email) &&
         Objects.equals(this.idReg, registrationOutput.idReg);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(trailName, email, idReg);
+    return Objects.hash(idTrail, trailName, email, idReg);
   }
 
   @Override
@@ -109,6 +133,7 @@ public class RegistrationOutput   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RegistrationOutput {\n");
     
+    sb.append("    idTrail: ").append(toIndentedString(idTrail)).append("\n");
     sb.append("    trailName: ").append(toIndentedString(trailName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    idReg: ").append(toIndentedString(idReg)).append("\n");

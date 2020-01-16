@@ -10,7 +10,7 @@ USE amt_2;
 
 SET AUTOCOMMIT=0;
 INSERT INTO users_entity VALUES (1,'admin','lionel.burgbacher@heig-vd.ch','$2a$10$oC3vF0CQY9l3xl/LBw7hQ.RAUaZkRDBcK1e54hLzbSCUb70tVECqe');
-INSERT INTO users_entity VALUES (2,'admin','guillaume.blanco@heig-vd.ch','$2a$10$Vfj9knlD54qvUpSu2BpAjeynFVZTu3JNIxmqsq1Hl6lwK8gDcY9Gy');
+INSERT INTO users_entity VALUES (2,'regular','guillaume.blanco@heig-vd.ch','$2a$10$Vfj9knlD54qvUpSu2BpAjeynFVZTu3JNIxmqsq1Hl6lwK8gDcY9Gy');
 INSERT INTO users_entity VALUES (3,'regular','brooke.mccauley@amtseeyounextyear.com','Brooke');
 INSERT INTO users_entity VALUES (4,'regular','kathleen.vazquez@amtsucced.com','Kathleen');
 INSERT INTO users_entity VALUES (5,'regular','mark.proctor@bestcoursever.ch','Mark');

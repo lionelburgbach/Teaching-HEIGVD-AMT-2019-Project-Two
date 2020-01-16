@@ -21,7 +21,6 @@ import java.util.List;
 @Controller
 public class RegistrationsApiController implements RegistrationsApi {
 
-
     @Autowired
     RegistrationsService registrationsService;
 

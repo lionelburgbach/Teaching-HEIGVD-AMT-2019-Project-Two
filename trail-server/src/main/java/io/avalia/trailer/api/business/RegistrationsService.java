@@ -42,6 +42,11 @@ public class RegistrationsService {
         }
         UsersEntity user = oue.get();
 
+        Optional<TrailsEntity> ote = trailsRepository.findById(reg.getIdTrail());
+        if(!ote.isPresent()){
+            throw new ApiException(HttpStatus.BAD_REQUEST, "This trail doesn't exists!");
+        }
+
         Optional<RegistrationsEntity> oReg  = regRepository.findByIdUserAndIdTrail(user.getId(), reg.getIdTrail());
         if(!oReg.isPresent()){
             throw new ApiException(HttpStatus.BAD_REQUEST, "This registration already exist!");
@@ -76,6 +81,7 @@ public class RegistrationsService {
             TrailsEntity te = ote.get();
             te.getName();
             RegistrationOutput ro = new RegistrationOutput();
+            ro.setIdTrail(te.getId());
             ro.setEmail(email);
             ro.setTrailName(te.getName());
             ro.setIdReg(regEntity.getId());
