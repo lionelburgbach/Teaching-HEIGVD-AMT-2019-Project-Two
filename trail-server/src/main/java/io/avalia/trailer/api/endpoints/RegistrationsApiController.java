@@ -3,7 +3,7 @@ package io.avalia.trailer.api.endpoints;
 import io.avalia.trailer.api.RegistrationsApi;
 import io.avalia.trailer.api.business.RegistrationsService;
 import io.avalia.trailer.api.exceptions.ApiException;
-import io.avalia.trailer.api.model.Registration;
+import io.avalia.trailer.api.model.RegistrationInput;
 import io.avalia.trailer.api.model.RegistrationOutput;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +25,9 @@ public class RegistrationsApiController implements RegistrationsApi {
     @Autowired
     RegistrationsService registrationsService;
 
-    public ResponseEntity<Object> createRegistration(@ApiParam(value = "", required = true) @Valid @RequestBody Registration reg) {
+    public ResponseEntity<Object> createRegistration(@ApiParam(value = "email from the user",required=true) @PathVariable("email") String email,@ApiParam(value = "" ,required=true )  @Valid @RequestBody RegistrationInput registration) throws Exception {
 
-        return registrationsService.createRegistration(reg);
+        return registrationsService.createRegistration(email, registration);
     }
 
     public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistration", required = false, defaultValue="30") Integer numberOfRegistration){

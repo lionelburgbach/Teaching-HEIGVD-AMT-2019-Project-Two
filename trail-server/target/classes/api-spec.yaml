@@ -213,25 +213,6 @@ paths:
         404:
           description: "Trail not found"
 
-  /registrations:
-    post:
-      security:
-        - Bearer: []
-      description: create a registration
-      operationId: createRegistration
-      consumes:
-        - application/json
-      parameters:
-        - name: user
-          in: body
-          required: true
-          schema:
-            $ref: "#/definitions/Registration"
-      responses:
-        201:
-          description: created
-          schema:
-            type: object
   /registrations/{email}:
     get:
       security:
@@ -267,6 +248,29 @@ paths:
           description: "Invalid id supplied"
         404:
           description: "Registration not found"
+    post:
+      security:
+        - Bearer: []
+      description: create a registration
+      operationId: createRegistration
+      consumes:
+        - application/json
+      parameters:
+        - name: email
+          in: path
+          description: "email from the user"
+          required: true
+          type: string
+        - name: registration
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/RegistrationInput"
+      responses:
+        201:
+          description: created
+          schema:
+            type: object
     delete:
       security:
         - Bearer: []
@@ -332,15 +336,19 @@ definitions:
     allOf:
       - $ref: "#/definitions/Trail"
       - $ref: "#/definitions/TrailOutput"
-  Registration:
+  RegistrationInput:
     type: object
     properties:
       idTrail:
         type: integer
         format: int64
-      idUser:
-        type: integer
-        format: int64
+  Registration:
+    allOf:
+      - $ref: "#/definitions/RegistrationInput"
+    type: object
+    properties:
+      email:
+        type: string
   RegistrationOutput:
     type: object
     properties:
