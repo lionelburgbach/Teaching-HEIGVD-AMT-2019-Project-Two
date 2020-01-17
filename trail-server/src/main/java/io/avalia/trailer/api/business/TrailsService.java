@@ -2,7 +2,6 @@ package io.avalia.trailer.api.business;
 
 import io.avalia.trailer.api.model.Trail;
 import io.avalia.trailer.api.model.TrailOutput;
-import io.avalia.trailer.api.model.TrailUpdate;
 import io.avalia.trailer.entities.TrailsEntity;
 import io.avalia.trailer.repositories.TrailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -36,6 +36,7 @@ public class RegistrationsService {
 
     public ResponseEntity<Object> createRegistration(String email, RegistrationInput reg) throws Exception {
 
+        //An admin can add a user so if the email is wrong, there is an exception.
         Optional<UsersEntity> oue = usersRepository.findById(email);
         if(!oue.isPresent()){
             throw new ApiException(HttpStatus.BAD_REQUEST, "This user doesn't exist!");
@@ -71,7 +72,6 @@ public class RegistrationsService {
         }
 
         UsersEntity user = oue.get();
-
 
         Pageable page = PageRequest.of(pageNumber,numberOfRegistrationsPerPage);
         List<RegistrationOutput> regs = new ArrayList<>();
