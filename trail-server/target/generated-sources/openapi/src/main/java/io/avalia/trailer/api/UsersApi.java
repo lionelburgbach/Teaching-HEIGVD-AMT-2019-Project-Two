@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T10:28:07.467667+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:18:37.294690+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "users", description = "the users API")
@@ -37,11 +37,12 @@ public interface UsersApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createUser", notes = "create a user", response = Object.class, authorizations = {
+    @ApiOperation(value = "", nickname = "createUser", notes = "Create a user", response = Object.class, authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "created", response = Object.class) })
+        @ApiResponse(code = 201, message = "created", response = Object.class),
+        @ApiResponse(code = 404, message = "This email already exist!") })
     @RequestMapping(value = "/users",
         produces = { "*/*" }, 
         consumes = { "application/json" },
@@ -52,31 +53,33 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteUserByID", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteUserByID", notes = "Delete the user with this email", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation"),
         @ApiResponse(code = 400, message = "Invalid username supplied"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteUserByID(@ApiParam(value = "The name that needs to be deleted",required=true) @PathVariable("email") String email) throws Exception {
+    default ResponseEntity<Void> deleteUserByID(@ApiParam(value = "user that needs to be deleted",required=true) @PathVariable("email") String email) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
-    @ApiOperation(value = "", nickname = "getUserByID", notes = "", response = User.class, authorizations = {
+    @ApiOperation(value = "", nickname = "getUserByID", notes = "Get the user with this email", response = User.class, authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = User.class),
-        @ApiResponse(code = 400, message = "Invalid username supplied"),
+        @ApiResponse(code = 400, message = "Bad request"),
+        @ApiResponse(code = 401, message = "You do not have necessary permissions for the resource"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<User> getUserByID(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("email") String email) throws Exception {
+    default ResponseEntity<User> getUserByID(@ApiParam(value = "email of the user",required=true) @PathVariable("email") String email) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -91,15 +94,16 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "updateUserByID", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "updateUserByID", notes = "Update the user with this email", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation"),
         @ApiResponse(code = 400, message = "Invalid user supplied"),
         @ApiResponse(code = 404, message = "User not found") })
     @RequestMapping(value = "/users/{email}",
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateUserByID(@ApiParam(value = "name that need to be updated",required=true) @PathVariable("email") String email,@ApiParam(value = "Updated user object" ,required=true )  @Valid @RequestBody UserUpdate userUpdate) throws Exception {
+    default ResponseEntity<Void> updateUserByID(@ApiParam(value = "user that need to be updated",required=true) @PathVariable("email") String email,@ApiParam(value = "Updated user object" ,required=true )  @Valid @RequestBody UserUpdate userUpdate) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

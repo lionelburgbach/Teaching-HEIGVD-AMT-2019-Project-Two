@@ -7,7 +7,6 @@ host: 'localhost:8081'
 basePath: /api
 schemes:
   - http
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -20,7 +19,7 @@ paths:
     post:
       security:
         - Bearer: []
-      description: create a user
+      description: 'Create a user'
       operationId: createUser
       consumes:
         - application/json
@@ -35,79 +34,88 @@ paths:
           description: created
           schema:
             type: object
+        404:
+          description: 'This email already exist!'
   /users/{email}:
     get:
       security:
         - Bearer: []
-      description: ""
+      description: 'Get the user with this email'
       operationId: getUserByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "The name that needs to be fetched. Use user1 for testing. "
+          description: 'email of the user'
           required: true
           type: string
       responses:
         200:
-          description: "successful operation"
+          description: 'successful operation'
           schema:
-            $ref: "#/definitions/User"
+            $ref: '#/definitions/User'
         400:
-          description: "Invalid username supplied"
+          description: 'Bad request'
+        401:
+          description: 'You do not have necessary permissions for the resource'
         404:
-          description: "User not found"
+          description: 'User not found'
     put:
       security:
         - Bearer: []
-      description: ""
+      description: 'Update the user with this email'
       operationId: updateUserByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "name that need to be updated"
+          description: 'user that need to be updated'
           required: true
           type: string
         - in: body
           name: userUpdate
-          description: "Updated user object"
+          description: 'Updated user object'
           required: true
           schema:
-            $ref: "#/definitions/UserUpdate"
+            $ref: '#/definitions/UserUpdate'
       responses:
+        200:
+          description: 'successful operation'
         400:
-          description: "Invalid user supplied"
+          description: 'Invalid user supplied'
         404:
-          description: "User not found"
+          description: 'User not found'
     delete:
       security:
         - Bearer: []
+      description: 'Delete the user with this email'
       operationId: deleteUserByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "The name that needs to be deleted"
+          description: 'user that needs to be deleted'
           required: true
           type: string
       responses:
+        200:
+          description: 'successful operation'
         400:
-          description: "Invalid username supplied"
+          description: 'Invalid username supplied'
         404:
-          description: "User not found"
+          description: 'User not found'
 
   /trails:
     get:
       security:
         - Bearer: []
-      description: all trails
+      description: 'Get all trails'
       operationId: getTrails
       produces:
-        - application/json
+        - 'application/json'
       parameters:
         - name: PageNumber
           in: query
@@ -121,7 +129,7 @@ paths:
           type: integer
       responses:
         200:
-          description: read
+          description: 'Array with all trails'
           schema:
             type: array
             items:
@@ -129,10 +137,10 @@ paths:
     post:
       security:
         - Bearer: []
-      description: create a trail
+      description: 'Create a trail'
       operationId: createTrail
       consumes:
-        - application/json
+        - 'application/json'
       parameters:
         - name: trail
           in: body
@@ -149,82 +157,83 @@ paths:
     get:
       security:
         - Bearer: []
-      description: ""
+      description: 'Get the trail by this id'
       operationId: getTrailByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: id
           in: path
-          description: "The id of the trail"
+          description: 'The id of the trail'
           required: true
           type: integer
           format: int64
       responses:
         200:
-          description: "successful operation"
+          description: 'successful operation'
           schema:
-            $ref: "#/definitions/TrailOutput"
+            $ref: '#/definitions/TrailOutput'
         400:
-          description: "Invalid Trail supplied"
+          description: 'Invalid Trail supplied'
         404:
-          description: "Trail not found"
+          description: 'Trail not found'
     put:
       security:
         - Bearer: []
-      description: ""
+      description: 'Update the trail with this id'
       operationId: updateTrailByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: id
           in: path
-          description: "trail that need to be updated"
+          description: 'id for the trail that need to be updated'
           required: true
           type: integer
           format: int64
         - in: body
-          name: "trail"
-          description: "Updated Trail object"
+          name: trail
+          description: 'Updated Trail object'
           required: true
           schema:
-            $ref: "#/definitions/TrailUpdate"
+            $ref: '#/definitions/TrailUpdate'
       responses:
         400:
-          description: "Invalid trail supplied"
+          description: 'Invalid trail supplied'
         404:
-          description: "Trail not found"
+          description: 'Trail not found'
     delete:
       security:
         - Bearer: []
+      description: 'Delete the trail with this id'
       operationId: deleteTrailByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: id
           in: path
-          description: "trail that needs to be deleted"
+          description: 'trail that needs to be deleted'
           required: true
           type: integer
           format: int64
       responses:
         400:
-          description: "Invalid Trail id supplied"
+          description: 'Invalid Trail id supplied'
         404:
-          description: "Trail not found"
+          description: 'Trail not found'
 
   /registrations/{email}:
     get:
       security:
         - Bearer: []
-      description: ""
+      description: 'Get All registration with this email'
       operationId: getRegistrationsByIdUser
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "All registration for this user "
+          description: 'email with registrations'
           required: true
           type: string
         - name: PageNumber
@@ -245,55 +254,58 @@ paths:
             items:
               $ref: '#/definitions/RegistrationOutput'
         400:
-          description: "Invalid id supplied"
+          description: 'Invalid id supplied'
         404:
-          description: "Registration not found"
+          description: 'Registration not found'
     post:
       security:
         - Bearer: []
-      description: create a registration
+      description: 'Create a registration for this email'
       operationId: createRegistration
       consumes:
-        - application/json
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "email from the user"
+          description: 'email from the user'
           required: true
           type: string
         - name: registration
           in: body
           required: true
           schema:
-            $ref: "#/definitions/RegistrationInput"
+            $ref: '#/definitions/RegistrationInput'
       responses:
         201:
           description: created
           schema:
             type: object
+        400:
+          description: 'Registration problem'
     delete:
       security:
         - Bearer: []
+      description: 'Delete a registration for this email'
       operationId: deleteRegistrationByID
       produces:
-        - "application/json"
+        - 'application/json'
       parameters:
         - name: email
           in: path
-          description: "The registration id that needs to be deleted"
+          description: 'The owner registration'
           required: true
           type: string
         - name: id
           in: query
-          description: "The registration id that needs to be deleted"
+          description: 'The registration id that needs to be deleted'
           required: true
           type: integer
           format: int64
       responses:
         400:
-          description: "Invalid id supplied"
+          description: 'Invalid id supplied'
         404:
-          description: "Registration not found"
+          description: 'Registration not found'
 definitions:
   UserUpdate:
     type: object
@@ -306,7 +318,7 @@ definitions:
         type: string
   User:
     allOf:
-      - $ref: "#/definitions/UserUpdate"
+      - $ref: '#/definitions/UserUpdate'
       - type: object
         properties:
           email:
@@ -326,7 +338,7 @@ definitions:
         type: string
   TrailOutput:
     allOf:
-      - $ref: "#/definitions/Trail"
+      - $ref: '#/definitions/Trail'
       - type: object
         properties:
           id:
@@ -334,8 +346,8 @@ definitions:
             format: int64
   TrailUpdate:
     allOf:
-      - $ref: "#/definitions/Trail"
-      - $ref: "#/definitions/TrailOutput"
+      - $ref: '#/definitions/Trail'
+      - $ref: '#/definitions/TrailOutput'
   RegistrationInput:
     type: object
     properties:
@@ -344,7 +356,7 @@ definitions:
         format: int64
   Registration:
     allOf:
-      - $ref: "#/definitions/RegistrationInput"
+      - $ref: '#/definitions/RegistrationInput'
     type: object
     properties:
       email:

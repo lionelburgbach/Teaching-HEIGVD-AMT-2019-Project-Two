@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T10:28:07.467667+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:18:37.294690+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trails", description = "the trails API")
@@ -38,7 +38,7 @@ public interface TrailsApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createTrail", notes = "create a trail", response = Object.class, authorizations = {
+    @ApiOperation(value = "", nickname = "createTrail", notes = "Create a trail", response = Object.class, authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -53,7 +53,7 @@ public interface TrailsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteTrailByID", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteTrailByID", notes = "Delete the trail with this id", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -67,7 +67,7 @@ public interface TrailsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getTrailByID", notes = "", response = TrailOutput.class, authorizations = {
+    @ApiOperation(value = "", nickname = "getTrailByID", notes = "Get the trail by this id", response = TrailOutput.class, authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -92,11 +92,11 @@ public interface TrailsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "getTrails", notes = "all trails", response = TrailOutput.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "", nickname = "getTrails", notes = "Get all trails", response = TrailOutput.class, responseContainer = "List", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "read", response = TrailOutput.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "Array with all trails", response = TrailOutput.class, responseContainer = "List") })
     @RequestMapping(value = "/trails",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
@@ -115,7 +115,7 @@ public interface TrailsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "updateTrailByID", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "updateTrailByID", notes = "Update the trail with this id", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -123,7 +123,7 @@ public interface TrailsApi {
         @ApiResponse(code = 404, message = "Trail not found") })
     @RequestMapping(value = "/trails/{id}",
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateTrailByID(@ApiParam(value = "trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody TrailUpdate trail) throws Exception {
+    default ResponseEntity<Void> updateTrailByID(@ApiParam(value = "id for the trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody TrailUpdate trail) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
