@@ -29,9 +29,9 @@ public class RegistrationsApiController implements RegistrationsApi {
         return registrationsService.createRegistration(email, registration);
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistration", required = false, defaultValue="30") Integer numberOfRegistration) throws Exception {
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistrationsPerPage", required = false, defaultValue="30") Integer numberOfRegistrationsPerPage) throws Exception {
 
-        return registrationsService.getRegistrationsByIdUser(email, pageNumber, numberOfRegistration);
+        return registrationsService.getRegistrationsByIdUser(email, pageNumber, numberOfRegistrationsPerPage);
     }
 
     public ResponseEntity deleteRegistrationByID(@ApiParam(value = "", required = true) @PathVariable("email") String email, @RequestParam("id")  Long id) throws Exception {

@@ -73,7 +73,7 @@ paths:
           default: 0
           required: false
           type: integer
-        - name: numberOfUsers
+        - name: numberOfUsersPerPage
           in: query
           default: 30
           required: false

@@ -36,9 +36,9 @@ public class TrailsService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<List<TrailOutput>> getTrails(Integer pageNumber, Integer numberOfTrails) {
+    public ResponseEntity<List<TrailOutput>> getTrails(Integer pageNumber, Integer numberOfTrailsPerPage) {
 
-        Pageable page = PageRequest.of(pageNumber,numberOfTrails);
+        Pageable page = PageRequest.of(pageNumber,numberOfTrailsPerPage);
         List<TrailOutput> trails = new ArrayList<>();
         for (TrailsEntity trailEntity : trailsRepository.findAll(page)) {
             trails.add(toTrail(trailEntity));

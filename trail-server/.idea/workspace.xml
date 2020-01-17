@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1620742-cf14-4950-9aef-9411b7543818" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../docker/images/mysql/data/b_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../docker/images/mysql/data/b_user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/RegistrationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/RegistrationsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/TrailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/business/TrailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/RegistrationsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/TrailsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/avalia/trailer/api/endpoints/TrailsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/api-spec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/api-spec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/RegistrationsApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/RegistrationsApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/business/RegistrationsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/business/RegistrationsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/TrailsApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/TrailsApi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/RegistrationsApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/endpoints/RegistrationsApiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/RegistrationOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/avalia/trailer/api/model/RegistrationOutput.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/RegistrationsApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/TrailsApi.java" afterDir="false" />
@@ -28,6 +28,26 @@
       <change beforePath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/UserUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/openapi/src/main/java/io/avalia/trailer/api/model/UserUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/business/UsersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/java/io/avalia/user/api/endpoints/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/src/main/resources/api-spec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/META-INF/swagger-spring.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/api-spec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/UsersApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/UsersApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/business/UsersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/business/UsersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/endpoints/UsersApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/classes/io/avalia/user/api/endpoints/UsersApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/.openapi-generator/api-spec.yaml.sha256" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/AuthenticateApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/UsersApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserAuthAllOf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/generated-sources/openapi/src/main/java/io/avalia/user/api/model/UserTokenAllOf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../user-server/target/swagger-spring-1.0.0.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +153,8 @@
       <workItem from="1579202676215" duration="4018000" />
       <workItem from="1579207615258" duration="242000" />
       <workItem from="1579209023547" duration="569000" />
-      <workItem from="1579214054684" duration="1098000" />
+      <workItem from="1579214054684" duration="1306000" />
+      <workItem from="1579251715760" duration="1425000" />
     </task>
     <servers />
   </component>
@@ -161,38 +182,38 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="578" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1576186015329" />
-    <state width="1638" height="156" key="GridCell.Tab.0.bottom" timestamp="1579215244873">
+    <state width="1638" height="245" key="GridCell.Tab.0.bottom" timestamp="1579253304421">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="156" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244873" />
-    <state width="1638" height="156" key="GridCell.Tab.0.center" timestamp="1579215244872">
+    <state width="1638" height="245" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304421" />
+    <state width="1638" height="245" key="GridCell.Tab.0.center" timestamp="1579253304420">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="156" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244872" />
-    <state width="1638" height="156" key="GridCell.Tab.0.left" timestamp="1579215244871">
+    <state width="1638" height="245" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304420" />
+    <state width="1638" height="245" key="GridCell.Tab.0.left" timestamp="1579253304420">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="156" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244871" />
-    <state width="1638" height="156" key="GridCell.Tab.0.right" timestamp="1579215244872">
+    <state width="1638" height="245" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304420" />
+    <state width="1638" height="245" key="GridCell.Tab.0.right" timestamp="1579253304420">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="156" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244872" />
-    <state width="1638" height="2" key="GridCell.Tab.1.bottom" timestamp="1579215244868">
+    <state width="1638" height="245" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304420" />
+    <state width="1638" height="156" key="GridCell.Tab.1.bottom" timestamp="1579253304416">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="2" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244868" />
-    <state width="1638" height="2" key="GridCell.Tab.1.center" timestamp="1579215244867">
+    <state width="1638" height="156" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304416" />
+    <state width="1638" height="156" key="GridCell.Tab.1.center" timestamp="1579253304415">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="2" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244867" />
-    <state width="1638" height="2" key="GridCell.Tab.1.left" timestamp="1579215244867">
+    <state width="1638" height="156" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304415" />
+    <state width="1638" height="156" key="GridCell.Tab.1.left" timestamp="1579253304414">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="2" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244867" />
-    <state width="1638" height="2" key="GridCell.Tab.1.right" timestamp="1579215244867">
+    <state width="1638" height="156" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304414" />
+    <state width="1638" height="156" key="GridCell.Tab.1.right" timestamp="1579253304415">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="2" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1579215244867" />
+    <state width="1638" height="156" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1579253304415" />
     <state width="1638" height="345" key="GridCell.Tab.2.bottom" timestamp="1578509799626">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

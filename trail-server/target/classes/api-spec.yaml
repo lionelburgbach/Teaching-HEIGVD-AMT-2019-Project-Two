@@ -114,7 +114,7 @@ paths:
           default: 0
           required: false
           type: integer
-        - name: numberOfTrails
+        - name: numberOfTrailsPerPage
           in: query
           default: 30
           required: false
@@ -232,7 +232,7 @@ paths:
           default: 0
           required: false
           type: integer
-        - name: numberOfRegistration
+        - name: numberOfRegistrationsPerPage
           in: query
           default: 30
           required: false

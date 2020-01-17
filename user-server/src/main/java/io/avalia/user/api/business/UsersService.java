@@ -65,9 +65,9 @@ public class UsersService {
         return ResponseEntity.ok("It has been update!");
     }
 
-    public ResponseEntity<List<UserToken>> getUsers(Integer pageNumber, Integer numberOfUsers) {
+    public ResponseEntity<List<UserToken>> getUsers(Integer pageNumber, Integer numberOfUsersPerPage) {
 
-        Pageable page = PageRequest.of(pageNumber,numberOfUsers);
+        Pageable page = PageRequest.of(pageNumber, numberOfUsersPerPage);
         List<UserToken> users = new ArrayList<>();
         for (UsersEntity userEntity : usersRepository.findAll(page)) {
             users.add(toUserToken(userEntity));
