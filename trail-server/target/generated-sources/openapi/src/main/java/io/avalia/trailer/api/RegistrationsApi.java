@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-16T23:52:42.789071+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:18:37.294690+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "registrations", description = "the registrations API")
@@ -37,11 +37,12 @@ public interface RegistrationsApi {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "", nickname = "createRegistration", notes = "create a registration", response = Object.class, authorizations = {
+    @ApiOperation(value = "", nickname = "createRegistration", notes = "Create a registration for this email", response = Object.class, authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "created", response = Object.class) })
+        @ApiResponse(code = 201, message = "created", response = Object.class),
+        @ApiResponse(code = 400, message = "Registration problem") })
     @RequestMapping(value = "/registrations/{email}",
         produces = { "*/*" }, 
         consumes = { "application/json" },
@@ -52,7 +53,7 @@ public interface RegistrationsApi {
     }
 
 
-    @ApiOperation(value = "", nickname = "deleteRegistrationByID", notes = "", authorizations = {
+    @ApiOperation(value = "", nickname = "deleteRegistrationByID", notes = "Delete a registration for this email", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -60,13 +61,13 @@ public interface RegistrationsApi {
         @ApiResponse(code = 404, message = "Registration not found") })
     @RequestMapping(value = "/registrations/{email}",
         method = RequestMethod.DELETE)
-    default ResponseEntity<Void> deleteRegistrationByID(@ApiParam(value = "The registration id that needs to be deleted",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "The registration id that needs to be deleted", required = true) @Valid @RequestParam(value = "id", required = true) Long id) throws Exception {
+    default ResponseEntity<Void> deleteRegistrationByID(@ApiParam(value = "The owner registration",required=true) @PathVariable("email") String email,@NotNull @ApiParam(value = "The registration id that needs to be deleted", required = true) @Valid @RequestParam(value = "id", required = true) Long id) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
 
-    @ApiOperation(value = "", nickname = "getRegistrationsByIdUser", notes = "", response = RegistrationOutput.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "", nickname = "getRegistrationsByIdUser", notes = "Get All registration with this email", response = RegistrationOutput.class, responseContainer = "List", authorizations = {
         @Authorization(value = "Bearer")
     }, tags={  })
     @ApiResponses(value = { 
@@ -76,7 +77,7 @@ public interface RegistrationsApi {
     @RequestMapping(value = "/registrations/{email}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "All registration for this user ",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistration", required = false, defaultValue="30") Integer numberOfRegistration) throws Exception {
+    default ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(@ApiParam(value = "email with registrations",required=true) @PathVariable("email") String email,@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfRegistrationsPerPage", required = false, defaultValue="30") Integer numberOfRegistrationsPerPage) throws Exception {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

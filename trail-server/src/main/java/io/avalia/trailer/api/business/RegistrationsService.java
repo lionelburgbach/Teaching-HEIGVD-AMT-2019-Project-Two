@@ -63,7 +63,7 @@ public class RegistrationsService {
         return ResponseEntity.created(location).build();
     }
 
-    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfReg) throws Exception {
+    public ResponseEntity<List<RegistrationOutput>> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage) throws Exception {
 
         Optional<UsersEntity> oue = usersRepository.findById(email);
         if(!oue.isPresent()){
@@ -73,7 +73,7 @@ public class RegistrationsService {
         UsersEntity user = oue.get();
 
 
-        Pageable page = PageRequest.of(pageNumber,numberOfReg);
+        Pageable page = PageRequest.of(pageNumber,numberOfRegistrationsPerPage);
         List<RegistrationOutput> regs = new ArrayList<>();
         for (RegistrationsEntity regEntity : regRepository.findAllByIdUser(user.getId(),page)) {
 

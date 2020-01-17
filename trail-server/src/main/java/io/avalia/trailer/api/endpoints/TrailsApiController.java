@@ -30,11 +30,11 @@ public class TrailsApiController implements TrailsApi {
         return trailsService.createTrail(trail);
     }
 
-    public ResponseEntity<List<TrailOutput>> getTrails(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfTrails", required = false, defaultValue="30") Integer numberOfTrails) throws Exception {
+    public ResponseEntity<List<TrailOutput>> getTrails(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfTrailsPerPage", required = false, defaultValue="30") Integer numberOfTrailsPerPage) throws Exception {
 
         ResponseEntity<List<TrailOutput>> responseEntity;
         try{
-            responseEntity = trailsService.getTrails(pageNumber, numberOfTrails);
+            responseEntity = trailsService.getTrails(pageNumber, numberOfTrailsPerPage);
         }
         catch(Exception e){
             throw new ApiException(HttpStatus.BAD_REQUEST, "Not Found");

@@ -65,11 +65,11 @@ public class UsersApiController implements UsersApi{
         return responseEntity;
     }
 
-    public ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsers", required = false, defaultValue="30") Integer numberOfUsers) throws Exception{
+    public ResponseEntity<List<UserToken>> getUsers(@ApiParam(value = "", defaultValue = "0") @Valid @RequestParam(value = "PageNumber", required = false, defaultValue="0") Integer pageNumber,@ApiParam(value = "", defaultValue = "30") @Valid @RequestParam(value = "numberOfUsersPerPage", required = false, defaultValue="30") Integer numberOfUsersPerPage) throws Exception{
 
         ResponseEntity<List<UserToken>> responseEntity;
         try{
-            responseEntity = usersService.getUsers(pageNumber, numberOfUsers);
+            responseEntity = usersService.getUsers(pageNumber, numberOfUsersPerPage);
         }
         catch(Exception e){
             throw new ApiException(HttpStatus.BAD_REQUEST, "Not Found");
