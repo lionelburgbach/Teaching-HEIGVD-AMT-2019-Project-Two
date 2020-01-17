@@ -196,7 +196,7 @@ paths:
           description: 'Updated Trail object'
           required: true
           schema:
-            $ref: '#/definitions/TrailUpdate'
+            $ref: '#/definitions/Trail'
       responses:
         400:
           description: 'Invalid trail supplied'

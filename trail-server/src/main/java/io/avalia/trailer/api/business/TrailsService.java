@@ -59,7 +59,7 @@ public class TrailsService {
         return ResponseEntity.ok("It has been delete!");
     }
 
-    public ResponseEntity updateTrailByID(Long id, TrailUpdate trail) {
+    public ResponseEntity updateTrailByID(Long id, Trail trail) {
 
         Optional<TrailsEntity> oue = trailsRepository.findById(id);
         TrailsEntity ue = oue.get();
