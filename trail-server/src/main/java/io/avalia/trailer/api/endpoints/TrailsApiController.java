@@ -5,7 +5,6 @@ import io.avalia.trailer.api.business.TrailsService;
 import io.avalia.trailer.api.exceptions.ApiException;
 import io.avalia.trailer.api.model.Trail;
 import io.avalia.trailer.api.model.TrailOutput;
-import io.avalia.trailer.api.model.TrailUpdate;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,7 +56,7 @@ public class TrailsApiController implements TrailsApi {
 
     public ResponseEntity deleteTrailByID(@ApiParam(value = "trail that needs to be deleted",required=true) @PathVariable("id") Long id) throws Exception {
 
-        ResponseEntity<TrailOutput> responseEntity;
+        ResponseEntity responseEntity;
         try{
             responseEntity = trailsService.deleteTrailByID(id);
         }
@@ -67,7 +66,7 @@ public class TrailsApiController implements TrailsApi {
         return responseEntity;
     }
 
-    public ResponseEntity updateTrailByID(@ApiParam(value = "trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody TrailUpdate trail) throws Exception {
+    public ResponseEntity updateTrailByID(@ApiParam(value = "trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody Trail trail) throws Exception {
 
         ResponseEntity responseEntity;
         try{

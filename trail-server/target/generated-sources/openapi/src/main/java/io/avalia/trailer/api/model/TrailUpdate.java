@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * TrailUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:18:37.294690+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:50:26.958253+01:00[Europe/Zurich]")
 
 public class TrailUpdate   {
   @JsonProperty("name")

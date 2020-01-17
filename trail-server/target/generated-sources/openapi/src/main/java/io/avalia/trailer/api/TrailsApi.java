@@ -7,7 +7,6 @@ package io.avalia.trailer.api;
 
 import io.avalia.trailer.api.model.Trail;
 import io.avalia.trailer.api.model.TrailOutput;
-import io.avalia.trailer.api.model.TrailUpdate;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:18:37.294690+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:50:26.958253+01:00[Europe/Zurich]")
 
 @Validated
 @Api(value = "trails", description = "the trails API")
@@ -123,7 +122,7 @@ public interface TrailsApi {
         @ApiResponse(code = 404, message = "Trail not found") })
     @RequestMapping(value = "/trails/{id}",
         method = RequestMethod.PUT)
-    default ResponseEntity<Void> updateTrailByID(@ApiParam(value = "id for the trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody TrailUpdate trail) throws Exception {
+    default ResponseEntity<Void> updateTrailByID(@ApiParam(value = "id for the trail that need to be updated",required=true) @PathVariable("id") Long id,@ApiParam(value = "Updated Trail object" ,required=true )  @Valid @RequestBody Trail trail) throws Exception {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
