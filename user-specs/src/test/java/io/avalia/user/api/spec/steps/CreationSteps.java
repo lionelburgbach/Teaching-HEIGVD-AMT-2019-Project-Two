@@ -76,6 +76,7 @@ public class CreationSteps {
         ApiClient apiClient = new ApiClient();
         ArrayList<String> token = (ArrayList<String>)lastApiResponse.getHeaders().get("Authorization");
         apiClient.addDefaultHeader("Authorization", token.get(0));
+
         api.setApiClient(apiClient);
 
         try {
@@ -98,6 +99,4 @@ public class CreationSteps {
     public void i_receive_a_status_code(int arg1) throws Throwable {
         assertEquals(201, lastStatusCode);
     }
-
-
 }

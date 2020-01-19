@@ -2,7 +2,7 @@
 
 Trailer API
 - API version: 0.1.0
-  - Build date: 2020-01-19T14:00:29.769+01:00[Europe/Zurich]
+  - Build date: 2020-01-19T21:19:28.396+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -83,7 +83,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -111,7 +111,7 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8081/worldtrails*
+All URIs are relative to *http://localhost:8081/trails*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

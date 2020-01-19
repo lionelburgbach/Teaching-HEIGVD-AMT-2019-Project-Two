@@ -1,23 +1,41 @@
 -------------------------------------------------------------------------------
 Test set: io.avalia.user.api.spec.SpecificationTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 1.447 sec <<< FAILURE!
-Then I receive a 201 status code(Scenario: create a users)  Time elapsed: 0.005 sec  <<< FAILURE!
+Tests run: 22, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 1.393 sec <<< FAILURE!
+Then I receive an other 400 status code(Scenario: create a user who already exist)  Time elapsed: 0.003 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<400> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.BadCreationSteps.i_receive_a_status_code(BadCreationSteps.java:92)
+	at ✽.Then I receive an other 400 status code(badcreation.feature:10)
+
+Scenario: create a user who already exist  Time elapsed: 0.003 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<400> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.BadCreationSteps.i_receive_a_status_code(BadCreationSteps.java:92)
+	at ✽.Then I receive an other 400 status code(badcreation.feature:10)
+
+Then I receive a 201 status code(Scenario: create a users)  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<201> but was:<0>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:99)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:100)
 	at ✽.Then I receive a 201 status code(creation.feature:10)
 
-Scenario: create a users  Time elapsed: 0.006 sec  <<< FAILURE!
+Scenario: create a users  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError: expected:<201> but was:<0>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:99)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:100)
 	at ✽.Then I receive a 201 status code(creation.feature:10)
 
 Then I receive again a 200 status code(Scenario: delete a user)  Time elapsed: 0 sec  <<< FAILURE!
@@ -26,7 +44,7 @@ java.lang.AssertionError: expected:<200> but was:<0>
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:83)
+	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:82)
 	at ✽.Then I receive again a 200 status code(delete.feature:9)
 
 Scenario: delete a user  Time elapsed: 0 sec  <<< FAILURE!
@@ -35,6 +53,6 @@ java.lang.AssertionError: expected:<200> but was:<0>
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:83)
+	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:82)
 	at ✽.Then I receive again a 200 status code(delete.feature:9)
 

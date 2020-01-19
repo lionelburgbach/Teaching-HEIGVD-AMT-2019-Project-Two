@@ -20,7 +20,7 @@ import io.avalia.user.api.dto.RegistrationInput;
 /**
  * Registration
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T14:00:29.769+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T21:19:28.396+01:00[Europe/Zurich]")
 public class Registration extends RegistrationInput {
 
   @Override

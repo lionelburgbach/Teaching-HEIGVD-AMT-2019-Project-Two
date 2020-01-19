@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * UserToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T20:04:02.171+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T21:19:10.234+01:00[Europe/Zurich]")
 public class UserToken {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
