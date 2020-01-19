@@ -73,7 +73,9 @@ public class BadCreationSteps {
         api.setApiClient(apiClient);
 
         try {
+
             lastApiResponse = api.createUserWithHttpInfo(userAlreadyExist);
+            System.out.println(lastApiResponse.getHeaders());
             lastApiCallThrewException = false;
             lastApiException = null;
             lastStatusCode = lastApiResponse.getStatusCode();

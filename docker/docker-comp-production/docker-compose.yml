@@ -1,0 +1,44 @@
+version: '3'
+services:
+   reverse-proxy:
+      image: traefik:v2.1.2
+      command: --api.insecure=true --providers.docker --providers.docker.exposedbydefault=false
+      ports:
+         - "80:80"
+         - "2020:8080"
+      volumes:
+         - /var/run/docker.sock:/var/run/docker.sock
+   mysql:
+      build: ../images/mysql
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+         MYSQL_ROOT_PASSWORD: admin
+      ports:
+         - "3306:3306"
+   phpmyadmin:
+      build: ../images/phpmyadmin
+      environment:
+         PMA_HOST: mysql
+         MYSQL_ROOT_PASSWORD: admin
+      ports:
+         - "6060:80"
+      links:
+         - mysql:db
+   user:
+      build: ../images/java_server_1
+      restart: on-failure
+      links: 
+        - mysql:db
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.auth.rule=Host(`worldtrails.ch`) && PathPrefix(`/auth`)"
+        - "traefik.http.services.auth.loadbalancer.server.port=8080"
+   trailer:
+      build: ../images/java_server_2
+      restart: on-failure
+      links: 
+         - mysql:db
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.trail.rule=Host(`worldtrails.ch`) && PathPrefix(`/trails`)"
+        - "traefik.http.services.trails-service.loadbalancer.server.port=8081"

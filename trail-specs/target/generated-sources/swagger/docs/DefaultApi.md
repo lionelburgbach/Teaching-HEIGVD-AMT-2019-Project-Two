@@ -1,6 +1,6 @@
 # DefaultApi
 
-All URIs are relative to *http://localhost:8081/worldtrails*
+All URIs are relative to *http://localhost:8081/trails*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -39,7 +39,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -111,7 +111,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -180,7 +180,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -250,7 +250,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -321,7 +321,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -390,7 +390,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -460,7 +460,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -535,7 +535,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -606,7 +606,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -677,7 +677,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -749,7 +749,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -820,7 +820,7 @@ import io.avalia.user.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    defaultClient.setBasePath("http://localhost:8081/trails");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");

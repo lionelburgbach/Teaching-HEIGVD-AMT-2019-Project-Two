@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+Test set: io.avalia.user.api.spec.SpecificationTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 4, Skipped: 1, Time elapsed: 0.889 sec <<< FAILURE!
+When I POST it to the /users endpoint(Scenario: create a user)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NullPointerException
+	at io.avalia.user.api.spec.steps.CreationAndDeleteSteps.i_POST_it_to_the_user_endpoint(CreationAndDeleteSteps.java:58)
+	at ✽.When I POST it to the /users endpoint(creationAndDelete.feature:8)
+
+Scenario: create a user  Time elapsed: 0.003 sec  <<< ERROR!
+java.lang.NullPointerException
+	at io.avalia.user.api.spec.steps.CreationAndDeleteSteps.i_POST_it_to_the_user_endpoint(CreationAndDeleteSteps.java:58)
+	at ✽.When I POST it to the /users endpoint(creationAndDelete.feature:8)
+
+When I Delete it to the /users/email endpoint(Scenario: delete a user)  Time elapsed: 0 sec  <<< ERROR!
+io.avalia.user.ApiException: Bad Request
+	at io.avalia.user.ApiClient.handleResponse(ApiClient.java:979)
+	at io.avalia.user.ApiClient.execute(ApiClient.java:895)
+	at io.avalia.user.ApiClient.execute(ApiClient.java:878)
+	at io.avalia.user.api.DefaultApi.deleteUserByIDWithHttpInfo(DefaultApi.java:736)
+	at io.avalia.user.api.DefaultApi.deleteUserByID(DefaultApi.java:717)
+	at io.avalia.user.api.spec.steps.CreationAndDeleteSteps.i_Delete_it_to_the_user_endpoint(CreationAndDeleteSteps.java:89)
+	at ✽.When I Delete it to the /users/email endpoint(creationAndDelete.feature:13)
+
+Scenario: delete a user  Time elapsed: 0 sec  <<< ERROR!
+io.avalia.user.ApiException: Bad Request
+	at io.avalia.user.ApiClient.handleResponse(ApiClient.java:979)
+	at io.avalia.user.ApiClient.execute(ApiClient.java:895)
+	at io.avalia.user.ApiClient.execute(ApiClient.java:878)
+	at io.avalia.user.api.DefaultApi.deleteUserByIDWithHttpInfo(DefaultApi.java:736)
+	at io.avalia.user.api.DefaultApi.deleteUserByID(DefaultApi.java:717)
+	at io.avalia.user.api.spec.steps.CreationAndDeleteSteps.i_Delete_it_to_the_user_endpoint(CreationAndDeleteSteps.java:89)
+	at ✽.When I Delete it to the /users/email endpoint(creationAndDelete.feature:13)
+

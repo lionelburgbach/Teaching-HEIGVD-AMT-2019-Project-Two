@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TrailOutputAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T14:00:29.769+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T21:19:28.396+01:00[Europe/Zurich]")
 public class TrailOutputAllOf {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
