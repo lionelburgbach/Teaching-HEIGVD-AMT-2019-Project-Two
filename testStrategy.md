@@ -10,9 +10,11 @@ Nous avons rencontrer des problèmes avec nos tests après l'implémentation de 
 
 ## Tests JMeter
 
-Notre stratégie pour les tests Jmeter a été de tester la pagination de l'API user. 
+Notre stratégie pour les tests Jmeter a été de tester la pagination de l'API user.  En ajoutant un http header avec un token, ce qui a permis d'effectuer les requêtes et de voir que la pagination fonctionnait correctement.
 
-asfdélkjsad
+Sur ce screen, nous pouvons voir qu'avec la pagination 
+
+![](ImagesReport/.jpg)
 
 ## Efficacité de nos tests
 
