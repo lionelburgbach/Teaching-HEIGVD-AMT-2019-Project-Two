@@ -1,10 +1,10 @@
 # Teaching-HEIGVD-AMT-2019-Project-Two
 
-Link to the report : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/report.txt)
+Link to the report : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/report.md)
 
-Link to the test strategy : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/testStrategy.txt)
+Link to the test strategy : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/testStrategy.md)
 
-Link to the run, build & test documentation : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/buildRunTest.txt)
+Link to the run, build & test documentation : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/buildRunTest.md)
 
 ## Objectives
 
