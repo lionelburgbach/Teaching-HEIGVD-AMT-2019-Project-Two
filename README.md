@@ -1,4 +1,7 @@
 # Teaching-HEIGVD-AMT-2019-Project-Two
+
+Link to the report : [here](https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/report.txt)
+
 ## Objectives
 
 The objectives of this project is to design, specify, implement and validate **2 RESTful APIs** (you can think of them as 2 "micro-services"), using a set of technologies that build upon or complement Java EE standards. Namely, the goal is to use:
