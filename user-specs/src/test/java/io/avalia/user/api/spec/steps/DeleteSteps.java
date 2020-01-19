@@ -1,6 +1,5 @@
 package io.avalia.user.api.spec.steps;
 
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -66,7 +65,7 @@ public class DeleteSteps {
         api.setApiClient(apiClient);
 
         try {
-            lastApiResponse = api.deleteUserByIDWithHttpInfo("guillaume.blanco@h.ch");
+            lastApiResponse = api.deleteUserByIDWithHttpInfo( "guillaume.blanco@ch");
             lastApiCallThrewException = false;
             lastApiException = null;
             lastStatusCode = lastApiResponse.getStatusCode();

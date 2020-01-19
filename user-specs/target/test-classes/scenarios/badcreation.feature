@@ -1,6 +1,6 @@
 Feature: User
 
-  Background:
+Background:
     Given there is a users server
 
   Scenario: create a user who already exist

@@ -1,4 +1,4 @@
-Feature: Get authentication
+Feature: User
 
   Background:
     Given there is a server

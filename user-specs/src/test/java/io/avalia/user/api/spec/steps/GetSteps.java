@@ -31,7 +31,6 @@ public class GetSteps {
         this.api = environment.getApi();
     }
 
-
     @Given("^there is a server$")
     public void there_is_a_server() throws Throwable {
         assertNotNull(api);

@@ -66,20 +66,24 @@ public class CreationSteps {
 
         user = new UserInput();
         user.setRole("admin");
-        user.setEmail("guillaume.blanco@h.ch");
+        user.setEmail("guillaume.blanco@ch");
         user.setPassword("guillaume");
     }
 
     @When("^I POST it to the /users endpoint$")
-    public void i_POST_it_to_the_users_endpoint() throws Throwable {
+    public void iPOSTItToTheUsersEmailEndpoint() {
 
         ApiClient apiClient = new ApiClient();
         ArrayList<String> token = (ArrayList<String>)lastApiResponse.getHeaders().get("Authorization");
         apiClient.addDefaultHeader("Authorization", token.get(0));
+
         api.setApiClient(apiClient);
 
         try {
+            System.out.println("HEY");
             lastApiResponse = api.createUserWithHttpInfo(user);
+            System.out.println("HO");
+            System.out.println(lastApiResponse.getStatusCode());
             lastApiCallThrewException = false;
             lastApiException = null;
             lastStatusCode = lastApiResponse.getStatusCode();

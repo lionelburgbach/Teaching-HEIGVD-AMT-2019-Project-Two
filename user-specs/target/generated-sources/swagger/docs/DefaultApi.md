@@ -1,6 +1,6 @@
 # DefaultApi
 
-All URIs are relative to *http://localhost:8080/users-auth*
+All URIs are relative to *http://localhost:8080/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,7 +32,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     UserAuth userAuth = new UserAuth(); // UserAuth | 
@@ -97,7 +97,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -167,7 +167,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -238,7 +238,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -310,7 +310,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -382,7 +382,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");

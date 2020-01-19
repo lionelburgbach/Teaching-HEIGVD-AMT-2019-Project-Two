@@ -3,12 +3,15 @@ package io.avalia.user.api.spec.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.ApiResponse;
 import io.avalia.user.api.DefaultApi;
 import io.avalia.user.api.dto.User;
 import io.avalia.user.api.spec.helpers.Environment;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -41,17 +44,21 @@ public class CreationAndDeleteSteps {
 
     @Given("^I have a user payload$")
     public void i_have_a_user_payload() throws Throwable {
-        //user = new io.avalia.user.api.dto.User();
         user = new User();
         user.setFirstname("Guillaume");
         user.setLastname("Blanco");
         user.setDate("05-03-2000");
-        user.setEmail("guillaume.blanco@heig.ch");
-        user.setPassword("guillaume");
+        user.setEmail("guillaume.bla.ch");
     }
 
-    @When("^I POST it to the /user endpoint$")
+    @When("^I POST it to the /users endpoint$")
     public void i_POST_it_to_the_user_endpoint() throws Throwable {
+
+        ApiClient apiClient = new ApiClient();
+        ArrayList<String> token = (ArrayList<String>)lastApiResponse.getHeaders().get("Authorization");
+        apiClient.addDefaultHeader("Authorization", token.get(0));
+        api.setApiClient(apiClient);
+
         try {
             lastApiResponse = api.createUserWithHttpInfo(user);
             lastApiCallThrewException = false;
@@ -77,16 +84,8 @@ public class CreationAndDeleteSteps {
         email = "guillaume.blanco@heig.ch";
     }
 
-    @When("^I Delete it to the /user/email endpoint$")
+    @When("^I Delete it to the /users/email endpoint$")
     public void i_Delete_it_to_the_user_endpoint() throws Throwable {
-          api.deleteUser(email);
+          api.deleteUserByID(email);
     }
-
-    /*
-    @Then("^I have an error if I get this id$")
-    public void i_have_an_error_if_I_get_this_id() throws Throwable {
-        assertEquals(100, api.getUserByID(email));
-
-    }
-     */
 }
