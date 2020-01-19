@@ -47,7 +47,6 @@ public class CreationAndDeleteSteps {
         user.setLastname("Blanco");
         user.setDate("05-03-2000");
         user.setEmail("guillaume.blanco@heig.ch");
-        user.setPassword("guillaume");
     }
 
     @When("^I POST it to the /user endpoint$")
@@ -79,7 +78,7 @@ public class CreationAndDeleteSteps {
 
     @When("^I Delete it to the /user/email endpoint$")
     public void i_Delete_it_to_the_user_endpoint() throws Throwable {
-          api.deleteUser(email);
+          api.deleteUserByID(email);
     }
 
     /*

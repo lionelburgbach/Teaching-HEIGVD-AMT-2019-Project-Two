@@ -1,108 +1,40 @@
 -------------------------------------------------------------------------------
 Test set: io.avalia.user.api.spec.SpecificationTest
 -------------------------------------------------------------------------------
-Tests run: 22, Failures: 0, Errors: 8, Skipped: 9, Time elapsed: 0.904 sec <<< FAILURE!
-Given I have an authenticate userss(Scenario: create a user who already exist)  Time elapsed: 0.002 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.BadCreationSteps.iHaveAnAuthenticateUserss(BadCreationSteps.java:46)
-	at ✽.Given I have an authenticate userss(badcreation.feature:7)
+Tests run: 16, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 1.447 sec <<< FAILURE!
+Then I receive a 201 status code(Scenario: create a users)  Time elapsed: 0.005 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<201> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:99)
+	at ✽.Then I receive a 201 status code(creation.feature:10)
 
-Scenario: create a user who already exist  Time elapsed: 0.003 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.BadCreationSteps.iHaveAnAuthenticateUserss(BadCreationSteps.java:46)
-	at ✽.Given I have an authenticate userss(badcreation.feature:7)
+Scenario: create a users  Time elapsed: 0.006 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<201> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.CreationSteps.i_receive_a_status_code(CreationSteps.java:99)
+	at ✽.Then I receive a 201 status code(creation.feature:10)
 
-Given I have an authenticate users(Scenario: create a users)  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.CreationSteps.iHaveAnAuthenticateUsers(CreationSteps.java:52)
-	at ✽.Given I have an authenticate users(creation.feature:7)
+Then I receive again a 200 status code(Scenario: delete a user)  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<200> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:83)
+	at ✽.Then I receive again a 200 status code(delete.feature:9)
 
-Scenario: create a users  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.CreationSteps.iHaveAnAuthenticateUsers(CreationSteps.java:52)
-	at ✽.Given I have an authenticate users(creation.feature:7)
-
-Given I have an authenticate users with admin rights(Scenario: delete a user)  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.DeleteSteps.iHaveAnAuthenticateUsersWithAdminRights(DeleteSteps.java:47)
-	at ✽.Given I have an authenticate users with admin rights(delete.feature:7)
-
-Scenario: delete a user  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.DeleteSteps.iHaveAnAuthenticateUsersWithAdminRights(DeleteSteps.java:47)
-	at ✽.Given I have an authenticate users with admin rights(delete.feature:7)
-
-When I POST a correct users /authenticate endpoint(Scenario: get a token with credentials)  Time elapsed: 0 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:52)
-	at ✽.When I POST a correct users /authenticate endpoint(get.feature:8)
-
-Scenario: get a token with credentials  Time elapsed: 0 sec  <<< ERROR!
-java.lang.IllegalArgumentException: Expected URL scheme 'http' or 'https' but no colon was found
-	at okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)
-	at okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)
-	at okhttp3.Request$Builder.url(Request.kt:184)
-	at io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)
-	at io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)
-	at io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)
-	at io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:52)
-	at ✽.When I POST a correct users /authenticate endpoint(get.feature:8)
+Scenario: delete a user  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<200> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at io.avalia.user.api.spec.steps.DeleteSteps.iReceiveAgainAStatusCode(DeleteSteps.java:83)
+	at ✽.Then I receive again a 200 status code(delete.feature:9)
 

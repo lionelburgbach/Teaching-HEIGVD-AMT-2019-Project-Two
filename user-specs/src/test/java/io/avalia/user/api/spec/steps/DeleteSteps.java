@@ -66,7 +66,7 @@ public class DeleteSteps {
         api.setApiClient(apiClient);
 
         try {
-            lastApiResponse = api.deleteUserByIDWithHttpInfo("guillaume.blanco@h.ch");
+            lastApiResponse = api.deleteUserByIDWithHttpInfo("guillaume.blanco@ch");
             lastApiCallThrewException = false;
             lastApiException = null;
             lastStatusCode = lastApiResponse.getStatusCode();

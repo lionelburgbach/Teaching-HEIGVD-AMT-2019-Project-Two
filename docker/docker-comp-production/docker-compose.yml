@@ -31,7 +31,7 @@ services:
         - mysql:db
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.auth.rule=Host(`www.worldtrails.ch`) && PathPrefix(`/auth`)"
+        - "traefik.http.routers.auth.rule=Host(`worldtrails.ch`) && PathPrefix(`/auth`)"
         - "traefik.http.services.auth.loadbalancer.server.port=8080"
    trailer:
       build: ../images/java_server_2
@@ -40,5 +40,5 @@ services:
          - mysql:db
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.trail.rule=Host(`www.worldtrails.ch`) && PathPrefix(`/trails`)"
+        - "traefik.http.routers.trail.rule=Host(`worldtrails.ch`) && PathPrefix(`/trails`)"
         - "traefik.http.services.trails-service.loadbalancer.server.port=8081"
