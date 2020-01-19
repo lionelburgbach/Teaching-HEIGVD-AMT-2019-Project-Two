@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **lastname** | **String** |  |  [optional]
 **date** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
-**password** | **String** |  |  [optional]
 
 
 

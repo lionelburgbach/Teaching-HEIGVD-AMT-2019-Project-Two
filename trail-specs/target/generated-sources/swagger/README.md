@@ -2,7 +2,7 @@
 
 Trailer API
 - API version: 0.1.0
-  - Build date: 2019-12-16T10:32:14.374+01:00[Europe/Zurich]
+  - Build date: 2020-01-19T14:00:29.769+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -76,20 +76,29 @@ Please follow the [installation](#installation) instruction and execute the foll
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String email = "email_example"; // String | email from the user
+    RegistrationInput registration = new RegistrationInput(); // RegistrationInput | 
     try {
-      List<Trail> result = apiInstance.allTrails();
+      Object result = apiInstance.createRegistration(email, registration);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#allTrails");
+      System.err.println("Exception when calling DefaultApi#createRegistration");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -102,35 +111,47 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8081/api*
+All URIs are relative to *http://localhost:8081/worldtrails*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**allTrails**](docs/DefaultApi.md#allTrails) | **GET** /trail | 
-*DefaultApi* | [**createRegistration**](docs/DefaultApi.md#createRegistration) | **POST** /registration | 
-*DefaultApi* | [**createTrail**](docs/DefaultApi.md#createTrail) | **POST** /trail | 
-*DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /user | 
-*DefaultApi* | [**deleteRegistration**](docs/DefaultApi.md#deleteRegistration) | **DELETE** /registration/{id} | 
-*DefaultApi* | [**deleteTrail**](docs/DefaultApi.md#deleteTrail) | **DELETE** /trail/{id} | 
-*DefaultApi* | [**deleteUser**](docs/DefaultApi.md#deleteUser) | **DELETE** /user/{email} | 
-*DefaultApi* | [**getRegistrationByID**](docs/DefaultApi.md#getRegistrationByID) | **GET** /registration/{id} | 
-*DefaultApi* | [**getTrailByID**](docs/DefaultApi.md#getTrailByID) | **GET** /trail/{id} | 
-*DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /user/{email} | 
-*DefaultApi* | [**updateTrail**](docs/DefaultApi.md#updateTrail) | **PUT** /trail/{id} | 
-*DefaultApi* | [**updateUser**](docs/DefaultApi.md#updateUser) | **PUT** /user/{email} | 
+*DefaultApi* | [**createRegistration**](docs/DefaultApi.md#createRegistration) | **POST** /registrations/{email} | 
+*DefaultApi* | [**createTrail**](docs/DefaultApi.md#createTrail) | **POST** /trails | 
+*DefaultApi* | [**createUser**](docs/DefaultApi.md#createUser) | **POST** /users | 
+*DefaultApi* | [**deleteRegistrationByID**](docs/DefaultApi.md#deleteRegistrationByID) | **DELETE** /registrations/{email} | 
+*DefaultApi* | [**deleteTrailByID**](docs/DefaultApi.md#deleteTrailByID) | **DELETE** /trails/{id} | 
+*DefaultApi* | [**deleteUserByID**](docs/DefaultApi.md#deleteUserByID) | **DELETE** /users/{email} | 
+*DefaultApi* | [**getRegistrationsByIdUser**](docs/DefaultApi.md#getRegistrationsByIdUser) | **GET** /registrations/{email} | 
+*DefaultApi* | [**getTrailByID**](docs/DefaultApi.md#getTrailByID) | **GET** /trails/{id} | 
+*DefaultApi* | [**getTrails**](docs/DefaultApi.md#getTrails) | **GET** /trails | 
+*DefaultApi* | [**getUserByID**](docs/DefaultApi.md#getUserByID) | **GET** /users/{email} | 
+*DefaultApi* | [**updateTrailByID**](docs/DefaultApi.md#updateTrailByID) | **PUT** /trails/{id} | 
+*DefaultApi* | [**updateUserByID**](docs/DefaultApi.md#updateUserByID) | **PUT** /users/{email} | 
 
 
 ## Documentation for Models
 
  - [Registration](docs/Registration.md)
+ - [RegistrationInput](docs/RegistrationInput.md)
+ - [RegistrationOutput](docs/RegistrationOutput.md)
  - [Trail](docs/Trail.md)
+ - [TrailOutput](docs/TrailOutput.md)
+ - [TrailOutputAllOf](docs/TrailOutputAllOf.md)
+ - [TrailUpdate](docs/TrailUpdate.md)
  - [User](docs/User.md)
+ - [UserAllOf](docs/UserAllOf.md)
+ - [UserUpdate](docs/UserUpdate.md)
 
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
 Authentication schemes defined for the API:
+### Bearer
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 
 ## Recommendation
 

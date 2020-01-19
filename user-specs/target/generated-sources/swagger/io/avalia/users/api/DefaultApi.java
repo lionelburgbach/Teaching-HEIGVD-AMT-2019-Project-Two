@@ -65,8 +65,9 @@ public class DefaultApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> get your token </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> fail to authenticat </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> authentication success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Email and Password cannot be null </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAuthenticationTokenCall(UserAuth userAuth, final ApiCallback _callback) throws ApiException {
@@ -114,15 +115,16 @@ public class DefaultApi {
 
     /**
      * 
-     * try to authenticate
+     * Try to authenticate
      * @param userAuth  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> get your token </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> fail to authenticat </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> authentication success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Email and Password cannot be null </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Credentials </td><td>  -  </td></tr>
      </table>
      */
     public Object createAuthenticationToken(UserAuth userAuth) throws ApiException {
@@ -132,15 +134,16 @@ public class DefaultApi {
 
     /**
      * 
-     * try to authenticate
+     * Try to authenticate
      * @param userAuth  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> get your token </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> fail to authenticat </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> authentication success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Email and Password cannot be null </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Credentials </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> createAuthenticationTokenWithHttpInfo(UserAuth userAuth) throws ApiException {
@@ -151,7 +154,7 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * try to authenticate
+     * Try to authenticate
      * @param userAuth  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -159,8 +162,9 @@ public class DefaultApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> get your token </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> fail to authenticat </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> authentication success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Email and Password cannot be null </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Credentials </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAuthenticationTokenAsync(UserAuth userAuth, final ApiCallback<Object> _callback) throws ApiException {
@@ -180,8 +184,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions to creat a user </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createUserCall(UserInput userInput, final ApiCallback _callback) throws ApiException {
@@ -229,7 +232,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a user
+     * Create a user
      * @param userInput  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -237,8 +240,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions to creat a user </td><td>  -  </td></tr>
      </table>
      */
     public Object createUser(UserInput userInput) throws ApiException {
@@ -248,7 +250,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a user
+     * Create a user
      * @param userInput  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -256,8 +258,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions to creat a user </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> createUserWithHttpInfo(UserInput userInput) throws ApiException {
@@ -268,7 +269,7 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * create a user
+     * Create a user
      * @param userInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -277,8 +278,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions to creat a user </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createUserAsync(UserInput userInput, final ApiCallback<Object> _callback) throws ApiException {
@@ -290,15 +290,16 @@ public class DefaultApi {
     }
     /**
      * Build call for deleteUserByID
-     * @param email name that need to be updated (required)
+     * @param email email of the user (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -348,14 +349,15 @@ public class DefaultApi {
 
     /**
      * 
-     * This can only be done by the logged in user.
-     * @param email name that need to be updated (required)
+     * Delete the user with this password
+     * @param email email of the user (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -365,15 +367,16 @@ public class DefaultApi {
 
     /**
      * 
-     * This can only be done by the logged in user.
-     * @param email name that need to be updated (required)
+     * Delete the user with this password
+     * @param email email of the user (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -384,16 +387,17 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * This can only be done by the logged in user.
-     * @param email name that need to be updated (required)
+     * Delete the user with this password
+     * @param email email of the user (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -405,7 +409,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getUserByID
-     * @param email name that need to be updated (required)
+     * @param email email of the user (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -413,8 +417,8 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -464,16 +468,16 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @return UserToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -484,16 +488,16 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @return ApiResponse&lt;UserToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -505,8 +509,8 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * 
-     * @param email name that need to be updated (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -514,8 +518,8 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -528,17 +532,19 @@ public class DefaultApi {
     }
     /**
      * Build call for getUsers
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfUsersPerPage  (optional, default to 30)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> success to get users </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getUsersCall(Integer pageNumber, Integer numberOfUsersPerPage, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -546,6 +552,14 @@ public class DefaultApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("PageNumber", pageNumber));
+        }
+
+        if (numberOfUsersPerPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("numberOfUsersPerPage", numberOfUsersPerPage));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -568,82 +582,87 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUsersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getUsersValidateBeforeCall(Integer pageNumber, Integer numberOfUsersPerPage, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getUsersCall(_callback);
+        okhttp3.Call localVarCall = getUsersCall(pageNumber, numberOfUsersPerPage, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * get user paramater
+     * Get a list of all users
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfUsersPerPage  (optional, default to 30)
      * @return List&lt;UserToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> success to get users </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public List<UserToken> getUsers() throws ApiException {
-        ApiResponse<List<UserToken>> localVarResp = getUsersWithHttpInfo();
+    public List<UserToken> getUsers(Integer pageNumber, Integer numberOfUsersPerPage) throws ApiException {
+        ApiResponse<List<UserToken>> localVarResp = getUsersWithHttpInfo(pageNumber, numberOfUsersPerPage);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * get user paramater
+     * Get a list of all users
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfUsersPerPage  (optional, default to 30)
      * @return ApiResponse&lt;List&lt;UserToken&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> success to get users </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<UserToken>> getUsersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getUsersValidateBeforeCall(null);
+    public ApiResponse<List<UserToken>> getUsersWithHttpInfo(Integer pageNumber, Integer numberOfUsersPerPage) throws ApiException {
+        okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageNumber, numberOfUsersPerPage, null);
         Type localVarReturnType = new TypeToken<List<UserToken>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * get user paramater
+     * Get a list of all users
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfUsersPerPage  (optional, default to 30)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> success to get users </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersAsync(final ApiCallback<List<UserToken>> _callback) throws ApiException {
+    public okhttp3.Call getUsersAsync(Integer pageNumber, Integer numberOfUsersPerPage, final ApiCallback<List<UserToken>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUsersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageNumber, numberOfUsersPerPage, _callback);
         Type localVarReturnType = new TypeToken<List<UserToken>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updatePasswordByID
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
+     * @param email email of the user (required)
+     * @param password The password to change (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updatePasswordByIDCall(String email, String password, final ApiCallback _callback) throws ApiException {
@@ -701,16 +720,15 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
+     * Change password with this email
+     * @param email email of the user (required)
+     * @param password The password to change (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
     public void updatePasswordByID(String email, String password) throws ApiException {
@@ -719,17 +737,16 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
+     * Change password with this email
+     * @param email email of the user (required)
+     * @param password The password to change (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> updatePasswordByIDWithHttpInfo(String email, String password) throws ApiException {
@@ -739,18 +756,17 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * 
-     * @param email name that need to be updated (required)
-     * @param password Updated user object (required)
+     * Change password with this email
+     * @param email email of the user (required)
+     * @param password The password to change (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updatePasswordByIDAsync(String email, String password, final ApiCallback<Void> _callback) throws ApiException {

@@ -37,7 +37,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * try to authenticate
+     * Try to authenticate
      *
      * @throws ApiException
      *          if the Api call fails
@@ -53,7 +53,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * create a user
+     * Create a user
      *
      * @throws ApiException
      *          if the Api call fails
@@ -69,7 +69,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * This can only be done by the logged in user.
+     * Delete the user with this password
      *
      * @throws ApiException
      *          if the Api call fails
@@ -85,7 +85,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Get the user with this email
      *
      * @throws ApiException
      *          if the Api call fails
@@ -101,14 +101,16 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * get user paramater
+     * Get a list of all users
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getUsersTest() throws ApiException {
-        List<UserToken> response = api.getUsers();
+        Integer pageNumber = null;
+        Integer numberOfUsersPerPage = null;
+        List<UserToken> response = api.getUsers(pageNumber, numberOfUsersPerPage);
 
         // TODO: test validations
     }
@@ -116,7 +118,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Change password with this email
      *
      * @throws ApiException
      *          if the Api call fails

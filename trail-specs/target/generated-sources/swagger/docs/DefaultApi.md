@@ -1,88 +1,30 @@
 # DefaultApi
 
-All URIs are relative to *http://localhost:8081/api*
+All URIs are relative to *http://localhost:8081/worldtrails*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**allTrails**](DefaultApi.md#allTrails) | **GET** /trail | 
-[**createRegistration**](DefaultApi.md#createRegistration) | **POST** /registration | 
-[**createTrail**](DefaultApi.md#createTrail) | **POST** /trail | 
-[**createUser**](DefaultApi.md#createUser) | **POST** /user | 
-[**deleteRegistration**](DefaultApi.md#deleteRegistration) | **DELETE** /registration/{id} | 
-[**deleteTrail**](DefaultApi.md#deleteTrail) | **DELETE** /trail/{id} | 
-[**deleteUser**](DefaultApi.md#deleteUser) | **DELETE** /user/{email} | 
-[**getRegistrationByID**](DefaultApi.md#getRegistrationByID) | **GET** /registration/{id} | 
-[**getTrailByID**](DefaultApi.md#getTrailByID) | **GET** /trail/{id} | 
-[**getUserByID**](DefaultApi.md#getUserByID) | **GET** /user/{email} | 
-[**updateTrail**](DefaultApi.md#updateTrail) | **PUT** /trail/{id} | 
-[**updateUser**](DefaultApi.md#updateUser) | **PUT** /user/{email} | 
+[**createRegistration**](DefaultApi.md#createRegistration) | **POST** /registrations/{email} | 
+[**createTrail**](DefaultApi.md#createTrail) | **POST** /trails | 
+[**createUser**](DefaultApi.md#createUser) | **POST** /users | 
+[**deleteRegistrationByID**](DefaultApi.md#deleteRegistrationByID) | **DELETE** /registrations/{email} | 
+[**deleteTrailByID**](DefaultApi.md#deleteTrailByID) | **DELETE** /trails/{id} | 
+[**deleteUserByID**](DefaultApi.md#deleteUserByID) | **DELETE** /users/{email} | 
+[**getRegistrationsByIdUser**](DefaultApi.md#getRegistrationsByIdUser) | **GET** /registrations/{email} | 
+[**getTrailByID**](DefaultApi.md#getTrailByID) | **GET** /trails/{id} | 
+[**getTrails**](DefaultApi.md#getTrails) | **GET** /trails | 
+[**getUserByID**](DefaultApi.md#getUserByID) | **GET** /users/{email} | 
+[**updateTrailByID**](DefaultApi.md#updateTrailByID) | **PUT** /trails/{id} | 
+[**updateUserByID**](DefaultApi.md#updateUserByID) | **PUT** /users/{email} | 
 
-
-<a name="allTrails"></a>
-# **allTrails**
-> List&lt;Trail&gt; allTrails()
-
-
-
-all trails
-
-### Example
-```java
-// Import classes:
-import io.avalia.user.ApiClient;
-import io.avalia.user.ApiException;
-import io.avalia.user.Configuration;
-import io.avalia.user.models.*;
-import io.avalia.user.api.DefaultApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
-
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
-    try {
-      List<Trail> result = apiInstance.allTrails();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#allTrails");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;Trail&gt;**](Trail.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | created |  -  |
 
 <a name="createRegistration"></a>
 # **createRegistration**
-> Object createRegistration(user)
+> Object createRegistration(email, registration)
 
 
 
-create a registration
+Create a registration for this email
 
 ### Example
 ```java
@@ -90,18 +32,26 @@ create a registration
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Registration user = new Registration(); // Registration | 
+    String email = "email_example"; // String | email from the user
+    RegistrationInput registration = new RegistrationInput(); // RegistrationInput | 
     try {
-      Object result = apiInstance.createRegistration(user);
+      Object result = apiInstance.createRegistration(email, registration);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#createRegistration");
@@ -118,7 +68,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**Registration**](Registration.md)|  |
+ **email** | **String**| email from the user |
+ **registration** | [**RegistrationInput**](RegistrationInput.md)|  |
 
 ### Return type
 
@@ -126,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -137,6 +88,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | created |  -  |
+**400** | Registration problem |  -  |
 
 <a name="createTrail"></a>
 # **createTrail**
@@ -144,7 +96,7 @@ No authorization required
 
 
 
-create a trail
+Create a trail
 
 ### Example
 ```java
@@ -152,13 +104,20 @@ create a trail
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     Trail trail = new Trail(); // Trail | 
@@ -188,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -206,7 +165,7 @@ No authorization required
 
 
 
-create a user
+Create a user
 
 ### Example
 ```java
@@ -214,13 +173,20 @@ create a user
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     User user = new User(); // User | 
@@ -250,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -261,12 +227,15 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | created |  -  |
+**404** | This email already exist! |  -  |
 
-<a name="deleteRegistration"></a>
-# **deleteRegistration**
-> deleteRegistration(id)
+<a name="deleteRegistrationByID"></a>
+# **deleteRegistrationByID**
+> deleteRegistrationByID(email, id)
 
 
+
+Delete a registration for this email
 
 ### Example
 ```java
@@ -274,20 +243,28 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Long id = 56L; // Long | The name that needs to be deleted
+    String email = "email_example"; // String | The owner registration
+    Long id = 56L; // Long | The registration id that needs to be deleted
     try {
-      apiInstance.deleteRegistration(id);
+      apiInstance.deleteRegistrationByID(email, id);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#deleteRegistration");
+      System.err.println("Exception when calling DefaultApi#deleteRegistrationByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -301,7 +278,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The name that needs to be deleted |
+ **email** | **String**| The owner registration |
+ **id** | **Long**| The registration id that needs to be deleted |
 
 ### Return type
 
@@ -309,7 +287,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -322,11 +300,13 @@ No authorization required
 **400** | Invalid id supplied |  -  |
 **404** | Registration not found |  -  |
 
-<a name="deleteTrail"></a>
-# **deleteTrail**
-> deleteTrail(id)
+<a name="deleteTrailByID"></a>
+# **deleteTrailByID**
+> deleteTrailByID(id)
 
 
+
+Delete the trail with this id
 
 ### Example
 ```java
@@ -334,20 +314,27 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Long id = 56L; // Long | The name that needs to be deleted
+    Long id = 56L; // Long | trail that needs to be deleted
     try {
-      apiInstance.deleteTrail(id);
+      apiInstance.deleteTrailByID(id);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#deleteTrail");
+      System.err.println("Exception when calling DefaultApi#deleteTrailByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -361,7 +348,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The name that needs to be deleted |
+ **id** | **Long**| trail that needs to be deleted |
 
 ### Return type
 
@@ -369,7 +356,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -382,11 +369,13 @@ No authorization required
 **400** | Invalid Trail id supplied |  -  |
 **404** | Trail not found |  -  |
 
-<a name="deleteUser"></a>
-# **deleteUser**
-> deleteUser(email)
+<a name="deleteUserByID"></a>
+# **deleteUserByID**
+> deleteUserByID(email)
 
 
+
+Delete the user with this email
 
 ### Example
 ```java
@@ -394,20 +383,27 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | The name that needs to be deleted
+    String email = "email_example"; // String | user that needs to be deleted
     try {
-      apiInstance.deleteUser(email);
+      apiInstance.deleteUserByID(email);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#deleteUser");
+      System.err.println("Exception when calling DefaultApi#deleteUserByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -421,7 +417,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| The name that needs to be deleted |
+ **email** | **String**| user that needs to be deleted |
 
 ### Return type
 
@@ -429,7 +425,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -439,14 +435,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | successful operation |  -  |
 **400** | Invalid username supplied |  -  |
 **404** | User not found |  -  |
 
-<a name="getRegistrationByID"></a>
-# **getRegistrationByID**
-> Registration getRegistrationByID(id)
+<a name="getRegistrationsByIdUser"></a>
+# **getRegistrationsByIdUser**
+> List&lt;RegistrationOutput&gt; getRegistrationsByIdUser(email, pageNumber, numberOfRegistrationsPerPage)
 
 
+
+Get All registration with this email
 
 ### Example
 ```java
@@ -454,21 +453,30 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Long id = 56L; // Long | The name that needs to be fetched. Use user1 for testing. 
+    String email = "email_example"; // String | email with registrations
+    Integer pageNumber = 0; // Integer | 
+    Integer numberOfRegistrationsPerPage = 30; // Integer | 
     try {
-      Registration result = apiInstance.getRegistrationByID(id);
+      List<RegistrationOutput> result = apiInstance.getRegistrationsByIdUser(email, pageNumber, numberOfRegistrationsPerPage);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#getRegistrationByID");
+      System.err.println("Exception when calling DefaultApi#getRegistrationsByIdUser");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -482,15 +490,17 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The name that needs to be fetched. Use user1 for testing.  |
+ **email** | **String**| email with registrations |
+ **pageNumber** | **Integer**|  | [optional] [default to 0]
+ **numberOfRegistrationsPerPage** | **Integer**|  | [optional] [default to 30]
 
 ### Return type
 
-[**Registration**](Registration.md)
+[**List&lt;RegistrationOutput&gt;**](RegistrationOutput.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -500,15 +510,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successful operation |  -  |
+**200** | read |  -  |
 **400** | Invalid id supplied |  -  |
 **404** | Registration not found |  -  |
 
 <a name="getTrailByID"></a>
 # **getTrailByID**
-> Trail getTrailByID(id)
+> TrailOutput getTrailByID(id)
 
 
+
+Get the trail by this id
 
 ### Example
 ```java
@@ -516,18 +528,25 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Long id = 56L; // Long | The name that needs to be fetched. Use user1 for testing. 
+    Long id = 56L; // Long | The id of the trail
     try {
-      Trail result = apiInstance.getTrailByID(id);
+      TrailOutput result = apiInstance.getTrailByID(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#getTrailByID");
@@ -544,15 +563,15 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| The name that needs to be fetched. Use user1 for testing.  |
+ **id** | **Long**| The id of the trail |
 
 ### Return type
 
-[**Trail**](Trail.md)
+[**TrailOutput**](TrailOutput.md)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -566,11 +585,13 @@ No authorization required
 **400** | Invalid Trail supplied |  -  |
 **404** | Trail not found |  -  |
 
-<a name="getUserByID"></a>
-# **getUserByID**
-> User getUserByID(email)
+<a name="getTrails"></a>
+# **getTrails**
+> List&lt;TrailOutput&gt; getTrails(pageNumber, numberOfTrailsPerPage)
 
 
+
+Get all trails
 
 ### Example
 ```java
@@ -578,16 +599,94 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | The name that needs to be fetched. Use user1 for testing. 
+    Integer pageNumber = 0; // Integer | 
+    Integer numberOfTrailsPerPage = 30; // Integer | 
+    try {
+      List<TrailOutput> result = apiInstance.getTrails(pageNumber, numberOfTrailsPerPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getTrails");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageNumber** | **Integer**|  | [optional] [default to 0]
+ **numberOfTrailsPerPage** | **Integer**|  | [optional] [default to 30]
+
+### Return type
+
+[**List&lt;TrailOutput&gt;**](TrailOutput.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Array with all trails |  -  |
+
+<a name="getUserByID"></a>
+# **getUserByID**
+> User getUserByID(email)
+
+
+
+Get the user with this email
+
+### Example
+```java
+// Import classes:
+import io.avalia.user.ApiClient;
+import io.avalia.user.ApiException;
+import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
+import io.avalia.user.models.*;
+import io.avalia.user.api.DefaultApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
+
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String email = "email_example"; // String | email of the user
     try {
       User result = apiInstance.getUserByID(email);
       System.out.println(result);
@@ -606,7 +705,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| The name that needs to be fetched. Use user1 for testing.  |
+ **email** | **String**| email of the user |
 
 ### Return type
 
@@ -614,7 +713,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -625,14 +724,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**400** | Invalid username supplied |  -  |
+**400** | Bad request |  -  |
+**401** | You do not have necessary permissions for the resource |  -  |
 **404** | User not found |  -  |
 
-<a name="updateTrail"></a>
-# **updateTrail**
-> updateTrail(id, body)
+<a name="updateTrailByID"></a>
+# **updateTrailByID**
+> updateTrailByID(id, trail)
 
 
+
+Update the trail with this id
 
 ### Example
 ```java
@@ -640,21 +742,28 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    Long id = 56L; // Long | name that need to be updated
-    Trail body = new Trail(); // Trail | Updated Trail object
+    Long id = 56L; // Long | id for the trail that need to be updated
+    Trail trail = new Trail(); // Trail | Updated Trail object
     try {
-      apiInstance.updateTrail(id, body);
+      apiInstance.updateTrailByID(id, trail);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#updateTrail");
+      System.err.println("Exception when calling DefaultApi#updateTrailByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -668,8 +777,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Long**| name that need to be updated |
- **body** | [**Trail**](Trail.md)| Updated Trail object |
+ **id** | **Long**| id for the trail that need to be updated |
+ **trail** | [**Trail**](Trail.md)| Updated Trail object |
 
 ### Return type
 
@@ -677,7 +786,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -690,11 +799,13 @@ No authorization required
 **400** | Invalid trail supplied |  -  |
 **404** | Trail not found |  -  |
 
-<a name="updateUser"></a>
-# **updateUser**
-> updateUser(email, body)
+<a name="updateUserByID"></a>
+# **updateUserByID**
+> updateUserByID(email, userUpdate)
 
 
+
+Update the user with this email
 
 ### Example
 ```java
@@ -702,21 +813,28 @@ No authorization required
 import io.avalia.user.ApiClient;
 import io.avalia.user.ApiException;
 import io.avalia.user.Configuration;
+import io.avalia.user.auth.*;
 import io.avalia.user.models.*;
 import io.avalia.user.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8081/api");
+    defaultClient.setBasePath("http://localhost:8081/worldtrails");
+    
+    // Configure API key authorization: Bearer
+    ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
+    Bearer.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | name that need to be updated
-    User body = new User(); // User | Updated user object
+    String email = "email_example"; // String | user that need to be updated
+    UserUpdate userUpdate = new UserUpdate(); // UserUpdate | Updated user object
     try {
-      apiInstance.updateUser(email, body);
+      apiInstance.updateUserByID(email, userUpdate);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#updateUser");
+      System.err.println("Exception when calling DefaultApi#updateUserByID");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -730,8 +848,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| name that need to be updated |
- **body** | [**User**](User.md)| Updated user object |
+ **email** | **String**| user that need to be updated |
+ **userUpdate** | [**UserUpdate**](UserUpdate.md)| Updated user object |
 
 ### Return type
 
@@ -739,7 +857,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -749,6 +867,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | successful operation |  -  |
 **400** | Invalid user supplied |  -  |
 **404** | User not found |  -  |
 

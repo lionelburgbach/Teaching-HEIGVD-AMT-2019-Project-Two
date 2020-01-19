@@ -13,14 +13,7 @@
 
 package io.avalia.user.api.dto;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import io.avalia.user.api.dto.RegistrationInput;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -46,14 +39,6 @@ public class RegistrationTest {
     @Test
     public void idTrailTest() {
         // TODO: test idTrail
-    }
-
-    /**
-     * Test the property 'idUser'
-     */
-    @Test
-    public void idUserTest() {
-        // TODO: test idUser
     }
 
 }

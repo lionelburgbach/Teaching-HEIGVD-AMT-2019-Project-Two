@@ -4,7 +4,7 @@ info:
   title: Users API
   description: An API to demonstrate Swagger and Spring Boot
 host: 'localhost:8080'
-basePath: /api
+basePath: /users-auth
 schemes:
   - http
 securityDefinitions:

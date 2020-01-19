@@ -14,9 +14,12 @@
 package io.avalia.user.api;
 
 import io.avalia.user.ApiException;
-import io.avalia.user.api.dto.Registration;
+import io.avalia.user.api.dto.RegistrationInput;
+import io.avalia.user.api.dto.RegistrationOutput;
 import io.avalia.user.api.dto.Trail;
+import io.avalia.user.api.dto.TrailOutput;
 import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserUpdate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -37,30 +40,16 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * all trails
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void allTrailsTest() throws ApiException {
-        List<Trail> response = api.allTrails();
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * create a registration
+     * Create a registration for this email
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void createRegistrationTest() throws ApiException {
-        Registration user = null;
-        Object response = api.createRegistration(user);
+        String email = null;
+        RegistrationInput registration = null;
+        Object response = api.createRegistration(email, registration);
 
         // TODO: test validations
     }
@@ -68,7 +57,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * create a trail
+     * Create a trail
      *
      * @throws ApiException
      *          if the Api call fails
@@ -84,7 +73,7 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * create a user
+     * Create a user
      *
      * @throws ApiException
      *          if the Api call fails
@@ -100,47 +89,16 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Delete a registration for this email
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void deleteRegistrationTest() throws ApiException {
-        Long id = null;
-        api.deleteRegistration(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteTrailTest() throws ApiException {
-        Long id = null;
-        api.deleteTrail(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteUserTest() throws ApiException {
+    public void deleteRegistrationByIDTest() throws ApiException {
         String email = null;
-        api.deleteUser(email);
+        Long id = null;
+        api.deleteRegistrationByID(email, id);
 
         // TODO: test validations
     }
@@ -148,15 +106,15 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Delete the trail with this id
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getRegistrationByIDTest() throws ApiException {
+    public void deleteTrailByIDTest() throws ApiException {
         Long id = null;
-        Registration response = api.getRegistrationByID(id);
+        api.deleteTrailByID(id);
 
         // TODO: test validations
     }
@@ -164,7 +122,41 @@ public class DefaultApiTest {
     /**
      * 
      *
+     * Delete the user with this email
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteUserByIDTest() throws ApiException {
+        String email = null;
+        api.deleteUserByID(email);
+
+        // TODO: test validations
+    }
+    
+    /**
      * 
+     *
+     * Get All registration with this email
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRegistrationsByIdUserTest() throws ApiException {
+        String email = null;
+        Integer pageNumber = null;
+        Integer numberOfRegistrationsPerPage = null;
+        List<RegistrationOutput> response = api.getRegistrationsByIdUser(email, pageNumber, numberOfRegistrationsPerPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Get the trail by this id
      *
      * @throws ApiException
      *          if the Api call fails
@@ -172,7 +164,7 @@ public class DefaultApiTest {
     @Test
     public void getTrailByIDTest() throws ApiException {
         Long id = null;
-        Trail response = api.getTrailByID(id);
+        TrailOutput response = api.getTrailByID(id);
 
         // TODO: test validations
     }
@@ -180,7 +172,24 @@ public class DefaultApiTest {
     /**
      * 
      *
+     * Get all trails
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getTrailsTest() throws ApiException {
+        Integer pageNumber = null;
+        Integer numberOfTrailsPerPage = null;
+        List<TrailOutput> response = api.getTrails(pageNumber, numberOfTrailsPerPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * 
+     *
+     * Get the user with this email
      *
      * @throws ApiException
      *          if the Api call fails
@@ -196,16 +205,16 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Update the trail with this id
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void updateTrailTest() throws ApiException {
+    public void updateTrailByIDTest() throws ApiException {
         Long id = null;
-        Trail body = null;
-        api.updateTrail(id, body);
+        Trail trail = null;
+        api.updateTrailByID(id, trail);
 
         // TODO: test validations
     }
@@ -213,16 +222,16 @@ public class DefaultApiTest {
     /**
      * 
      *
-     * 
+     * Update the user with this email
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void updateUserTest() throws ApiException {
+    public void updateUserByIDTest() throws ApiException {
         String email = null;
-        User body = null;
-        api.updateUser(email, body);
+        UserUpdate userUpdate = null;
+        api.updateUserByID(email, userUpdate);
 
         // TODO: test validations
     }
