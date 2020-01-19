@@ -24,7 +24,7 @@ L'entité registration est le lien entre nos deux première entités. Elle est c
 
 
 
-![https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/Entity.png]()
+![](Entity.png)
 
 ## Implémentation
 
