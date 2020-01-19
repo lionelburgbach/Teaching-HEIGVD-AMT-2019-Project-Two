@@ -1,4 +1,5 @@
 io/avalia/user/api/spec/steps/DeleteSteps.class
+io/avalia/user/api/spec/steps/BadCreationSteps.class
 io/avalia/user/api/spec/helpers/Environment.class
 io/avalia/user/api/spec/steps/GetSteps.class
 io/avalia/user/api/spec/steps/CreationSteps.class
