@@ -16,17 +16,3 @@ services:
          - "6060:80"
       links:
          - mysql:db
-   user:
-      build: ../images/java_server_1
-      ports:
-        - "8080:8080"
-      restart: on-failure
-      links: 
-        - mysql:db
-   trailer:
-      build: ../images/java_server_2
-      ports:
-         - "8081:8081"
-      restart: on-failure
-      links: 
-         - mysql:db

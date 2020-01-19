@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UserAuthAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T14:17:57.392+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T15:55:05.557+01:00[Europe/Zurich]")
 public class UserAuthAllOf {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)

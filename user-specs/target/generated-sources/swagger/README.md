@@ -2,7 +2,7 @@
 
 Users API
 - API version: 0.1.0
-  - Build date: 2020-01-19T14:17:57.392+01:00[Europe/Zurich]
+  - Build date: 2020-01-19T15:55:05.557+01:00[Europe/Zurich]
 
 An API to demonstrate Swagger and Spring Boot
 
@@ -82,7 +82,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/users-auth");
+    defaultClient.setBasePath("http://localhost:8080/auth");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     UserAuth userAuth = new UserAuth(); // UserAuth | 
@@ -103,7 +103,7 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080/users-auth*
+All URIs are relative to *http://localhost:8080/auth*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

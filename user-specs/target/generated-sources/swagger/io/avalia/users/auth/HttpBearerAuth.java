@@ -18,7 +18,7 @@ import io.avalia.users.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T14:17:57.392+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T15:55:05.557+01:00[Europe/Zurich]")
 public class HttpBearerAuth implements Authentication {
   private final String scheme;
   private String bearerToken;

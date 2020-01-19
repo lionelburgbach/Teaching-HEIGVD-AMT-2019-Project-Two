@@ -22,7 +22,7 @@ formatter.match({
   "location": "CreationSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 388024808,
+  "duration": 422563953,
   "status": "passed"
 });
 formatter.scenario({
@@ -57,22 +57,21 @@ formatter.match({
   "location": "BadCreationSteps.iHaveAnAuthenticateUserss()"
 });
 formatter.result({
-  "duration": 197496629,
-  "status": "passed"
+  "duration": 10737089,
+  "error_message": "java.lang.IllegalArgumentException: Expected URL scheme \u0027http\u0027 or \u0027https\u0027 but no colon was found\n\tat okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)\n\tat okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)\n\tat okhttp3.Request$Builder.url(Request.kt:184)\n\tat io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)\n\tat io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)\n\tat io.avalia.user.api.spec.steps.BadCreationSteps.iHaveAnAuthenticateUserss(BadCreationSteps.java:46)\n\tat ✽.Given I have an authenticate userss(badcreation.feature:7)\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "BadCreationSteps.i_have_a_users_already_in_db_payload()"
 });
 formatter.result({
-  "duration": 123933,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "BadCreationSteps.i_POST_it_to_the_users_already_in_db_endpoint()"
 });
 formatter.result({
-  "duration": 26394358,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -84,8 +83,7 @@ formatter.match({
   "location": "BadCreationSteps.i_receive_a_status_code(int)"
 });
 formatter.result({
-  "duration": 1719849,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("creation.feature");
 formatter.feature({
@@ -111,7 +109,7 @@ formatter.match({
   "location": "CreationSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 299254,
+  "duration": 288885,
   "status": "passed"
 });
 formatter.scenario({
@@ -146,22 +144,21 @@ formatter.match({
   "location": "CreationSteps.iHaveAnAuthenticateUsers()"
 });
 formatter.result({
-  "duration": 108376411,
-  "status": "passed"
+  "duration": 302090,
+  "error_message": "java.lang.IllegalArgumentException: Expected URL scheme \u0027http\u0027 or \u0027https\u0027 but no colon was found\n\tat okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)\n\tat okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)\n\tat okhttp3.Request$Builder.url(Request.kt:184)\n\tat io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)\n\tat io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)\n\tat io.avalia.user.api.spec.steps.CreationSteps.iHaveAnAuthenticateUsers(CreationSteps.java:52)\n\tat ✽.Given I have an authenticate users(creation.feature:7)\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "CreationSteps.i_have_a_users_payload()"
 });
 formatter.result({
-  "duration": 47791,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "CreationSteps.i_POST_it_to_the_users_endpoint()"
 });
 formatter.result({
-  "duration": 133857493,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -173,8 +170,7 @@ formatter.match({
   "location": "CreationSteps.i_receive_a_status_code(int)"
 });
 formatter.result({
-  "duration": 83741,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("delete.feature");
 formatter.feature({
@@ -200,7 +196,7 @@ formatter.match({
   "location": "DeleteSteps.there_is_a_users_server()"
 });
 formatter.result({
-  "duration": 294346,
+  "duration": 287801,
   "status": "passed"
 });
 formatter.scenario({
@@ -230,15 +226,15 @@ formatter.match({
   "location": "DeleteSteps.iHaveAnAuthenticateUsersWithAdminRights()"
 });
 formatter.result({
-  "duration": 118241683,
-  "status": "passed"
+  "duration": 239492,
+  "error_message": "java.lang.IllegalArgumentException: Expected URL scheme \u0027http\u0027 or \u0027https\u0027 but no colon was found\n\tat okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)\n\tat okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)\n\tat okhttp3.Request$Builder.url(Request.kt:184)\n\tat io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)\n\tat io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)\n\tat io.avalia.user.api.spec.steps.DeleteSteps.iHaveAnAuthenticateUsersWithAdminRights(DeleteSteps.java:47)\n\tat ✽.Given I have an authenticate users with admin rights(delete.feature:7)\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "DeleteSteps.iDELETEItToTheUsersEndpoint()"
 });
 formatter.result({
-  "duration": 39401980,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -250,8 +246,7 @@ formatter.match({
   "location": "DeleteSteps.iReceiveAgainAStatusCode(int)"
 });
 formatter.result({
-  "duration": 424982,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("get.feature");
 formatter.feature({
@@ -277,7 +272,7 @@ formatter.match({
   "location": "GetSteps.there_is_a_server()"
 });
 formatter.result({
-  "duration": 353804,
+  "duration": 285742,
   "status": "passed"
 });
 formatter.scenario({
@@ -307,15 +302,16 @@ formatter.match({
   "location": "GetSteps.aUserWithCorrectCredentials()"
 });
 formatter.result({
-  "duration": 44399,
+  "duration": 37921,
   "status": "passed"
 });
 formatter.match({
   "location": "GetSteps.i_POST_it_to_the_users_endpoint()"
 });
 formatter.result({
-  "duration": 121962923,
-  "status": "passed"
+  "duration": 246208,
+  "error_message": "java.lang.IllegalArgumentException: Expected URL scheme \u0027http\u0027 or \u0027https\u0027 but no colon was found\n\tat okhttp3.HttpUrl$Builder.parse$okhttp(HttpUrl.kt:1257)\n\tat okhttp3.HttpUrl$Companion.get(HttpUrl.kt:1630)\n\tat okhttp3.Request$Builder.url(Request.kt:184)\n\tat io.avalia.users.ApiClient.buildRequest(ApiClient.java:1025)\n\tat io.avalia.users.ApiClient.buildCall(ApiClient.java:1000)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenCall(DefaultApi.java:99)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenValidateBeforeCall(DefaultApi.java:111)\n\tat io.avalia.users.api.DefaultApi.createAuthenticationTokenWithHttpInfo(DefaultApi.java:150)\n\tat io.avalia.user.api.spec.steps.GetSteps.i_POST_it_to_the_users_endpoint(GetSteps.java:52)\n\tat ✽.When I POST a correct users /authenticate endpoint(get.feature:8)\n",
+  "status": "failed"
 });
 formatter.match({
   "arguments": [
@@ -327,7 +323,6 @@ formatter.match({
   "location": "GetSteps.i_receive_a_GET_status_code(int)"
 });
 formatter.result({
-  "duration": 75227,
-  "status": "passed"
+  "status": "skipped"
 });
 });
