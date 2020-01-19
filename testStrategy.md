@@ -10,7 +10,8 @@ Nous avons rencontrer des problèmes avec nos tests après l'implémentation de 
 
 ## Tests JMeter
 
-
+Notre stratégie pour les tests Jmeter a été de tester la pagination de l'API user.
 
 ## Efficacité de nos tests
 
+Nous avons testé la plus grande partie de notre application avec postman et des tests manuels. Pour la partie automatisé de nos tests, ils sont là pour montrer que nous avons réussi à en créer quelques uns mais ne sont pas suffisant à prouver que notre API fonctionne complètement. Si notre emploi du temps l'avait permis, nous aurions pu approfondir les tests. Par exemple, ajouter un nouvel utilisateur et voir si le nombre d'utilisateur a bien augmenté de 1.
