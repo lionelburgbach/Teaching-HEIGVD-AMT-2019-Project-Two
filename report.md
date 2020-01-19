@@ -22,6 +22,10 @@ L'entité trail représente une randonnées, elle possède elle aussi un ID uniq
 
 L'entité registration est le lien entre nos deux première entités. Elle est composé d'un ID unique généré automatiquement par la base de données, de l'ID d'un utilisateur et de l'ID du trail auquel ce dernier souhaite s'inscrire.
 
+
+
+![https://github.com/lionelburgbach/Teaching-HEIGVD-AMT-2019-Project-Two/blob/master/Entity.png]()
+
 ## Implémentation
 
 ## Bugs & Limitations
