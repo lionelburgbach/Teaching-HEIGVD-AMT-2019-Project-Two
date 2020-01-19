@@ -10,7 +10,9 @@ Nous avons rencontrer des problèmes avec nos tests après l'implémentation de 
 
 ## Tests JMeter
 
-Notre stratégie pour les tests Jmeter a été de tester la pagination de l'API user.
+Notre stratégie pour les tests Jmeter a été de tester la pagination de l'API user. 
+
+asfdélkjsad
 
 ## Efficacité de nos tests
 
