@@ -18,6 +18,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.avalia.user.api.dto.UserAllOf;
+import io.avalia.user.api.dto.UserUpdate;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -70,14 +72,6 @@ public class UserTest {
     @Test
     public void emailTest() {
         // TODO: test email
-    }
-
-    /**
-     * Test the property 'password'
-     */
-    @Test
-    public void passwordTest() {
-        // TODO: test password
     }
 
 }

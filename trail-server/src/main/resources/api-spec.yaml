@@ -4,7 +4,7 @@ info:
   title: Trailer API
   description: An API to demonstrate Swagger and Spring Boot
 host: 'localhost:8081'
-basePath: /api
+basePath: /worldtrails
 schemes:
   - http
 securityDefinitions:

@@ -15,74 +15,13 @@ package io.avalia.user.api.dto;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import io.avalia.user.api.dto.RegistrationInput;
 
 /**
  * Registration
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-12-16T10:32:14.374+01:00[Europe/Zurich]")
-public class Registration {
-  public static final String SERIALIZED_NAME_ID_TRAIL = "idTrail";
-  @SerializedName(SERIALIZED_NAME_ID_TRAIL)
-  private Long idTrail;
-
-  public static final String SERIALIZED_NAME_ID_USER = "idUser";
-  @SerializedName(SERIALIZED_NAME_ID_USER)
-  private Long idUser;
-
-
-  public Registration idTrail(Long idTrail) {
-    
-    this.idTrail = idTrail;
-    return this;
-  }
-
-   /**
-   * Get idTrail
-   * @return idTrail
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Long getIdTrail() {
-    return idTrail;
-  }
-
-
-  public void setIdTrail(Long idTrail) {
-    this.idTrail = idTrail;
-  }
-
-
-  public Registration idUser(Long idUser) {
-    
-    this.idUser = idUser;
-    return this;
-  }
-
-   /**
-   * Get idUser
-   * @return idUser
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Long getIdUser() {
-    return idUser;
-  }
-
-
-  public void setIdUser(Long idUser) {
-    this.idUser = idUser;
-  }
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-19T14:00:29.769+01:00[Europe/Zurich]")
+public class Registration extends RegistrationInput {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -92,14 +31,12 @@ public class Registration {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Registration registration = (Registration) o;
-    return Objects.equals(this.idTrail, registration.idTrail) &&
-        Objects.equals(this.idUser, registration.idUser);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idTrail, idUser);
+    return Objects.hash(super.hashCode());
   }
 
 
@@ -107,8 +44,7 @@ public class Registration {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Registration {\n");
-    sb.append("    idTrail: ").append(toIndentedString(idTrail)).append("\n");
-    sb.append("    idUser: ").append(toIndentedString(idUser)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
   }

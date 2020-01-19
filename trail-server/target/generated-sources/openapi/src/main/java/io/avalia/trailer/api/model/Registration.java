@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 /**
  * Registration
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-17T11:50:26.958253+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-01-19T13:55:48.092+01:00[Europe/Zurich]")
 
 public class Registration extends RegistrationInput  {
 

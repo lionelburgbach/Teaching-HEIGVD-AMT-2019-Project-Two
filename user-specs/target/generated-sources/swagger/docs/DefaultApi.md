@@ -1,6 +1,6 @@
 # DefaultApi
 
-All URIs are relative to *http://localhost:8080/api*
+All URIs are relative to *http://localhost:8080/users-auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 
-try to authenticate
+Try to authenticate
 
 ### Example
 ```java
@@ -32,7 +32,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
     UserAuth userAuth = new UserAuth(); // UserAuth | 
@@ -72,8 +72,9 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | get your token |  -  |
-**401** | fail to authenticat |  -  |
+**200** | authentication success |  -  |
+**400** | Email and Password cannot be null |  -  |
+**401** | Bad Credentials |  -  |
 
 <a name="createUser"></a>
 # **createUser**
@@ -81,7 +82,7 @@ No authorization required
 
 
 
-create a user
+Create a user
 
 ### Example
 ```java
@@ -96,7 +97,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -143,8 +144,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | created |  -  |
-**403** | You do not have necessary permissions for the resource |  -  |
-**502** | You do not have necessary permissions for the resource |  -  |
+**401** | You do not have necessary permissions to creat a user |  -  |
 
 <a name="deleteUserByID"></a>
 # **deleteUserByID**
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 
 
-This can only be done by the logged in user.
+Delete the user with this password
 
 ### Example
 ```java
@@ -167,7 +167,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -176,7 +176,7 @@ public class Example {
     //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | name that need to be updated
+    String email = "email_example"; // String | email of the user
     try {
       apiInstance.deleteUserByID(email);
     } catch (ApiException e) {
@@ -194,7 +194,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| name that need to be updated |
+ **email** | **String**| email of the user |
 
 ### Return type
 
@@ -212,8 +212,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**400** | Invalid username supplied |  -  |
-**403** | You do not have necessary permissions for the resource |  -  |
+**200** | successful operation |  -  |
+**400** | Bad request |  -  |
+**401** | You do not have necessary permissions for the resource |  -  |
 **404** | User not found |  -  |
 
 <a name="getUserByID"></a>
@@ -221,6 +222,8 @@ null (empty response body)
 > UserToken getUserByID(email)
 
 
+
+Get the user with this email
 
 ### Example
 ```java
@@ -235,7 +238,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -244,7 +247,7 @@ public class Example {
     //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | name that need to be updated
+    String email = "email_example"; // String | email of the user
     try {
       UserToken result = apiInstance.getUserByID(email);
       System.out.println(result);
@@ -263,7 +266,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| name that need to be updated |
+ **email** | **String**| email of the user |
 
 ### Return type
 
@@ -282,17 +285,17 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**400** | Invalid username supplied |  -  |
-**403** | You do not have necessary permissions for the resource |  -  |
+**400** | Bad request |  -  |
+**401** | You do not have necessary permissions for the resource |  -  |
 **404** | User not found |  -  |
 
 <a name="getUsers"></a>
 # **getUsers**
-> List&lt;UserToken&gt; getUsers()
+> List&lt;UserToken&gt; getUsers(pageNumber, numberOfUsersPerPage)
 
 
 
-get user paramater
+Get a list of all users
 
 ### Example
 ```java
@@ -307,7 +310,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -316,8 +319,10 @@ public class Example {
     //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Integer pageNumber = 0; // Integer | 
+    Integer numberOfUsersPerPage = 30; // Integer | 
     try {
-      List<UserToken> result = apiInstance.getUsers();
+      List<UserToken> result = apiInstance.getUsers(pageNumber, numberOfUsersPerPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DefaultApi#getUsers");
@@ -331,7 +336,11 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageNumber** | **Integer**|  | [optional] [default to 0]
+ **numberOfUsersPerPage** | **Integer**|  | [optional] [default to 30]
 
 ### Return type
 
@@ -349,14 +358,16 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | success |  -  |
-**403** | You do not have necessary permissions for the resource |  -  |
+**200** | success to get users |  -  |
+**401** | You do not have necessary permissions for the resource |  -  |
 
 <a name="updatePasswordByID"></a>
 # **updatePasswordByID**
 > updatePasswordByID(email, password)
 
 
+
+Change password with this email
 
 ### Example
 ```java
@@ -371,7 +382,7 @@ import io.avalia.users.api.DefaultApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080/api");
+    defaultClient.setBasePath("http://localhost:8080/users-auth");
     
     // Configure API key authorization: Bearer
     ApiKeyAuth Bearer = (ApiKeyAuth) defaultClient.getAuthentication("Bearer");
@@ -380,8 +391,8 @@ public class Example {
     //Bearer.setApiKeyPrefix("Token");
 
     DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String email = "email_example"; // String | name that need to be updated
-    String password = "password_example"; // String | Updated user object
+    String email = "email_example"; // String | email of the user
+    String password = "password_example"; // String | The password to change
     try {
       apiInstance.updatePasswordByID(email, password);
     } catch (ApiException e) {
@@ -399,8 +410,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| name that need to be updated |
- **password** | **String**| Updated user object |
+ **email** | **String**| email of the user |
+ **password** | **String**| The password to change |
 
 ### Return type
 
@@ -418,7 +429,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**400** | Invalid user supplied |  -  |
-**403** | You do not have necessary permissions for the resource |  -  |
-**404** | User not found |  -  |
+**200** | successful operation |  -  |
+**400** | You do not have necessary permissions for the resource |  -  |
 

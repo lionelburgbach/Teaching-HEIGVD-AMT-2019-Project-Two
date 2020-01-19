@@ -27,9 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.avalia.user.api.dto.Registration;
+import io.avalia.user.api.dto.RegistrationInput;
+import io.avalia.user.api.dto.RegistrationOutput;
 import io.avalia.user.api.dto.Trail;
+import io.avalia.user.api.dto.TrailOutput;
 import io.avalia.user.api.dto.User;
+import io.avalia.user.api.dto.UserUpdate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -57,109 +60,9 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for allTrails
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call allTrailsCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/trail";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call allTrailsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = allTrailsCall(_callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * all trails
-     * @return List&lt;Trail&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<Trail> allTrails() throws ApiException {
-        ApiResponse<List<Trail>> localVarResp = allTrailsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * all trails
-     * @return ApiResponse&lt;List&lt;Trail&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<Trail>> allTrailsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = allTrailsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<Trail>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * all trails
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call allTrailsAsync(final ApiCallback<List<Trail>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = allTrailsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<Trail>>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for createRegistration
-     * @param user  (required)
+     * @param email email from the user (required)
+     * @param registration  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -167,13 +70,15 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Registration problem </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRegistrationCall(Registration user, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = user;
+    public okhttp3.Call createRegistrationCall(String email, RegistrationInput registration, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = registration;
 
         // create path and map variables
-        String localVarPath = "/registration";
+        String localVarPath = "/registrations/{email}"
+            .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -194,63 +99,73 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRegistrationValidateBeforeCall(Registration user, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRegistrationValidateBeforeCall(String email, RegistrationInput registration, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'user' is set
-        if (user == null) {
-            throw new ApiException("Missing the required parameter 'user' when calling createRegistration(Async)");
+        // verify the required parameter 'email' is set
+        if (email == null) {
+            throw new ApiException("Missing the required parameter 'email' when calling createRegistration(Async)");
+        }
+        
+        // verify the required parameter 'registration' is set
+        if (registration == null) {
+            throw new ApiException("Missing the required parameter 'registration' when calling createRegistration(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createRegistrationCall(user, _callback);
+        okhttp3.Call localVarCall = createRegistrationCall(email, registration, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * create a registration
-     * @param user  (required)
+     * Create a registration for this email
+     * @param email email from the user (required)
+     * @param registration  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Registration problem </td><td>  -  </td></tr>
      </table>
      */
-    public Object createRegistration(Registration user) throws ApiException {
-        ApiResponse<Object> localVarResp = createRegistrationWithHttpInfo(user);
+    public Object createRegistration(String email, RegistrationInput registration) throws ApiException {
+        ApiResponse<Object> localVarResp = createRegistrationWithHttpInfo(email, registration);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * create a registration
-     * @param user  (required)
+     * Create a registration for this email
+     * @param email email from the user (required)
+     * @param registration  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Registration problem </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> createRegistrationWithHttpInfo(Registration user) throws ApiException {
-        okhttp3.Call localVarCall = createRegistrationValidateBeforeCall(user, null);
+    public ApiResponse<Object> createRegistrationWithHttpInfo(String email, RegistrationInput registration) throws ApiException {
+        okhttp3.Call localVarCall = createRegistrationValidateBeforeCall(email, registration, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * create a registration
-     * @param user  (required)
+     * Create a registration for this email
+     * @param email email from the user (required)
+     * @param registration  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -258,11 +173,12 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Registration problem </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRegistrationAsync(Registration user, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call createRegistrationAsync(String email, RegistrationInput registration, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRegistrationValidateBeforeCall(user, _callback);
+        okhttp3.Call localVarCall = createRegistrationValidateBeforeCall(email, registration, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -283,7 +199,7 @@ public class DefaultApi {
         Object localVarPostBody = trail;
 
         // create path and map variables
-        String localVarPath = "/trail";
+        String localVarPath = "/trails";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -304,7 +220,7 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -324,7 +240,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a trail
+     * Create a trail
      * @param trail  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -341,7 +257,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a trail
+     * Create a trail
      * @param trail  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -359,7 +275,7 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * create a trail
+     * Create a trail
      * @param trail  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -387,13 +303,14 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> This email already exist! </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createUserCall(User user, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = user;
 
         // create path and map variables
-        String localVarPath = "/user";
+        String localVarPath = "/users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -414,7 +331,7 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -434,7 +351,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a user
+     * Create a user
      * @param user  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -442,6 +359,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> This email already exist! </td><td>  -  </td></tr>
      </table>
      */
     public Object createUser(User user) throws ApiException {
@@ -451,7 +369,7 @@ public class DefaultApi {
 
     /**
      * 
-     * create a user
+     * Create a user
      * @param user  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -459,6 +377,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> This email already exist! </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> createUserWithHttpInfo(User user) throws ApiException {
@@ -469,7 +388,7 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * create a user
+     * Create a user
      * @param user  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -478,6 +397,7 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> This email already exist! </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createUserAsync(User user, final ApiCallback<Object> _callback) throws ApiException {
@@ -488,8 +408,9 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteRegistration
-     * @param id The name that needs to be deleted (required)
+     * Build call for deleteRegistrationByID
+     * @param email The owner registration (required)
+     * @param id The registration id that needs to be deleted (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -500,11 +421,134 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRegistrationCall(Long id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRegistrationByIDCall(String email, Long id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/registration/{id}"
+        String localVarPath = "/registrations/{email}"
+            .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (id != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("id", id));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteRegistrationByIDValidateBeforeCall(String email, Long id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'email' is set
+        if (email == null) {
+            throw new ApiException("Missing the required parameter 'email' when calling deleteRegistrationByID(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteRegistrationByID(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteRegistrationByIDCall(email, id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Delete a registration for this email
+     * @param email The owner registration (required)
+     * @param id The registration id that needs to be deleted (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteRegistrationByID(String email, Long id) throws ApiException {
+        deleteRegistrationByIDWithHttpInfo(email, id);
+    }
+
+    /**
+     * 
+     * Delete a registration for this email
+     * @param email The owner registration (required)
+     * @param id The registration id that needs to be deleted (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteRegistrationByIDWithHttpInfo(String email, Long id) throws ApiException {
+        okhttp3.Call localVarCall = deleteRegistrationByIDValidateBeforeCall(email, id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete a registration for this email
+     * @param email The owner registration (required)
+     * @param id The registration id that needs to be deleted (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteRegistrationByIDAsync(String email, Long id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRegistrationByIDValidateBeforeCall(email, id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteTrailByID
+     * @param id trail that needs to be deleted (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 400 </td><td> Invalid Trail id supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteTrailByIDCall(Long id, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/trails/{id}"
             .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -526,139 +570,28 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteRegistrationValidateBeforeCall(Long id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTrailByIDValidateBeforeCall(Long id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteRegistration(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteTrailByID(Async)");
         }
         
 
-        okhttp3.Call localVarCall = deleteRegistrationCall(id, _callback);
+        okhttp3.Call localVarCall = deleteTrailByIDCall(id, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * 
-     * @param id The name that needs to be deleted (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteRegistration(Long id) throws ApiException {
-        deleteRegistrationWithHttpInfo(id);
-    }
-
-    /**
-     * 
-     * 
-     * @param id The name that needs to be deleted (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteRegistrationWithHttpInfo(Long id) throws ApiException {
-        okhttp3.Call localVarCall = deleteRegistrationValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param id The name that needs to be deleted (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteRegistrationAsync(Long id, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteRegistrationValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteTrail
-     * @param id The name that needs to be deleted (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 400 </td><td> Invalid Trail id supplied </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTrailCall(Long id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/trail/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTrailValidateBeforeCall(Long id, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteTrail(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = deleteTrailCall(id, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * 
-     * @param id The name that needs to be deleted (required)
+     * Delete the trail with this id
+     * @param id trail that needs to be deleted (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -667,14 +600,14 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteTrail(Long id) throws ApiException {
-        deleteTrailWithHttpInfo(id);
+    public void deleteTrailByID(Long id) throws ApiException {
+        deleteTrailByIDWithHttpInfo(id);
     }
 
     /**
      * 
-     * 
-     * @param id The name that needs to be deleted (required)
+     * Delete the trail with this id
+     * @param id trail that needs to be deleted (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -684,15 +617,15 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteTrailWithHttpInfo(Long id) throws ApiException {
-        okhttp3.Call localVarCall = deleteTrailValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteTrailByIDWithHttpInfo(Long id) throws ApiException {
+        okhttp3.Call localVarCall = deleteTrailByIDValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param id The name that needs to be deleted (required)
+     * Delete the trail with this id
+     * @param id trail that needs to be deleted (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -703,30 +636,31 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTrailAsync(Long id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTrailByIDAsync(Long id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTrailValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteTrailByIDValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteUser
-     * @param email The name that needs to be deleted (required)
+     * Build call for deleteUserByID
+     * @param email user that needs to be deleted (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserCall(String email, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteUserByIDCall(String email, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/user/{email}"
+        String localVarPath = "/users/{email}"
             .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -748,101 +682,114 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteUserValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteUserByIDValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'email' is set
         if (email == null) {
-            throw new ApiException("Missing the required parameter 'email' when calling deleteUser(Async)");
+            throw new ApiException("Missing the required parameter 'email' when calling deleteUserByID(Async)");
         }
         
 
-        okhttp3.Call localVarCall = deleteUserCall(email, _callback);
+        okhttp3.Call localVarCall = deleteUserByIDCall(email, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * 
-     * @param email The name that needs to be deleted (required)
+     * Delete the user with this email
+     * @param email user that needs to be deleted (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteUser(String email) throws ApiException {
-        deleteUserWithHttpInfo(email);
+    public void deleteUserByID(String email) throws ApiException {
+        deleteUserByIDWithHttpInfo(email);
     }
 
     /**
      * 
-     * 
-     * @param email The name that needs to be deleted (required)
+     * Delete the user with this email
+     * @param email user that needs to be deleted (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteUserWithHttpInfo(String email) throws ApiException {
-        okhttp3.Call localVarCall = deleteUserValidateBeforeCall(email, null);
+    public ApiResponse<Void> deleteUserByIDWithHttpInfo(String email) throws ApiException {
+        okhttp3.Call localVarCall = deleteUserByIDValidateBeforeCall(email, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param email The name that needs to be deleted (required)
+     * Delete the user with this email
+     * @param email user that needs to be deleted (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserAsync(String email, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteUserByIDAsync(String email, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteUserValidateBeforeCall(email, _callback);
+        okhttp3.Call localVarCall = deleteUserByIDValidateBeforeCall(email, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getRegistrationByID
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
+     * Build call for getRegistrationsByIdUser
+     * @param email email with registrations (required)
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfRegistrationsPerPage  (optional, default to 30)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> read </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistrationByIDCall(Long id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistrationsByIdUserCall(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/registration/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+        String localVarPath = "/registrations/{email}"
+            .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("PageNumber", pageNumber));
+        }
+
+        if (numberOfRegistrationsPerPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("numberOfRegistrationsPerPage", numberOfRegistrationsPerPage));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -860,88 +807,94 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRegistrationByIDValidateBeforeCall(Long id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRegistrationsByIdUserValidateBeforeCall(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getRegistrationByID(Async)");
+        // verify the required parameter 'email' is set
+        if (email == null) {
+            throw new ApiException("Missing the required parameter 'email' when calling getRegistrationsByIdUser(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getRegistrationByIDCall(id, _callback);
+        okhttp3.Call localVarCall = getRegistrationsByIdUserCall(email, pageNumber, numberOfRegistrationsPerPage, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return Registration
+     * Get All registration with this email
+     * @param email email with registrations (required)
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfRegistrationsPerPage  (optional, default to 30)
+     * @return List&lt;RegistrationOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> read </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
      </table>
      */
-    public Registration getRegistrationByID(Long id) throws ApiException {
-        ApiResponse<Registration> localVarResp = getRegistrationByIDWithHttpInfo(id);
+    public List<RegistrationOutput> getRegistrationsByIdUser(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage) throws ApiException {
+        ApiResponse<List<RegistrationOutput>> localVarResp = getRegistrationsByIdUserWithHttpInfo(email, pageNumber, numberOfRegistrationsPerPage);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return ApiResponse&lt;Registration&gt;
+     * Get All registration with this email
+     * @param email email with registrations (required)
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfRegistrationsPerPage  (optional, default to 30)
+     * @return ApiResponse&lt;List&lt;RegistrationOutput&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> read </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Registration> getRegistrationByIDWithHttpInfo(Long id) throws ApiException {
-        okhttp3.Call localVarCall = getRegistrationByIDValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Registration>(){}.getType();
+    public ApiResponse<List<RegistrationOutput>> getRegistrationsByIdUserWithHttpInfo(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage) throws ApiException {
+        okhttp3.Call localVarCall = getRegistrationsByIdUserValidateBeforeCall(email, pageNumber, numberOfRegistrationsPerPage, null);
+        Type localVarReturnType = new TypeToken<List<RegistrationOutput>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
+     * Get All registration with this email
+     * @param email email with registrations (required)
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfRegistrationsPerPage  (optional, default to 30)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> read </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid id supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Registration not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistrationByIDAsync(Long id, final ApiCallback<Registration> _callback) throws ApiException {
+    public okhttp3.Call getRegistrationsByIdUserAsync(String email, Integer pageNumber, Integer numberOfRegistrationsPerPage, final ApiCallback<List<RegistrationOutput>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRegistrationByIDValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Registration>(){}.getType();
+        okhttp3.Call localVarCall = getRegistrationsByIdUserValidateBeforeCall(email, pageNumber, numberOfRegistrationsPerPage, _callback);
+        Type localVarReturnType = new TypeToken<List<RegistrationOutput>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getTrailByID
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
+     * @param id The id of the trail (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -957,7 +910,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/trail/{id}"
+        String localVarPath = "/trails/{id}"
             .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -979,7 +932,7 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -999,9 +952,9 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return Trail
+     * Get the trail by this id
+     * @param id The id of the trail (required)
+     * @return TrailOutput
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1011,16 +964,16 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public Trail getTrailByID(Long id) throws ApiException {
-        ApiResponse<Trail> localVarResp = getTrailByIDWithHttpInfo(id);
+    public TrailOutput getTrailByID(Long id) throws ApiException {
+        ApiResponse<TrailOutput> localVarResp = getTrailByIDWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
-     * @return ApiResponse&lt;Trail&gt;
+     * Get the trail by this id
+     * @param id The id of the trail (required)
+     * @return ApiResponse&lt;TrailOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1030,16 +983,16 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trail> getTrailByIDWithHttpInfo(Long id) throws ApiException {
+    public ApiResponse<TrailOutput> getTrailByIDWithHttpInfo(Long id) throws ApiException {
         okhttp3.Call localVarCall = getTrailByIDValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Trail>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrailOutput>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param id The name that needs to be fetched. Use user1 for testing.  (required)
+     * Get the trail by this id
+     * @param id The id of the trail (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1051,16 +1004,133 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrailByIDAsync(Long id, final ApiCallback<Trail> _callback) throws ApiException {
+    public okhttp3.Call getTrailByIDAsync(Long id, final ApiCallback<TrailOutput> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrailByIDValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Trail>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrailOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTrails
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfTrailsPerPage  (optional, default to 30)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Array with all trails </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTrailsCall(Integer pageNumber, Integer numberOfTrailsPerPage, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/trails";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("PageNumber", pageNumber));
+        }
+
+        if (numberOfTrailsPerPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("numberOfTrailsPerPage", numberOfTrailsPerPage));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "Bearer" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTrailsValidateBeforeCall(Integer pageNumber, Integer numberOfTrailsPerPage, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getTrailsCall(pageNumber, numberOfTrailsPerPage, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get all trails
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfTrailsPerPage  (optional, default to 30)
+     * @return List&lt;TrailOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Array with all trails </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<TrailOutput> getTrails(Integer pageNumber, Integer numberOfTrailsPerPage) throws ApiException {
+        ApiResponse<List<TrailOutput>> localVarResp = getTrailsWithHttpInfo(pageNumber, numberOfTrailsPerPage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get all trails
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfTrailsPerPage  (optional, default to 30)
+     * @return ApiResponse&lt;List&lt;TrailOutput&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Array with all trails </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<TrailOutput>> getTrailsWithHttpInfo(Integer pageNumber, Integer numberOfTrailsPerPage) throws ApiException {
+        okhttp3.Call localVarCall = getTrailsValidateBeforeCall(pageNumber, numberOfTrailsPerPage, null);
+        Type localVarReturnType = new TypeToken<List<TrailOutput>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get all trails
+     * @param pageNumber  (optional, default to 0)
+     * @param numberOfTrailsPerPage  (optional, default to 30)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Array with all trails </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTrailsAsync(Integer pageNumber, Integer numberOfTrailsPerPage, final ApiCallback<List<TrailOutput>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTrailsValidateBeforeCall(pageNumber, numberOfTrailsPerPage, _callback);
+        Type localVarReturnType = new TypeToken<List<TrailOutput>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getUserByID
-     * @param email The name that needs to be fetched. Use user1 for testing.  (required)
+     * @param email email of the user (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1068,7 +1138,8 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -1076,7 +1147,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/user/{email}"
+        String localVarPath = "/users/{email}"
             .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1098,7 +1169,7 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1118,15 +1189,16 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email The name that needs to be fetched. Use user1 for testing.  (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -1137,15 +1209,16 @@ public class DefaultApi {
 
     /**
      * 
-     * 
-     * @param email The name that needs to be fetched. Use user1 for testing.  (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -1157,8 +1230,8 @@ public class DefaultApi {
 
     /**
      *  (asynchronously)
-     * 
-     * @param email The name that needs to be fetched. Use user1 for testing.  (required)
+     * Get the user with this email
+     * @param email email of the user (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1166,7 +1239,8 @@ public class DefaultApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid username supplied </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> You do not have necessary permissions for the resource </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
@@ -1178,9 +1252,9 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for updateTrail
-     * @param id name that need to be updated (required)
-     * @param body Updated Trail object (required)
+     * Build call for updateTrailByID
+     * @param id id for the trail that need to be updated (required)
+     * @param trail Updated Trail object (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1191,11 +1265,11 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTrailCall(Long id, Trail body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateTrailByIDCall(Long id, Trail trail, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = trail;
 
         // create path and map variables
-        String localVarPath = "/trail/{id}"
+        String localVarPath = "/trails/{id}"
             .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1217,34 +1291,34 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTrailValidateBeforeCall(Long id, Trail body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateTrailByIDValidateBeforeCall(Long id, Trail trail, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling updateTrail(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling updateTrailByID(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateTrail(Async)");
+        // verify the required parameter 'trail' is set
+        if (trail == null) {
+            throw new ApiException("Missing the required parameter 'trail' when calling updateTrailByID(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateTrailCall(id, body, _callback);
+        okhttp3.Call localVarCall = updateTrailByIDCall(id, trail, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * 
-     * @param id name that need to be updated (required)
-     * @param body Updated Trail object (required)
+     * Update the trail with this id
+     * @param id id for the trail that need to be updated (required)
+     * @param trail Updated Trail object (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1253,15 +1327,15 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public void updateTrail(Long id, Trail body) throws ApiException {
-        updateTrailWithHttpInfo(id, body);
+    public void updateTrailByID(Long id, Trail trail) throws ApiException {
+        updateTrailByIDWithHttpInfo(id, trail);
     }
 
     /**
      * 
-     * 
-     * @param id name that need to be updated (required)
-     * @param body Updated Trail object (required)
+     * Update the trail with this id
+     * @param id id for the trail that need to be updated (required)
+     * @param trail Updated Trail object (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1271,16 +1345,16 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateTrailWithHttpInfo(Long id, Trail body) throws ApiException {
-        okhttp3.Call localVarCall = updateTrailValidateBeforeCall(id, body, null);
+    public ApiResponse<Void> updateTrailByIDWithHttpInfo(Long id, Trail trail) throws ApiException {
+        okhttp3.Call localVarCall = updateTrailByIDValidateBeforeCall(id, trail, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param id name that need to be updated (required)
-     * @param body Updated Trail object (required)
+     * Update the trail with this id
+     * @param id id for the trail that need to be updated (required)
+     * @param trail Updated Trail object (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1291,31 +1365,32 @@ public class DefaultApi {
         <tr><td> 404 </td><td> Trail not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTrailAsync(Long id, Trail body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateTrailByIDAsync(Long id, Trail trail, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTrailValidateBeforeCall(id, body, _callback);
+        okhttp3.Call localVarCall = updateTrailByIDValidateBeforeCall(id, trail, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for updateUser
-     * @param email name that need to be updated (required)
-     * @param body Updated user object (required)
+     * Build call for updateUserByID
+     * @param email user that need to be updated (required)
+     * @param userUpdate Updated user object (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateUserCall(String email, User body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateUserByIDCall(String email, UserUpdate userUpdate, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = userUpdate;
 
         // create path and map variables
-        String localVarPath = "/user/{email}"
+        String localVarPath = "/users/{email}"
             .replaceAll("\\{" + "email" + "\\}", localVarApiClient.escapeString(email.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1337,83 +1412,86 @@ public class DefaultApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "Bearer" };
         return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateUserValidateBeforeCall(String email, User body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateUserByIDValidateBeforeCall(String email, UserUpdate userUpdate, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'email' is set
         if (email == null) {
-            throw new ApiException("Missing the required parameter 'email' when calling updateUser(Async)");
+            throw new ApiException("Missing the required parameter 'email' when calling updateUserByID(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateUser(Async)");
+        // verify the required parameter 'userUpdate' is set
+        if (userUpdate == null) {
+            throw new ApiException("Missing the required parameter 'userUpdate' when calling updateUserByID(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateUserCall(email, body, _callback);
+        okhttp3.Call localVarCall = updateUserByIDCall(email, userUpdate, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param body Updated user object (required)
+     * Update the user with this email
+     * @param email user that need to be updated (required)
+     * @param userUpdate Updated user object (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public void updateUser(String email, User body) throws ApiException {
-        updateUserWithHttpInfo(email, body);
+    public void updateUserByID(String email, UserUpdate userUpdate) throws ApiException {
+        updateUserByIDWithHttpInfo(email, userUpdate);
     }
 
     /**
      * 
-     * 
-     * @param email name that need to be updated (required)
-     * @param body Updated user object (required)
+     * Update the user with this email
+     * @param email user that need to be updated (required)
+     * @param userUpdate Updated user object (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateUserWithHttpInfo(String email, User body) throws ApiException {
-        okhttp3.Call localVarCall = updateUserValidateBeforeCall(email, body, null);
+    public ApiResponse<Void> updateUserByIDWithHttpInfo(String email, UserUpdate userUpdate) throws ApiException {
+        okhttp3.Call localVarCall = updateUserByIDValidateBeforeCall(email, userUpdate, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
-     * 
-     * @param email name that need to be updated (required)
-     * @param body Updated user object (required)
+     * Update the user with this email
+     * @param email user that need to be updated (required)
+     * @param userUpdate Updated user object (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid user supplied </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> User not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateUserAsync(String email, User body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateUserByIDAsync(String email, UserUpdate userUpdate, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateUserValidateBeforeCall(email, body, _callback);
+        okhttp3.Call localVarCall = updateUserByIDValidateBeforeCall(email, userUpdate, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

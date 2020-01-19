@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="io.avalia.user.api.spec.SpecificationTest" time="0.002" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="io.avalia.user.api.spec.SpecificationTest" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
@@ -69,7 +69,7 @@
   <testcase classname="Scenario: create a users" name="Given I have a user payload" time="0"/>
   <testcase classname="Scenario: create a users" name="When I POST it to the /users endpoint" time="0"/>
   <testcase classname="Scenario: create a users" name="Then I receive a 201 status code" time="0"/>
-  <testcase classname="Scenario: create a users" name="Scenario: create a users" time="0"/>
+  <testcase classname="Scenario: create a users" name="Scenario: create a users" time="0.001"/>
   <testcase classname="Scenario: delete a user" name="Given there is a user servers" time="0"/>
   <testcase classname="Scenario: delete a user" name="Given I have an authenticate users with admin rights" time="0"/>
   <testcase classname="Scenario: delete a user" name="When I DELETE it to the /users endpoint" time="0"/>
